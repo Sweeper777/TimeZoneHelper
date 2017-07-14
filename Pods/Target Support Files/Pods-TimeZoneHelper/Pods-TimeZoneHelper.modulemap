@@ -1,0 +1,6 @@
+framework module Pods_TimeZoneHelper {
+  umbrella header "Pods-TimeZoneHelper-umbrella.h"
+
+  export *
+  module * { export * }
+}
