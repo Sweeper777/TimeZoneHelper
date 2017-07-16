@@ -27,6 +27,10 @@ SOFTWARE.
 
 
 
+## GoogleMaps
+
+Copyright 2017 Google
+
 ## RxCocoa
 
 **The MIT License**
