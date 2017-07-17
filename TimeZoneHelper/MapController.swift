@@ -12,6 +12,9 @@ class MapController: UIViewController, GMSMapViewDelegate {
         map.mapType = .normal
         map.delegate = self
     }
-
+    
+    override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
+        view.bringSubview(toFront: crosshair)
+    }
 }
 
