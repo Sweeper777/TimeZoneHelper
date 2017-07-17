@@ -15,7 +15,9 @@ class MapController: UIViewController, GMSMapViewDelegate {
     }
     
     override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
-        view.bringSubview(toFront: crosshair)
+        let location = map.camera.target
+        let marker = GMSMarker(position: location)
+        marker.map = map
     }
 }
 
