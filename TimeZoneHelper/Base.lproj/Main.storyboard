@@ -41,19 +41,33 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEP-U2-mBN" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crosshair" translatesAutoresizingMaskIntoConstraints="NO" id="vAj-f1-Le8">
+                                        <rect key="frame" x="148" y="247" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="7LY-HQ-EW9"/>
+                                            <constraint firstAttribute="width" constant="25" id="x4I-7j-gTT"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="vAj-f1-Le8" firstAttribute="centerY" secondItem="aEP-U2-mBN" secondAttribute="centerY" id="ac8-Gh-Gi3"/>
+                                    <constraint firstItem="vAj-f1-Le8" firstAttribute="centerX" secondItem="aEP-U2-mBN" secondAttribute="centerX" id="eIZ-tO-RLy"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="aEP-U2-mBN" firstAttribute="leading" secondItem="AXM-fP-ZEH" secondAttribute="leading" id="1DN-CB-UyT"/>
-                            <constraint firstItem="aEP-U2-mBN" firstAttribute="top" secondItem="AXM-fP-ZEH" secondAttribute="top" id="RXl-21-ehh"/>
-                            <constraint firstItem="aEP-U2-mBN" firstAttribute="bottom" secondItem="xDH-az-Vy8" secondAttribute="top" id="kSN-QM-QGv"/>
-                            <constraint firstAttribute="trailing" secondItem="aEP-U2-mBN" secondAttribute="trailing" id="rWF-KR-2DK"/>
+                            <constraint firstItem="aEP-U2-mBN" firstAttribute="top" secondItem="AXM-fP-ZEH" secondAttribute="top" id="NKH-sH-T0c"/>
+                            <constraint firstAttribute="trailing" secondItem="aEP-U2-mBN" secondAttribute="trailing" id="S5n-32-Om1"/>
+                            <constraint firstItem="aEP-U2-mBN" firstAttribute="bottom" secondItem="xDH-az-Vy8" secondAttribute="top" id="Vg5-Zf-EIS"/>
+                            <constraint firstItem="aEP-U2-mBN" firstAttribute="leading" secondItem="AXM-fP-ZEH" secondAttribute="leading" id="wdA-67-Fic"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" id="Zne-zv-eyW"/>
                     <connections>
+                        <outlet property="crosshair" destination="vAj-f1-Le8" id="w1v-qL-DqQ"/>
                         <outlet property="map" destination="aEP-U2-mBN" id="EG0-ij-K2P"/>
                     </connections>
                 </viewController>
@@ -81,6 +95,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="crosshair" width="25" height="25"/>
         <image name="map" width="25" height="25"/>
     </resources>
 </document>
