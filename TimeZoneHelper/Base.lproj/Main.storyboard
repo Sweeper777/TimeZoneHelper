@@ -30,7 +30,7 @@
         <!--Map-->
         <scene sceneID="KVm-IV-3xD">
             <objects>
-                <viewController id="swa-55-l4N" sceneMemberID="viewController">
+                <viewController id="swa-55-l4N" customClass="MapController" customModule="TimeZoneHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="A57-uH-A04"/>
                         <viewControllerLayoutGuide type="bottom" id="xDH-az-Vy8"/>
@@ -38,13 +38,28 @@
                     <view key="view" contentMode="scaleToFill" id="AXM-fP-ZEH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEP-U2-mBN" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aEP-U2-mBN" firstAttribute="leading" secondItem="AXM-fP-ZEH" secondAttribute="leading" id="1DN-CB-UyT"/>
+                            <constraint firstItem="aEP-U2-mBN" firstAttribute="top" secondItem="AXM-fP-ZEH" secondAttribute="top" id="RXl-21-ehh"/>
+                            <constraint firstItem="aEP-U2-mBN" firstAttribute="bottom" secondItem="xDH-az-Vy8" secondAttribute="top" id="kSN-QM-QGv"/>
+                            <constraint firstAttribute="trailing" secondItem="aEP-U2-mBN" secondAttribute="trailing" id="rWF-KR-2DK"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" id="Zne-zv-eyW"/>
+                    <connections>
+                        <outlet property="map" destination="aEP-U2-mBN" id="EG0-ij-K2P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kVy-JP-AWV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1253" y="-654"/>
+            <point key="canvasLocation" x="1252.5" y="-654.92957746478874"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="12z-RL-Mtu">
