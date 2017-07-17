@@ -11,13 +11,8 @@ class MapController: UIViewController, GMSMapViewDelegate {
         super.viewDidLoad()
         map.mapType = .normal
         map.delegate = self
+        map.settings.tiltGestures = false
         crosshair.layer.zPosition = 1
-    }
-    
-    override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
-        let location = map.camera.target
-        let marker = GMSMarker(position: location)
-        marker.map = map
     }
 }
 
