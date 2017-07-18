@@ -14,6 +14,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
         map.delegate = self
         map.settings.tiltGestures = false
         crosshair.layer.zPosition = 1
+        timeZoneDisplay.layer.zPosition = 1
     }
 }
 
