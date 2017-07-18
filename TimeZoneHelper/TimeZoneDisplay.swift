@@ -23,6 +23,7 @@ class TimeZoneDisplay: UIView {
             UIViewAutoresizing.flexibleHeight
         ]
         addSubview(view)
+        self.backgroundColor = UIColor.white.withAlphaComponent(0.5)
     }
     
     private func viewFromNibForClass() -> UIView {
