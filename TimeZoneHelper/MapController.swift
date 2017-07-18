@@ -6,6 +6,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
 
     @IBOutlet var map: GMSMapView!
     @IBOutlet var crosshair: UIImageView!
+    @IBOutlet var timeZoneDisplay: TimeZoneDisplay!
     
     override func viewDidLoad() {
         super.viewDidLoad()

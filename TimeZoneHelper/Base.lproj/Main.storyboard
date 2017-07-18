@@ -49,6 +49,11 @@
                                             <constraint firstAttribute="width" constant="25" id="x4I-7j-gTT"/>
                                         </constraints>
                                     </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Co-Zj-e10" customClass="TimeZoneDisplay" customModule="TimeZoneHelper" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="31" width="320" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -69,6 +74,7 @@
                     <connections>
                         <outlet property="crosshair" destination="vAj-f1-Le8" id="w1v-qL-DqQ"/>
                         <outlet property="map" destination="aEP-U2-mBN" id="EG0-ij-K2P"/>
+                        <outlet property="timeZoneDisplay" destination="5Co-Zj-e10" id="XZf-Xu-RqD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kVy-JP-AWV" userLabel="First Responder" sceneMemberID="firstResponder"/>
