@@ -19,6 +19,12 @@ class MapController: UIViewController, GMSMapViewDelegate {
         map.settings.tiltGestures = false
         crosshair.layer.zPosition = 1
         timeZoneDisplay.layer.zPosition = 1
+        
+        map.rx.didChangePosition.debounce(0.5, scheduler: MainScheduler.instance)
+            .map ({ CLLocation(latitude: $0.target.latitude, longitude: $0.target.longitude) })
+            .asObservable()
+            .subscribe(onNext: { self.timeZoneDisplay.location = $0 })
+            .disposed(by: disposeBag)
     }
 }
 
