@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="dayDisplay" destination="br7-YO-Gnv" id="Tu1-hw-X4V"/>
                 <outlet property="descriptionDisplay" destination="pG1-5P-rGl" id="Fqj-IO-ncS"/>
+                <outlet property="loadingIndicator" destination="PRq-a5-PvZ" id="eay-dc-Cvz"/>
                 <outlet property="timeDisplay" destination="3hh-Eo-aPV" id="a1E-xG-ixg"/>
             </connections>
         </placeholder>
@@ -44,6 +45,9 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="PRq-a5-PvZ">
+                    <rect key="frame" x="296" y="17" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
             <constraints>
@@ -53,6 +57,8 @@
                 <constraint firstAttribute="bottom" secondItem="pG1-5P-rGl" secondAttribute="bottom" constant="20" id="BC5-cu-hhc"/>
                 <constraint firstAttribute="trailing" secondItem="3hh-Eo-aPV" secondAttribute="trailing" id="BFT-T0-VCD"/>
                 <constraint firstItem="br7-YO-Gnv" firstAttribute="leading" secondItem="pG1-5P-rGl" secondAttribute="leading" id="CmS-d9-BNB"/>
+                <constraint firstAttribute="trailing" secondItem="PRq-a5-PvZ" secondAttribute="trailing" constant="16" id="JoY-si-aUS"/>
+                <constraint firstItem="PRq-a5-PvZ" firstAttribute="centerY" secondItem="3hh-Eo-aPV" secondAttribute="centerY" id="PWY-Fw-Swm"/>
                 <constraint firstItem="pG1-5P-rGl" firstAttribute="top" secondItem="br7-YO-Gnv" secondAttribute="bottom" constant="8" symbolic="YES" id="VcX-iL-mac"/>
                 <constraint firstItem="br7-YO-Gnv" firstAttribute="top" secondItem="3hh-Eo-aPV" secondAttribute="bottom" constant="8" symbolic="YES" id="aSf-LF-QN3"/>
                 <constraint firstItem="3hh-Eo-aPV" firstAttribute="trailing" secondItem="br7-YO-Gnv" secondAttribute="trailing" id="eoy-1O-f2S"/>
