@@ -14,6 +14,8 @@ class TimeZoneDisplay: UIView {
     var location: CLLocation!
     {
         didSet {
+            loadingIndicator.isHidden = false
+            loadingIndicator.startAnimating()
             var countryCode: String?
             geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
                 if error != nil {
@@ -24,6 +26,8 @@ class TimeZoneDisplay: UIView {
                     self.descriptionDisplay.text = stringFromPlacemark(placemarks?.first)
                     countryCode = placemarks?.first?.isoCountryCode
                 }
+                self.loadingIndicator.isHidden = true
+                self.loadingIndicator.stopAnimating()
             }
         }
     }
