@@ -38,3 +38,19 @@ class TimeZoneDisplay: UIView {
         return view
     }
 }
+
+func stringFromPlacemark(_ placemark: CLPlacemark?) -> String {
+    guard let placemark = placemark else {
+        return NSLocalizedString("Unknown Location", comment: "")
+    }
+    if let city = placemark.locality {
+        return city
+    }
+    if let state = placemark.administrativeArea {
+        return state
+    }
+    if let country = placemark.country {
+        return country
+    }
+    return NSLocalizedString("Unknown Location", comment: "")
+}
