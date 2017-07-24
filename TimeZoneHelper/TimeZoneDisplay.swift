@@ -26,6 +26,11 @@ class TimeZoneDisplay: UIView {
                     self.descriptionDisplay.text = stringFromPlacemark(placemarks?.first)
                     countryCode = placemarks?.first?.isoCountryCode
                 }
+                let timeZone = TimeZoneLocate.timeZone(location: self.location, countryCode: countryCode)
+                let formatter = DateFormatter()
+                formatter.dateFormat = "HH:mm"
+                formatter.timeZone = timeZone
+                self.timeDisplay.text = formatter.string(from: Date())
                 self.loadingIndicator.isHidden = true
                 self.loadingIndicator.stopAnimating()
             }
