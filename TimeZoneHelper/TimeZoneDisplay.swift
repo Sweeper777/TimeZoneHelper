@@ -82,3 +82,21 @@ func stringFromPlacemark(_ placemark: CLPlacemark?) -> String {
     }
     return NSLocalizedString("Unknown Location", comment: "")
 }
+
+func dayStringFromTimeZone(_ timeZone: TimeZone) -> String {
+    let delta = timeZone.secondsFromGMT()
+    let currentDelta = TimeZone.current.secondsFromGMT()
+    let difference = delta - currentDelta
+    let currentDay = Calendar.current.component(.day, from: Date())
+    let day = Calendar.current.component(.day, from: Date().addingTimeInterval(Double(difference)))
+    switch day - currentDay {
+    case 1:
+        return NSLocalizedString("Tomorrow", comment: "")
+    case 0:
+        return NSLocalizedString("Today", comment: "")
+    case -1:
+        return NSLocalizedString("Yesterday", comment: "")
+    default:
+        fatalError()
+    }
+}
