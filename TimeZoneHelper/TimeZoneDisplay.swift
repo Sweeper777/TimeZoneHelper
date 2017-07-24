@@ -31,6 +31,7 @@ class TimeZoneDisplay: UIView {
                 formatter.dateFormat = "HH:mm"
                 formatter.timeZone = timeZone
                 self.timeDisplay.text = formatter.string(from: Date())
+                self.dayDisplay.text = dayStringFromTimeZone(timeZone!)
                 self.loadingIndicator.isHidden = true
                 self.loadingIndicator.stopAnimating()
             }
