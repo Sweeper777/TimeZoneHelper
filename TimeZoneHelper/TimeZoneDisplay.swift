@@ -7,7 +7,25 @@ class TimeZoneDisplay: UIView {
     @IBOutlet var timeDisplay: UILabel!
     @IBOutlet var dayDisplay: UILabel!
     @IBOutlet var descriptionDisplay: UILabel!
+    
+    let geocoder = CLGeocoder()
+    
     var location: CLLocation!
+    {
+        didSet {
+            var countryCode: String?
+            geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+                if error != nil {
+                    self.timeDisplay.text = NSLocalizedString("Error", comment: "")
+                    self.dayDisplay.text = ""
+                    self.descriptionDisplay.text = ""
+                } else {
+                    self.descriptionDisplay.text = stringFromPlacemark(placemarks?.first)
+                    countryCode = placemarks?.first?.isoCountryCode
+                }
+            }
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
