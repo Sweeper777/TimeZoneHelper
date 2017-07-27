@@ -1,6 +1,6 @@
 import UIKit
 import CoreLocation
-import TimeZoneLocate
+import LatLongToTimezone
 
 @IBDesignable
 class TimeZoneDisplay: UIView {
@@ -26,7 +26,7 @@ class TimeZoneDisplay: UIView {
                     self.descriptionDisplay.text = stringFromPlacemark(placemarks?.first)
                     countryCode = placemarks?.first?.isoCountryCode
                 }
-                let timeZone = TimeZoneLocate.timeZone(location: self.location, countryCode: countryCode)
+                let timeZone = TimezoneMapper.latLngToTimezone(self.location.coordinate)
                 let formatter = DateFormatter()
                 formatter.dateFormat = "HH:mm"
                 formatter.timeZone = timeZone
