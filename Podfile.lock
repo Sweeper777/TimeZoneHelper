@@ -6,6 +6,11 @@ PODS:
   - GoogleMaps/Maps (2.3.1):
     - GoogleMaps/Base
   - LatLongToTimezone (1.1.2)
+  - Realm (2.8.3):
+    - Realm/Headers (= 2.8.3)
+  - Realm/Headers (2.8.3)
+  - RealmSwift (2.8.3):
+    - Realm (= 2.8.3)
   - RxCocoa (3.5.0):
     - RxSwift (~> 3.4)
   - RxGoogleMaps (2.2.0):
@@ -19,6 +24,7 @@ DEPENDENCIES:
   - Eureka
   - GoogleMaps
   - LatLongToTimezone
+  - RealmSwift
   - RxGoogleMaps
   - SwiftDate
   - SwiftyUtils
@@ -27,12 +33,14 @@ SPEC CHECKSUMS:
   Eureka: f36fd440c3ebb7bfea0a4fbe6f16a05f1cb35906
   GoogleMaps: c66a71058b9b1294bcdd5463a68e357fa50c079f
   LatLongToTimezone: efd39e80e92c4cd3aefb597a2fd16f177a4742b5
+  Realm: 3601ef091c8c499a31101d8563b991e75546cdce
+  RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
   RxCocoa: a0a09f45d0e5b48ecb6a4a7b4b4c89c88d3f633f
   RxGoogleMaps: a0968a520060bf087e26b7b830d9156822ee1254
   RxSwift: 18ee9d78b45edb3b0b7e79916b47a116e6dbc842
   SwiftDate: 2dfdebd4f67ae71c9c3e2413ee3c56947f302858
   SwiftyUtils: f48a22d2fa8eece42a11d8bbb4d01a9758dd0602
 
-PODFILE CHECKSUM: 5862e9efbc666d64b70f252e03638a2b2d80db68
+PODFILE CHECKSUM: 739d247da4b331e22a4799b4676688e4fc1aeea6
 
 COCOAPODS: 1.1.0.beta.1

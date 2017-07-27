@@ -11,4 +11,5 @@ target 'TimeZoneHelper' do
   pod 'Eureka'
   pod 'SwiftDate'
   pod 'LatLongToTimezone'
+  pod 'RealmSwift'
 end
