@@ -20,7 +20,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
         crosshair.layer.zPosition = 1
         timeZoneDisplay.layer.zPosition = 1
         
-        map.rx.didChangePosition.debounce(0.5, scheduler: MainScheduler.instance)
+        map.rx.idleAtPosition.debounce(0.5, scheduler: MainScheduler.instance)
             .map ({ CLLocation(latitude: $0.target.latitude, longitude: $0.target.longitude) })
             .asObservable()
             .subscribe(onNext: { self.timeZoneDisplay.location = $0 })
