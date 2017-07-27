@@ -16,7 +16,6 @@ class TimeZoneDisplay: UIView {
         didSet {
             loadingIndicator.isHidden = false
             loadingIndicator.startAnimating()
-            var countryCode: String?
             geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
                 if error != nil {
                     self.timeDisplay.text = NSLocalizedString("Error", comment: "")
@@ -24,7 +23,6 @@ class TimeZoneDisplay: UIView {
                     self.descriptionDisplay.text = ""
                 } else {
                     self.descriptionDisplay.text = stringFromPlacemark(placemarks?.first)
-                    countryCode = placemarks?.first?.isoCountryCode
                 }
                 let timeZone = TimezoneMapper.latLngToTimezone(self.location.coordinate)
                 let formatter = DateFormatter()
