@@ -5,6 +5,7 @@ PODS:
   - GoogleMaps/Base (2.3.1)
   - GoogleMaps/Maps (2.3.1):
     - GoogleMaps/Base
+  - LatLongToTimezone (1.1.2)
   - RxCocoa (3.5.0):
     - RxSwift (~> 3.4)
   - RxGoogleMaps (2.2.0):
@@ -13,26 +14,25 @@ PODS:
   - RxSwift (3.5.0)
   - SwiftDate (4.1.2)
   - SwiftyUtils (1.0.0)
-  - TimeZoneLocate (0.3.0)
 
 DEPENDENCIES:
   - Eureka
   - GoogleMaps
+  - LatLongToTimezone
   - RxGoogleMaps
   - SwiftDate
   - SwiftyUtils
-  - TimeZoneLocate
 
 SPEC CHECKSUMS:
   Eureka: f36fd440c3ebb7bfea0a4fbe6f16a05f1cb35906
   GoogleMaps: c66a71058b9b1294bcdd5463a68e357fa50c079f
+  LatLongToTimezone: efd39e80e92c4cd3aefb597a2fd16f177a4742b5
   RxCocoa: a0a09f45d0e5b48ecb6a4a7b4b4c89c88d3f633f
   RxGoogleMaps: a0968a520060bf087e26b7b830d9156822ee1254
   RxSwift: 18ee9d78b45edb3b0b7e79916b47a116e6dbc842
   SwiftDate: 2dfdebd4f67ae71c9c3e2413ee3c56947f302858
   SwiftyUtils: f48a22d2fa8eece42a11d8bbb4d01a9758dd0602
-  TimeZoneLocate: fe8894d8954a5886a5c946ba57e29ef68a7c8c12
 
-PODFILE CHECKSUM: fb69a1d32f47893818d41455e991c1107049ca24
+PODFILE CHECKSUM: 5862e9efbc666d64b70f252e03638a2b2d80db68
 
 COCOAPODS: 1.1.0.beta.1

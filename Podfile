@@ -6,9 +6,9 @@ target 'TimeZoneHelper' do
 
   # Pods for TimeZoneHelper
   pod 'SwiftyUtils'
-  pod 'TimeZoneLocate'
   pod 'GoogleMaps'
   pod 'RxGoogleMaps'
   pod 'Eureka'
   pod 'SwiftDate'
+  pod 'LatLongToTimezone'
 end
