@@ -7,11 +7,20 @@ import SwiftyUtils
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var clock: Clock!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window?.tintColor = UIColor(hex: "3b7b3b")
         GMSServices.provideAPIKey(gmsAPIKey)
+        
+        clock = Clock()
+        clock.onTimerChange = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm"
+            print(formatter.string(from: Date()))
+        }
         return true
     }
 
