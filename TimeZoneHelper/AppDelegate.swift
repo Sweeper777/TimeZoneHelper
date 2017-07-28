@@ -16,11 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey(gmsAPIKey)
         
         clock = Clock()
-        clock.onTimerChange = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm"
-            print(formatter.string(from: Date()))
-        }
         return true
     }
 
