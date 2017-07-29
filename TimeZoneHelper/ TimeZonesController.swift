@@ -18,6 +18,13 @@ class TimeZonesController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        let timeZone = timeZones[indexPath.row]
+        (cell.contentView.viewWithTag(1) as! UILabel).text = timeZone.labelText
+        (cell.contentView.viewWithTag(2) as! UILabel).text = dayStringFromTimeZone(timeZone.timeZone)
+        let formatter = DateFormatter()
+        formatter.timeZone = timeZone.timeZone
+        formatter.dateFormat = "HH:mm"
+        (cell.contentView.viewWithTag(3) as! UILabel).text = formatter.string(from: Date())
         return cell
     }
 }
