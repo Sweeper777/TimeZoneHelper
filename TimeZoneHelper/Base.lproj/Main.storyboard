@@ -84,7 +84,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvg-02-6MJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="244" y="143"/>
+            <point key="canvasLocation" x="296" y="143"/>
         </scene>
         <!--Time Zones-->
         <scene sceneID="Jic-9Y-jAN">
@@ -111,15 +111,15 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQ4-XN-Yfs">
-                                            <rect key="frame" x="8" y="47" width="208" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" tag="1" contentMode="left" text="Hong Kong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4S-q7-etC">
                                             <rect key="frame" x="8" y="8" width="208" height="33"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQ4-XN-Yfs">
+                                            <rect key="frame" x="8" y="47" width="208" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -143,11 +143,57 @@
                             <outlet property="delegate" destination="L0k-aY-o2a" id="ML8-9R-4DF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Time Zones" id="Z6v-f3-AKc"/>
+                    <navigationItem key="navigationItem" title="Time Zones" id="Z6v-f3-AKc">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="WJ9-eJ-VGr">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="pnO-IW-mDx" kind="presentation" modalPresentationStyle="formSheet" id="Yd9-UC-XDE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yo1-4I-Zj3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2265" y="142.6056338028169"/>
+            <point key="canvasLocation" x="2156" y="143"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KhC-Bx-HM4">
+            <objects>
+                <navigationController id="pnO-IW-mDx" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Utc-7p-wIr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.35294117650000001" green="0.73333333329999995" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rkf-lx-tXS" kind="relationship" relationship="rootViewController" id="C0F-vd-peF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d57-O9-hgV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2925" y="143"/>
+        </scene>
+        <!--Time Zone Selector Controller-->
+        <scene sceneID="Bnt-bT-jpQ">
+            <objects>
+                <viewController id="rkf-lx-tXS" customClass="TimeZoneSelectorController" customModule="TimeZoneHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kAR-r3-58E"/>
+                        <viewControllerLayoutGuide type="bottom" id="Joe-sL-i1f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N37-wq-tit">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kYI-Os-Za4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OLP-dZ-fhe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3744" y="143"/>
         </scene>
         <!--Time Zones-->
         <scene sceneID="Hj0-GU-H12">
