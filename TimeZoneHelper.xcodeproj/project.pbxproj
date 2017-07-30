@@ -21,6 +21,7 @@
 		5A3586E31F2C0F4800F1BBBA /* TimeZoneSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3586E21F2C0F4800F1BBBA /* TimeZoneSelectorController.swift */; };
 		5A3A81081F2AB7730013A65F /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3A81071F2AB7730013A65F /* Clock.swift */; };
 		5A3CF2D71F2D5B6900D8AF83 /* FormTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3CF2D61F2D5B6900D8AF83 /* FormTags.swift */; };
+		5A3CF2D91F2D65FB00D8AF83 /* TimeZoneSelectorControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3CF2D81F2D65FB00D8AF83 /* TimeZoneSelectorControllerDelegate.swift */; };
 		713BB0669C205942C5EF876C /* Pods_TimeZoneHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B0ECACCA8C1E0BA3A56997 /* Pods_TimeZoneHelper.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		5A3586E21F2C0F4800F1BBBA /* TimeZoneSelectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneSelectorController.swift; sourceTree = "<group>"; };
 		5A3A81071F2AB7730013A65F /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 		5A3CF2D61F2D5B6900D8AF83 /* FormTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTags.swift; sourceTree = "<group>"; };
+		5A3CF2D81F2D65FB00D8AF83 /* TimeZoneSelectorControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneSelectorControllerDelegate.swift; sourceTree = "<group>"; };
 		A6B0ECACCA8C1E0BA3A56997 /* Pods_TimeZoneHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimeZoneHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43A82C76F579C3EDE829360 /* Pods-TimeZoneHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeZoneHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimeZoneHelper/Pods-TimeZoneHelper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +96,7 @@
 				5A257B9C1F1D84C00012EE85 /* TimeZoneDisplay.swift */,
 				5A2B69CC1F2975EB0068E3A3 /* UserTimeZone.swift */,
 				5A3A81071F2AB7730013A65F /* Clock.swift */,
+				5A3CF2D81F2D65FB00D8AF83 /* TimeZoneSelectorControllerDelegate.swift */,
 				5A1F56251F1B269F0087F5DD /* SecretStuff.swift */,
 				5A3CF2D61F2D5B6900D8AF83 /* FormTags.swift */,
 				5A24B9B81F18A80D0049459A /* Main.storyboard */,
@@ -244,6 +247,7 @@
 				5A21D6B01F237C660023C146 /*  TimeZonesController.swift in Sources */,
 				5A3A81081F2AB7730013A65F /* Clock.swift in Sources */,
 				5A257B9D1F1D84C00012EE85 /* TimeZoneDisplay.swift in Sources */,
+				5A3CF2D91F2D65FB00D8AF83 /* TimeZoneSelectorControllerDelegate.swift in Sources */,
 				5A2B69CD1F2975EB0068E3A3 /* UserTimeZone.swift in Sources */,
 				5A1F56261F1B269F0087F5DD /* SecretStuff.swift in Sources */,
 				5A356E5D1F21A69B00738177 /* RxGoogleMapsBridge.swift in Sources */,
