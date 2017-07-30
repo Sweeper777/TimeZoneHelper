@@ -38,5 +38,11 @@ class TimeZoneSelectorController: FormViewController {
             section in
             section.tag = tagSelectedTimeZoneSection
         }
+        
+        <<< LabelRow(tagSelectedTimeZone) {
+            row in
+            row.cellStyle = .value1
+            row.title = NSLocalizedString("Selected Time Zone", comment: "")
+        }
     }
 }
