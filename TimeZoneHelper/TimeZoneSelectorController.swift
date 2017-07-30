@@ -10,21 +10,25 @@ class TimeZoneSelectorController: FormViewController {
         <<< ButtonRow(tagMap) {
             row in
             row.title = NSLocalizedString("Map", comment: "")
+            row.cell.tintColor = UIColor(hex: "3b7b3b")
         }
         
         <<< ButtonRow(tagLocation) {
             row in
             row.title = NSLocalizedString("Location", comment: "")
+            row.cell.tintColor = UIColor(hex: "3b7b3b")
         }
             
         <<< ButtonRow(tagOffsetFromGMT) {
             row in
             row.title = NSLocalizedString("Offset from GMT", comment: "")
+            row.cell.tintColor = UIColor(hex: "3b7b3b")
         }
         
         <<< ButtonRow(tagAbbreviation) {
             row in
             row.title = NSLocalizedString("Abbreviation", comment: "")
+            row.cell.tintColor = UIColor(hex: "3b7b3b")
         }
     }
 }
