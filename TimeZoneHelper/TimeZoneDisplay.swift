@@ -17,13 +17,7 @@ class TimeZoneDisplay: UIView {
             loadingIndicator.isHidden = false
             loadingIndicator.startAnimating()
             geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
-                if error != nil {
-                    self.timeDisplay.text = NSLocalizedString("Error", comment: "")
-                    self.dayDisplay.text = ""
-                    self.descriptionDisplay.text = ""
-                } else {
-                    self.descriptionDisplay.text = stringFromPlacemark(placemarks?.first)
-                }
+                self.descriptionDisplay.text = stringFromPlacemark(placemarks?.first)
                 let timeZone = TimezoneMapper.latLngToTimezone(self.location.coordinate)
                 let formatter = DateFormatter()
                 formatter.dateFormat = "HH:mm"
