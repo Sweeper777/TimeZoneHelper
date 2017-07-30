@@ -5,7 +5,10 @@ class TimeZoneSelectorController: FormViewController {
         super.viewDidLoad()
         
         title = NSLocalizedString("Select a Time Zone", comment: "")
-        form +++ Section(NSLocalizedString("select from...", comment: ""))
+        form +++ Section(NSLocalizedString("select from...", comment: "")) {
+            section in
+            section.tag = tagMethodSelectionSection
+        }
         
         <<< ButtonRow(tagMap) {
             row in
@@ -30,5 +33,7 @@ class TimeZoneSelectorController: FormViewController {
             row.title = NSLocalizedString("Abbreviation", comment: "")
             row.cell.tintColor = UIColor(hex: "3b7b3b")
         }
+        
+        
     }
 }
