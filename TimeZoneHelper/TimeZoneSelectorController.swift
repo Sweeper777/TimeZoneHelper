@@ -34,6 +34,9 @@ class TimeZoneSelectorController: FormViewController {
             row.cell.tintColor = UIColor(hex: "3b7b3b")
         }
         
-        
+        form +++ Section() {
+            section in
+            section.tag = tagSelectedTimeZoneSection
+        }
     }
 }

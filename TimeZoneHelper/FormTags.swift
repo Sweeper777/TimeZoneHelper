@@ -4,3 +4,4 @@ let tagOffsetFromGMT = "offsetFromGMT"
 let tagAbbreviation = "abbreviation"
 
 let tagMethodSelectionSection = "methodSelection"
+let tagSelectedTimeZoneSection = "selectedTimeZone"
