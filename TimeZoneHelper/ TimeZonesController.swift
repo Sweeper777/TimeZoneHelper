@@ -27,4 +27,8 @@ class TimeZonesController: UITableViewController {
         (cell.contentView.viewWithTag(3) as! UILabel).text = formatter.string(from: Date())
         return cell
     }
+    
+    @IBAction func newTimeZone() {
+        performSegue(withIdentifier: "newTimeZone", sender: nil)
+    }
 }

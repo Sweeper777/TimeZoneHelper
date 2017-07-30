@@ -102,15 +102,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="76.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" tag="3" contentMode="left" text="09:49" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTW-S5-zU2">
-                                            <rect key="frame" x="224" y="0.0" width="88" height="77"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="88" id="jMM-IX-pNK"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" tag="1" contentMode="left" text="Hong Kong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4S-q7-etC">
                                             <rect key="frame" x="8" y="8" width="208" height="33"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="27"/>
@@ -120,6 +111,15 @@
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQ4-XN-Yfs">
                                             <rect key="frame" x="8" y="47" width="208" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" tag="3" contentMode="left" text="09:49" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTW-S5-zU2">
+                                            <rect key="frame" x="224" y="0.0" width="88" height="77"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="88" id="jMM-IX-pNK"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -146,10 +146,13 @@
                     <navigationItem key="navigationItem" title="Time Zones" id="Z6v-f3-AKc">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="WJ9-eJ-VGr">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="newTimeZone" destination="L0k-aY-o2a" id="0pR-Co-dYe"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="pnO-IW-mDx" kind="presentation" modalPresentationStyle="formSheet" id="Yd9-UC-XDE"/>
+                        <segue destination="pnO-IW-mDx" kind="presentation" identifier="newTimeZone" modalPresentationStyle="formSheet" id="Yd9-UC-XDE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yo1-4I-Zj3" userLabel="First Responder" sceneMemberID="firstResponder"/>
