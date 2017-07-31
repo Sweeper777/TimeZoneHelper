@@ -44,5 +44,11 @@ class TimeZoneSelectorController: FormViewController {
             row.cellStyle = .value1
             row.title = NSLocalizedString("Selected Time Zone", comment: "")
         }
+        
+        <<< ButtonRow(tagReselect) {
+            row in
+            row.title = NSLocalizedString("Reselect", comment: "")
+            row.cell.tintColor = .red
+        }
     }
 }

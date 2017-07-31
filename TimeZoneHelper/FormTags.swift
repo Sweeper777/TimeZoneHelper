@@ -7,3 +7,4 @@ let tagMethodSelectionSection = "methodSelection"
 let tagSelectedTimeZoneSection = "selectedTimeZoneSection"
 
 let tagSelectedTimeZone = "selectedTimeZone"
+let tagReselect = "reselect"
