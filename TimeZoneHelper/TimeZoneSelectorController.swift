@@ -1,4 +1,5 @@
 import Eureka
+import SCLAlertView
 
 class TimeZoneSelectorController: FormViewController {
     override func viewDidLoad() {
@@ -26,6 +27,16 @@ class TimeZoneSelectorController: FormViewController {
             row in
             row.title = NSLocalizedString("Offset from GMT", comment: "")
             row.cell.tintColor = UIColor(hex: "3b7b3b")
+        }.onCellSelection {
+            cell, row in
+            let alert = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
+            let textField = alert.addTextField()
+            textField.placeholder = "-5, +7 etc."
+            alert.addButton(NSLocalizedString("OK", comment: "")) {
+                
+            }
+            alert.addButton(NSLocalizedString("Cancel", comment: ""), action: {})
+            _ = alert.showCustom(NSLocalizedString("GMT offset", comment: ""), subTitle: NSLocalizedString("Please enter the offset from GMT", comment: ""), color: UIColor(hex: "b7b3b"), icon: #imageLiteral(resourceName: "globe"))
         }
         
         <<< ButtonRow(tagAbbreviation) {
