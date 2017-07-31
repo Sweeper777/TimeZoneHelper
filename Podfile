@@ -12,4 +12,5 @@ target 'TimeZoneHelper' do
   pod 'SwiftDate'
   pod 'LatLongToTimezone'
   pod 'RealmSwift'
+  pod 'SCLAlertView'
 end

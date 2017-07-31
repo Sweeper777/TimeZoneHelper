@@ -17,6 +17,7 @@ PODS:
     - RxCocoa (~> 3.2)
     - RxSwift (~> 3.2)
   - RxSwift (3.5.0)
+  - SCLAlertView (0.7.0)
   - SwiftDate (4.1.2)
   - SwiftyUtils (1.0.0)
 
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - LatLongToTimezone
   - RealmSwift
   - RxGoogleMaps
+  - SCLAlertView
   - SwiftDate
   - SwiftyUtils
 
@@ -38,9 +40,10 @@ SPEC CHECKSUMS:
   RxCocoa: a0a09f45d0e5b48ecb6a4a7b4b4c89c88d3f633f
   RxGoogleMaps: a0968a520060bf087e26b7b830d9156822ee1254
   RxSwift: 18ee9d78b45edb3b0b7e79916b47a116e6dbc842
+  SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   SwiftDate: 2dfdebd4f67ae71c9c3e2413ee3c56947f302858
   SwiftyUtils: f48a22d2fa8eece42a11d8bbb4d01a9758dd0602
 
-PODFILE CHECKSUM: 739d247da4b331e22a4799b4676688e4fc1aeea6
+PODFILE CHECKSUM: b7a92d469fffa2e3aa96ddece372038287ce1281
 
 COCOAPODS: 1.1.0.beta.1
