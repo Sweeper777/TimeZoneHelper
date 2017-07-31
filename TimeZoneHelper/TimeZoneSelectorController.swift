@@ -50,5 +50,11 @@ class TimeZoneSelectorController: FormViewController {
             row.title = NSLocalizedString("Reselect", comment: "")
             row.cell.tintColor = .red
         }
+        
+        <<< ButtonRow(tagOK) {
+            row in
+            row.title = NSLocalizedString("OK", comment: "")
+            row.cell.tintColor = UIColor(hex: "3b7b3b")
+        }
     }
 }
