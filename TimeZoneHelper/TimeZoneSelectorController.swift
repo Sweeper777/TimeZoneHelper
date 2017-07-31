@@ -37,6 +37,7 @@ class TimeZoneSelectorController: FormViewController {
         form +++ Section() {
             section in
             section.tag = tagSelectedTimeZoneSection
+            section.hidden = true
         }
         
         <<< LabelRow(tagSelectedTimeZone) {
@@ -49,6 +50,10 @@ class TimeZoneSelectorController: FormViewController {
             row in
             row.title = NSLocalizedString("Reselect", comment: "")
             row.cell.tintColor = .red
+        }.onCellSelection {
+            cell, row in
+            row.section?.hidden = true
+            self.form.sectionBy(tag: tagMethodSelectionSection)?.hidden = false
         }
         
         <<< ButtonRow(tagOK) {
