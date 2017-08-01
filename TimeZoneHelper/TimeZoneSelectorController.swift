@@ -47,7 +47,7 @@ class TimeZoneSelectorController: FormViewController {
                 }
             }
             alert.addButton(NSLocalizedString("Cancel", comment: ""), action: {})
-            _ = alert.showCustom(NSLocalizedString("GMT offset", comment: ""), subTitle: NSLocalizedString("Please enter the offset from GMT", comment: ""), color: UIColor(hex: "3b7b3b"), icon: #imageLiteral(resourceName: "globe"))
+            _ = alert.showCustom(NSLocalizedString("GMT offset", comment: ""), subTitle: NSLocalizedString("Please enter the offset from GMT, in hours", comment: ""), color: UIColor(hex: "3b7b3b"), icon: #imageLiteral(resourceName: "globe"))
         }
         
         <<< ButtonRow(tagAbbreviation) {
