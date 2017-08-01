@@ -42,6 +42,7 @@ class TimeZoneSelectorController: FormViewController {
                     self.form.sectionBy(tag: tagMethodSelectionSection)?.hidden = true
                     self.form.sectionBy(tag: tagMethodSelectionSection)?.evaluateHidden()
                     (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).value = timeZone.identifier
+                    (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).updateCell()
                 } else {
                     let alert = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false, showCircularIcon: false))
                     alert.addButton(NSLocalizedString("OK", comment: ""), action: {})
@@ -61,7 +62,7 @@ class TimeZoneSelectorController: FormViewController {
         form +++ Section() {
             section in
             section.tag = tagSelectedTimeZoneSection
-            section.hidden = false
+            section.hidden = true
         }
         
         <<< LabelRow(tagSelectedTimeZone) {
@@ -76,8 +77,11 @@ class TimeZoneSelectorController: FormViewController {
             row.cell.tintColor = .red
         }.onCellSelection {
             cell, row in
-            row.section?.hidden = false
+            row.section?.hidden = true
+            row.section?.evaluateHidden()
+            self.selectedTimeZone = nil
             self.form.sectionBy(tag: tagMethodSelectionSection)?.hidden = false
+            self.form.sectionBy(tag: tagMethodSelectionSection)?.evaluateHidden()
         }
         
         <<< ButtonRow(tagOK) {
