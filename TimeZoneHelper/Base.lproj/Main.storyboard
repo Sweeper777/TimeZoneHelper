@@ -192,7 +192,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="kYI-Os-Za4"/>
+                    <navigationItem key="navigationItem" id="kYI-Os-Za4">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="PaX-ft-3N3">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancel" destination="rkf-lx-tXS" id="r5M-ZQ-JfQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OLP-dZ-fhe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

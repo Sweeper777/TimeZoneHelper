@@ -88,4 +88,8 @@ class TimeZoneSelectorController: FormViewController {
             row.cell.tintColor = UIColor(hex: "3b7b3b")
         }
     }
+
+    @IBAction func cancel() {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
