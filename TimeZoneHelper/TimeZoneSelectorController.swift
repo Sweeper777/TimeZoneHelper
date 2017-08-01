@@ -2,6 +2,8 @@ import Eureka
 import SCLAlertView
 
 class TimeZoneSelectorController: FormViewController {
+    var selectedTimeZone: TimeZone?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,7 +35,13 @@ class TimeZoneSelectorController: FormViewController {
             let textField = alert.addTextField()
             textField.placeholder = "-5, +7 etc."
             alert.addButton(NSLocalizedString("OK", comment: "")) {
-                
+                if let offset = Double(textField.text ?? ""), let timeZone = TimeZone(secondsFromGMT: Int(offset * 60 * 60)) {
+                    self.selectedTimeZone = timeZone
+                    self.form.sectionBy(tag: tagSelectedTimeZoneSection)?.hidden = false
+                    self.form.sectionBy(tag: tagMethodSelectionSection)?.hidden = true
+                    (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).value = timeZone.identifier
+                } else {
+                }
             }
             alert.addButton(NSLocalizedString("Cancel", comment: ""), action: {})
             _ = alert.showCustom(NSLocalizedString("GMT offset", comment: ""), subTitle: NSLocalizedString("Please enter the offset from GMT", comment: ""), color: UIColor(hex: "3b7b3b"), icon: #imageLiteral(resourceName: "globe"))
