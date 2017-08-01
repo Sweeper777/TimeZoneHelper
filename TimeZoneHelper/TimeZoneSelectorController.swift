@@ -41,6 +41,9 @@ class TimeZoneSelectorController: FormViewController {
                     self.form.sectionBy(tag: tagMethodSelectionSection)?.hidden = true
                     (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).value = timeZone.identifier
                 } else {
+                    let alert = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false, showCircularIcon: false))
+                    alert.addButton(NSLocalizedString("OK", comment: ""), action: {})
+                    _ = alert.showCustom(NSLocalizedString("Error", comment: ""), subTitle: NSLocalizedString("The offset entered is invalid.", comment: ""), color: .red, icon: UIImage())
                 }
             }
             alert.addButton(NSLocalizedString("Cancel", comment: ""), action: {})
