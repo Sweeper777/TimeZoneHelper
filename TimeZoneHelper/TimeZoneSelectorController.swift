@@ -38,7 +38,9 @@ class TimeZoneSelectorController: FormViewController {
                 if let offset = Double(textField.text ?? ""), let timeZone = TimeZone(secondsFromGMT: Int(offset * 60 * 60)) {
                     self.selectedTimeZone = timeZone
                     self.form.sectionBy(tag: tagSelectedTimeZoneSection)?.hidden = false
+                    self.form.sectionBy(tag: tagSelectedTimeZoneSection)?.evaluateHidden()
                     self.form.sectionBy(tag: tagMethodSelectionSection)?.hidden = true
+                    self.form.sectionBy(tag: tagMethodSelectionSection)?.evaluateHidden()
                     (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).value = timeZone.identifier
                 } else {
                     let alert = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false, showCircularIcon: false))
@@ -59,7 +61,7 @@ class TimeZoneSelectorController: FormViewController {
         form +++ Section() {
             section in
             section.tag = tagSelectedTimeZoneSection
-            section.hidden = true
+            section.hidden = false
         }
         
         <<< LabelRow(tagSelectedTimeZone) {
@@ -74,7 +76,7 @@ class TimeZoneSelectorController: FormViewController {
             row.cell.tintColor = .red
         }.onCellSelection {
             cell, row in
-            row.section?.hidden = true
+            row.section?.hidden = false
             self.form.sectionBy(tag: tagMethodSelectionSection)?.hidden = false
         }
         
