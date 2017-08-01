@@ -41,7 +41,7 @@ class TimeZoneSelectorController: FormViewController {
                     self.form.sectionBy(tag: tagSelectedTimeZoneSection)?.evaluateHidden()
                     self.form.sectionBy(tag: tagMethodSelectionSection)?.hidden = true
                     self.form.sectionBy(tag: tagMethodSelectionSection)?.evaluateHidden()
-                    (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).value = timeZone.identifier
+                    (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).title = timeZone.identifier
                     (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).updateCell()
                 } else {
                     let alert = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false, showCircularIcon: false))
@@ -59,7 +59,7 @@ class TimeZoneSelectorController: FormViewController {
             row.cell.tintColor = UIColor(hex: "3b7b3b")
         }
         
-        form +++ Section() {
+        form +++ Section(NSLocalizedString("selected time zone", comment: "")) {
             section in
             section.tag = tagSelectedTimeZoneSection
             section.hidden = true
@@ -67,8 +67,6 @@ class TimeZoneSelectorController: FormViewController {
         
         <<< LabelRow(tagSelectedTimeZone) {
             row in
-            row.cellStyle = .value1
-            row.title = NSLocalizedString("Selected Time Zone", comment: "")
         }
         
         <<< ButtonRow(tagReselect) {
