@@ -1,5 +1,5 @@
 import UIKit
 
-protocol TimeZoneSelectorControllerDelegate {
+protocol TimeZoneSelectorControllerDelegate: class {
     func didSelectTimeZone(timeZone: TimeZone)
 }

@@ -4,6 +4,8 @@ import SCLAlertView
 class TimeZoneSelectorController: FormViewController {
     var selectedTimeZone: TimeZone?
     
+    weak var delegate: TimeZoneSelectorControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
