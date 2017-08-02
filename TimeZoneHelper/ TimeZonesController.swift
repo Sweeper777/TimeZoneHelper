@@ -1,7 +1,7 @@
 import UIKit
 import RealmSwift
 
-class TimeZonesController: UITableViewController {
+class TimeZonesController: UITableViewController, TimeZoneSelectorControllerDelegate {
     var timeZones: Results<UserTimeZones>!
     
     override func viewDidLoad() {
@@ -30,5 +30,15 @@ class TimeZonesController: UITableViewController {
     
     @IBAction func newTimeZone() {
         performSegue(withIdentifier: "newTimeZone", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = (segue.destination as? UINavigationController)?.topViewController as? TimeZoneSelectorController {
+            vc.delegate = self
+        }
+    }
+    
+    func didSelectTimeZone(timeZone: TimeZone) {
+        
     }
 }
