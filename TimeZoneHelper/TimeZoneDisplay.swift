@@ -30,6 +30,7 @@ class TimeZoneDisplay: UIView {
         }
     }
     
+    var timeZone: TimeZone!
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
