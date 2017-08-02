@@ -18,12 +18,8 @@ class TimeZoneDisplay: UIView {
             loadingIndicator.startAnimating()
             geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
                 self.descriptionDisplay.text = stringFromPlacemark(placemarks?.first)
-                let timeZone = TimezoneMapper.latLngToTimezone(self.location.coordinate)
-                let formatter = DateFormatter()
-                formatter.dateFormat = "HH:mm"
-                formatter.timeZone = timeZone
-                self.timeDisplay.text = formatter.string(from: Date())
-                self.dayDisplay.text = dayStringFromTimeZone(timeZone!)
+                self.timeZone = TimezoneMapper.latLngToTimezone(self.location.coordinate)
+                self.updateDisplays()
                 self.loadingIndicator.isHidden = true
                 self.loadingIndicator.stopAnimating()
             }
@@ -31,6 +27,15 @@ class TimeZoneDisplay: UIView {
     }
     
     var timeZone: TimeZone!
+    
+    func updateDisplays() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        formatter.timeZone = self.timeZone
+        self.timeDisplay.text = formatter.string(from: Date())
+        self.dayDisplay.text = dayStringFromTimeZone(self.timeZone!)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
