@@ -26,5 +26,18 @@ class MapController: UIViewController, GMSMapViewDelegate {
             .subscribe(onNext: { self.timeZoneDisplay.location = $0 })
             .disposed(by: disposeBag)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.timeZoneDisplay.updateDisplays()
+        (UIApplication.shared.delegate as! AppDelegate).clock.onTimerChange = {
+            self.timeZoneDisplay.updateDisplays()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        (UIApplication.shared.delegate as! AppDelegate).clock.onTimerChange = nil
+    }
 }
 
