@@ -74,4 +74,15 @@ class TimeZonesController: UITableViewController, TimeZoneSelectorControllerDele
         }
         tableView.reloadData()
     }
+    
+    func updateClockDisplays() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        for i in 0..<timeZones.count {
+            formatter.timeZone = timeZones[i].timeZone
+            let cell = tableView.cellForRow(at: IndexPath(row: i, section: 0))!
+            (cell.viewWithTag(3) as! UILabel).text = formatter.string(from: Date())
+        }
+    }
+    
 }
