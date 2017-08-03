@@ -88,6 +88,10 @@ class TimeZoneSelectorController: FormViewController {
             row in
             row.title = NSLocalizedString("OK", comment: "")
             row.cell.tintColor = UIColor(hex: "3b7b3b")
+            }.onCellSelection {
+                cell, row in
+                self.delegate?.didSelectTimeZone(timeZone: self.selectedTimeZone!)
+                self.dismiss(animated: true, completion: nil)
         }
     }
 
