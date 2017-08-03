@@ -41,6 +41,11 @@ class TimeZonesController: UITableViewController, TimeZoneSelectorControllerDele
     }
     
     func didSelectTimeZone(timeZone: TimeZone) {
-        
+        let userTimeZone = UserTimeZones()
+        userTimeZone.timeZoneInfo = NSKeyedArchiver.archivedData(withRootObject: timeZone)
+        try! realm.write {
+            realm.add(userTimeZone)
+        }
+        tableView.reloadData()
     }
 }
