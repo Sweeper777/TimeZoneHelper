@@ -8,7 +8,7 @@ class TimeZonesController: UITableViewController, TimeZoneSelectorControllerDele
     override func viewDidLoad() {
         realm = try! Realm()
         timeZones = realm.objects(UserTimeZones.self).sorted(byKeyPath: "position")
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
