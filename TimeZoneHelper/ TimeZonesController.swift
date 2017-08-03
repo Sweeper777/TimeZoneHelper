@@ -22,6 +22,7 @@ class TimeZonesController: UITableViewController, TimeZoneSelectorControllerDele
                 for i in indexPath.row..<timeZones.count {
                     timeZones[i].position = i
                 }
+                tableView.deleteRows(at: [indexPath], with: .left)
             }
         }
     }
