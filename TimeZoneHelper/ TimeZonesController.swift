@@ -8,10 +8,21 @@ class TimeZonesController: UITableViewController, TimeZoneSelectorControllerDele
     override func viewDidLoad() {
         realm = try! Realm()
         timeZones = realm.objects(UserTimeZones.self).sorted(byKeyPath: "position")
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,6 +39,10 @@ class TimeZonesController: UITableViewController, TimeZoneSelectorControllerDele
         formatter.dateFormat = "HH:mm"
         (cell.contentView.viewWithTag(3) as! UILabel).text = formatter.string(from: Date())
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
     
     @IBAction func newTimeZone() {
