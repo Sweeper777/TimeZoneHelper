@@ -85,4 +85,15 @@ class TimeZonesController: UITableViewController, TimeZoneSelectorControllerDele
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        (UIApplication.shared.delegate as! AppDelegate).clock.onTimerChange = {
+            self.updateClockDisplays()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        (UIApplication.shared.delegate as! AppDelegate).clock.onTimerChange = nil
+    }
 }
