@@ -17,12 +17,20 @@ class TimeZonesController: UITableViewController, TimeZoneSelectorControllerDele
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
+            try! realm.write {
+                realm.delete(timeZones[indexPath.row])
+                for i in indexPath.row..<timeZones.count {
+                    timeZones[i].position = i
+                }
+            }
         }
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        
+        try! realm.write {
+            timeZones[sourceIndexPath.row].position = destinationIndexPath.row
+            timeZones[destinationIndexPath.row].position = sourceIndexPath.row
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
