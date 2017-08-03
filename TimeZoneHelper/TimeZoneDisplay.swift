@@ -29,11 +29,13 @@ class TimeZoneDisplay: UIView {
     var timeZone: TimeZone!
     
     func updateDisplays() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        formatter.timeZone = self.timeZone
-        self.timeDisplay.text = formatter.string(from: Date())
-        self.dayDisplay.text = dayStringFromTimeZone(self.timeZone!)
+        if let timeZone = self.timeZone {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm"
+            formatter.timeZone = timeZone
+            self.timeDisplay.text = formatter.string(from: Date())
+            self.dayDisplay.text = dayStringFromTimeZone(timeZone)
+        }
     }
     
     override init(frame: CGRect) {
