@@ -3,9 +3,11 @@ import RealmSwift
 
 class TimeZonesController: UITableViewController, TimeZoneSelectorControllerDelegate {
     var timeZones: Results<UserTimeZones>!
+    var realm: Realm!
     
     override func viewDidLoad() {
-        timeZones = (try? Realm())?.objects(UserTimeZones.self).sorted(byKeyPath: "position")
+        realm = try! Realm()
+        timeZones = realm.objects(UserTimeZones.self).sorted(byKeyPath: "position")
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
