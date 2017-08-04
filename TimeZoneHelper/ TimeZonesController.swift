@@ -8,6 +8,7 @@ class TimeZonesController: UITableViewController, TimeZoneSelectorControllerDele
     override func viewDidLoad() {
         realm = try! Realm()
         timeZones = realm.objects(UserTimeZones.self).sorted(byKeyPath: "position")
+        self.editButtonItem.tintColor = .white
         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
     
