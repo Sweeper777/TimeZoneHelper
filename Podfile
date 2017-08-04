@@ -13,4 +13,5 @@ target 'TimeZoneHelper' do
   pod 'LatLongToTimezone'
   pod 'RealmSwift'
   pod 'SCLAlertView'
+  pod 'EZLoadingActivity'
 end
