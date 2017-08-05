@@ -29,7 +29,22 @@ class TimeZoneSelectorController: FormViewController {
             row in
             row.title = NSLocalizedString("Location", comment: "")
             row.cell.tintColor = UIColor(hex: "3b7b3b")
-        }
+            }.onCellSelection {
+                cell, row in
+                let alert = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
+                let textField = alert.addTextField()
+                textField.placeholder = NSLocalizedString("Name of city or area", comment: "")
+                alert.addButton(NSLocalizedString("OK", comment: "")) {
+                    let geocoder = CLGeocoder()
+                    EZLoadingActivity.show(NSLocalizedString("Looking for the requested location...", comment: ""), disableUI: true)
+                    geocoder.geocodeAddressString(textField.text!, completionHandler: { (placemarks, error) in
+                        EZLoadingActivity.hide()
+                        if error != nil || placemarks?.first == nil {
+                        } else {
+                }
+                alert.addButton(NSLocalizedString("Cancel", comment: ""), action: {})
+                _ = alert.showCustom(NSLocalizedString("Location", comment: ""), subTitle: NSLocalizedString("Please enter a location", comment: ""), color: UIColor(hex: "3b7b3b"), icon: #imageLiteral(resourceName: "globe"))
+            }
             
         <<< ButtonRow(tagOffsetFromGMT) {
             row in
