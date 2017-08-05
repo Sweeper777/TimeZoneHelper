@@ -1,5 +1,5 @@
 import UIKit
 
 protocol TimeZoneSelectorControllerDelegate: class {
-    func didSelectTimeZone(timeZone: TimeZone)
+    func didSelectTimeZone(timeZone: TimeZone, labelText: String?)
 }

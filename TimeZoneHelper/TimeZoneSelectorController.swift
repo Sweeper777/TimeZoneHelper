@@ -122,7 +122,7 @@ class TimeZoneSelectorController: FormViewController {
             row.cell.tintColor = UIColor(hex: "3b7b3b")
             }.onCellSelection {
                 cell, row in
-                self.delegate?.didSelectTimeZone(timeZone: self.selectedTimeZone!)
+                self.delegate?.didSelectTimeZone(timeZone: self.selectedTimeZone!, self.customLabelText)
                 self.dismiss(animated: true, completion: nil)
         }
     }
