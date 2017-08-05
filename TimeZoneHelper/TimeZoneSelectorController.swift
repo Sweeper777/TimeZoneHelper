@@ -44,6 +44,16 @@ class TimeZoneSelectorController: FormViewController {
                             alert.addButton(NSLocalizedString("OK", comment: ""), action: {})
                             _ = alert.showCustom(NSLocalizedString("Error", comment: ""), subTitle: NSLocalizedString("Unable to find the requested location", comment: ""), color: .red, icon: UIImage())
                         } else {
+                            self.selectedTimeZone = TimezoneMapper.latLngToTimezone(placemarks!.first!.location!.coordinate)
+                            self.form.sectionBy(tag: tagSelectedTimeZoneSection)?.hidden = false
+                            self.form.sectionBy(tag: tagSelectedTimeZoneSection)?.evaluateHidden()
+                            self.form.sectionBy(tag: tagMethodSelectionSection)?.hidden = true
+                            self.form.sectionBy(tag: tagMethodSelectionSection)?.evaluateHidden()
+                            (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).title = "\(textField.text!) (\(self.selectedTimeZone!.identifier))"
+                            (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).updateCell()
+                            self.customLabelText = textField.text
+                        }
+                    })
                 }
                 alert.addButton(NSLocalizedString("Cancel", comment: ""), action: {})
                 _ = alert.showCustom(NSLocalizedString("Location", comment: ""), subTitle: NSLocalizedString("Please enter a location", comment: ""), color: UIColor(hex: "3b7b3b"), icon: #imageLiteral(resourceName: "globe"))
