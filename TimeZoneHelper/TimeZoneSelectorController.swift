@@ -40,6 +40,9 @@ class TimeZoneSelectorController: FormViewController {
                     geocoder.geocodeAddressString(textField.text!, completionHandler: { (placemarks, error) in
                         EZLoadingActivity.hide()
                         if error != nil || placemarks?.first == nil {
+                            let alert = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false, showCircularIcon: false))
+                            alert.addButton(NSLocalizedString("OK", comment: ""), action: {})
+                            _ = alert.showCustom(NSLocalizedString("Error", comment: ""), subTitle: NSLocalizedString("Unable to find the requested location", comment: ""), color: .red, icon: UIImage())
                         } else {
                 }
                 alert.addButton(NSLocalizedString("Cancel", comment: ""), action: {})
