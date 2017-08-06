@@ -8,8 +8,23 @@ class TimeZonesController: UITableViewController, TimeZoneSelectorControllerDele
     override func viewDidLoad() {
         realm = try! Realm()
         timeZones = realm.objects(UserTimeZones.self).sorted(byKeyPath: "position")
-        self.editButtonItem.tintColor = .white
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped))
+        editButton.tintColor = .white
+        self.navigationItem.leftBarButtonItem = editButton
+    }
+    
+    func editTapped() {
+        if tableView.isEditing {
+            let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped))
+            editButton.tintColor = .white
+            self.navigationItem.leftBarButtonItem = editButton
+            tableView.setEditing(false, animated: true)
+        } else {
+            let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editTapped))
+            doneButton.tintColor = .white
+            self.navigationItem.leftBarButtonItem = doneButton
+            tableView.setEditing(true, animated: true)
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
