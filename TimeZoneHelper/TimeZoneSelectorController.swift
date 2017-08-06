@@ -49,8 +49,9 @@ class TimeZoneSelectorController: FormViewController {
                             self.form.sectionBy(tag: tagSelectedTimeZoneSection)?.evaluateHidden()
                             self.form.sectionBy(tag: tagMethodSelectionSection)?.hidden = true
                             self.form.sectionBy(tag: tagMethodSelectionSection)?.evaluateHidden()
-                            (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).title = "\(textField.text!) (\(self.selectedTimeZone!.identifier))"
-                            (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).updateCell()
+                            (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).cell.textLabel?.text = textField.text!
+                            (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).cell.detailTextLabel?.text = self.selectedTimeZone!.identifier
+//                            (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).updateCell()
                             self.customLabelText = textField.text
                         }
                     })
@@ -101,6 +102,7 @@ class TimeZoneSelectorController: FormViewController {
         
         <<< LabelRow(tagSelectedTimeZone) {
             row in
+            row.cellStyle = .subtitle
         }
         
         <<< ButtonRow(tagReselect) {
