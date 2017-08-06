@@ -56,7 +56,7 @@ extension GoogleMaps.GMSMapView: RxGMSMapView {
     }
     
     public var selectedMarkerWrapper: RxGMSMarker? {
-        get { return selectedMarker as? RxGMSMarker }
+        get { return selectedMarker }
         set { selectedMarker = newValue as? GMSMarker }
     }
 
