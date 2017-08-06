@@ -68,7 +68,7 @@ class TimeZonesController: UITableViewController, TimeZoneSelectorControllerDele
     func didSelectTimeZone(timeZone: TimeZone, labelText: String?) {
         let userTimeZone = UserTimeZones()
         userTimeZone.timeZoneInfo = NSKeyedArchiver.archivedData(withRootObject: timeZone)
-        userTimeZone.labelText = timeZone.identifier
+        userTimeZone.labelText = labelText ?? timeZone.identifier
         userTimeZone.position = timeZones.count
         try! realm.write {
             realm.add(userTimeZone)
