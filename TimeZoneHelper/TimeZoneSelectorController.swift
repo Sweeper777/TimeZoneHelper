@@ -92,6 +92,9 @@ class TimeZoneSelectorController: FormViewController {
             row in
             row.title = NSLocalizedString("Abbreviation/Name", comment: "")
             row.cell.tintColor = UIColor(hex: "3b7b3b")
+        }.onCellSelection {
+            cell, row in
+            self.performSegue(withIdentifier: "showTimeZoneNames", sender: nil)
         }
         
         form +++ Section(NSLocalizedString("selected time zone", comment: "")) {

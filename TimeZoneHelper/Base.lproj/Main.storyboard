@@ -201,7 +201,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="4rI-wi-Iya" kind="presentation" modalPresentationStyle="formSheet" id="VmG-2r-7Rk"/>
+                        <segue destination="4rI-wi-Iya" kind="presentation" identifier="showTimeZoneNames" modalPresentationStyle="formSheet" id="VmG-2r-7Rk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OLP-dZ-fhe" userLabel="First Responder" sceneMemberID="firstResponder"/>
