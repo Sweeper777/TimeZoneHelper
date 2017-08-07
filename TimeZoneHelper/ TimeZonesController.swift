@@ -45,8 +45,16 @@ class TimeZonesController: UITableViewController, TimeZoneSelectorControllerDele
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         try! realm.write {
+            if sourceIndexPath.row < destinationIndexPath.row {
+                for i in sourceIndexPath.row...destinationIndexPath.row {
+                    timeZones[i].position -= 1
+                }
+            } else {
+                for i in destinationIndexPath.row...sourceIndexPath.row {
+                    timeZones[i].position += 1
+                }
+            }
             timeZones[sourceIndexPath.row].position = destinationIndexPath.row
-            timeZones[destinationIndexPath.row].position = sourceIndexPath.row
         }
     }
     
