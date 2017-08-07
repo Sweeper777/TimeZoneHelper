@@ -90,7 +90,7 @@ class TimeZoneSelectorController: FormViewController {
         
         <<< ButtonRow(tagAbbreviation) {
             row in
-            row.title = NSLocalizedString("Abbreviation", comment: "")
+            row.title = NSLocalizedString("Abbreviation/Name", comment: "")
             row.cell.tintColor = UIColor(hex: "3b7b3b")
         }
         
