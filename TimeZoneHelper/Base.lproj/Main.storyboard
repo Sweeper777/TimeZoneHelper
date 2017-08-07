@@ -200,10 +200,52 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="4rI-wi-Iya" kind="presentation" modalPresentationStyle="formSheet" id="VmG-2r-7Rk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OLP-dZ-fhe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3744" y="143"/>
+        </scene>
+        <!--Time Zones-->
+        <scene sceneID="uJd-iO-srm">
+            <objects>
+                <tableViewController id="bMK-Gf-PuZ" customClass="TimeZoneNamesController" customModule="TimeZoneHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="6A2-ss-J3h">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="bMK-Gf-PuZ" id="K0J-RY-fXy"/>
+                            <outlet property="delegate" destination="bMK-Gf-PuZ" id="Nm9-MR-qhO"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Time Zones" id="VQj-rf-Fvm"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jIw-Lg-9FS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4515" y="851"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="04l-pB-guU">
+            <objects>
+                <navigationController id="4rI-wi-Iya" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nud-0Z-YUK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.35294117650000001" green="0.73333333329999995" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="bMK-Gf-PuZ" kind="relationship" relationship="rootViewController" id="ZXu-Sf-VoA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cYL-qL-Zgh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3743" y="852"/>
         </scene>
         <!--Time Zones-->
         <scene sceneID="Hj0-GU-H12">
