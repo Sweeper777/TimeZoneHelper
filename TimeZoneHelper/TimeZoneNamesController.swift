@@ -22,4 +22,9 @@ class TimeZoneNamesController: UITableViewController {
     @IBAction func cancel() {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.didSelectTimeZone(timeZone: TimeZone(abbreviation: allTimeZoneNames[indexPath.row].0)!)
+        dismiss(animated: true, completion: nil)
+    }
 }
