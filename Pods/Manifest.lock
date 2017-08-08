@@ -1,6 +1,7 @@
 PODS:
   - Eureka (3.0.0)
   - EZLoadingActivity (1.01)
+  - FittableFontLabel (1.4.0)
   - GoogleMaps (2.3.1):
     - GoogleMaps/Maps (= 2.3.1)
   - GoogleMaps/Base (2.3.1)
@@ -25,6 +26,7 @@ PODS:
 DEPENDENCIES:
   - Eureka
   - EZLoadingActivity
+  - FittableFontLabel
   - GoogleMaps
   - LatLongToTimezone
   - RealmSwift
@@ -36,6 +38,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Eureka: f36fd440c3ebb7bfea0a4fbe6f16a05f1cb35906
   EZLoadingActivity: edd7e387e5197b116ce2cccb3fd747ababc2a510
+  FittableFontLabel: 20502441e83bb41eb8b41611cca91af85c4e21e3
   GoogleMaps: c66a71058b9b1294bcdd5463a68e357fa50c079f
   LatLongToTimezone: efd39e80e92c4cd3aefb597a2fd16f177a4742b5
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
@@ -47,6 +50,6 @@ SPEC CHECKSUMS:
   SwiftDate: 2dfdebd4f67ae71c9c3e2413ee3c56947f302858
   SwiftyUtils: f48a22d2fa8eece42a11d8bbb4d01a9758dd0602
 
-PODFILE CHECKSUM: 5fbdf28b011362c2b96520bddc90493ab4d1fd3a
+PODFILE CHECKSUM: e297eb3cfe13840f9dea1ca2c43827d93d0a8cf2
 
 COCOAPODS: 1.1.0.beta.1

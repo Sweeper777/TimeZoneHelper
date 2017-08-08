@@ -14,4 +14,5 @@ target 'TimeZoneHelper' do
   pod 'RealmSwift'
   pod 'SCLAlertView'
   pod 'EZLoadingActivity'
+  pod 'FittableFontLabel'
 end

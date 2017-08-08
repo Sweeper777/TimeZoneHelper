@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FittableFontLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>LatLongToTimezone.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,17 +72,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>00A6F061C319A76C892FF424FC350D54</key>
+		<key>03E3ADB2610C4772CAAEFC46BB127B8B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>17E9C3B1EA69A9E53FC5C260D82D02C0</key>
+		<key>1482C966DACAC63FA3EB857D0BD6C778</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>241B0F5F8A4929A2C46ECFA08AECB26F</key>
+		<key>284C756DB1F8F79456B88821F1531C4C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>349B5FB80E1D58A72D62E22ACD7AE763</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,12 +97,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>41D8E7B1A061C7340F25B1CB0861FEC3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4B18E42B0D79DC8D7A17A66E74F46FAE</key>
+		<key>8EFB44D2DE7C5EB00C3EC386780F54FB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,22 +112,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CA620B827532AD5863F31D80BE4834DA</key>
+		<key>9E9969292B6B119D52BFECB5DDF9A8D3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EA025F532339EE4D1276A7F89F0EEAB6</key>
+		<key>A01CFA1A5A9CD0FA6534ACCB94F6D7F3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F3AF3132934EFFC50F12AD5A95301EEE</key>
+		<key>A2A88DB13CD3562B6EDBAF18B930A2CD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FA1184E9C0A3E013BC34B70531E44EB7</key>
+		<key>F4B2B9EF26A6BF80C469178FFE51760C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F6C6C916D437055C785220D91D0E37BB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
