@@ -102,12 +102,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="76.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" tag="1" contentMode="left" text="Hong Kong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4S-q7-etC">
-                                            <rect key="frame" x="8" y="8" width="208" height="33"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQ4-XN-Yfs">
                                             <rect key="frame" x="8" y="47" width="208" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -123,6 +117,20 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" tag="1" contentMode="left" text="Hong Kong" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4S-q7-etC" customClass="FittableFontLabel" customModule="FittableFontLabel">
+                                            <rect key="frame" x="8" y="8" width="208" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="36" id="If7-Hb-2Wr"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="maxFontSize">
+                                                    <real key="value" value="28"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="dTW-S5-zU2" firstAttribute="top" secondItem="bkS-8z-gnX" secondAttribute="top" id="CEx-43-kPL"/>
@@ -131,7 +139,7 @@
                                         <constraint firstItem="dTW-S5-zU2" firstAttribute="trailing" secondItem="bkS-8z-gnX" secondAttribute="trailingMargin" id="TXS-qo-8Pt"/>
                                         <constraint firstItem="g4S-q7-etC" firstAttribute="top" secondItem="bkS-8z-gnX" secondAttribute="topMargin" id="d3l-cj-m1K"/>
                                         <constraint firstItem="dTW-S5-zU2" firstAttribute="centerY" secondItem="bkS-8z-gnX" secondAttribute="centerY" id="fQf-aD-Cev"/>
-                                        <constraint firstItem="BQ4-XN-Yfs" firstAttribute="top" secondItem="g4S-q7-etC" secondAttribute="bottom" constant="6" id="ljW-hJ-DQD"/>
+                                        <constraint firstItem="BQ4-XN-Yfs" firstAttribute="top" secondItem="g4S-q7-etC" secondAttribute="bottom" constant="3" id="ljW-hJ-DQD"/>
                                         <constraint firstItem="dTW-S5-zU2" firstAttribute="leading" secondItem="g4S-q7-etC" secondAttribute="trailing" constant="8" symbolic="YES" id="wma-Pc-Qco"/>
                                         <constraint firstItem="g4S-q7-etC" firstAttribute="leading" secondItem="BQ4-XN-Yfs" secondAttribute="leading" id="xUj-Zm-T0I"/>
                                     </constraints>
@@ -157,7 +165,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yo1-4I-Zj3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2156" y="143"/>
+            <point key="canvasLocation" x="2154.375" y="142.6056338028169"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KhC-Bx-HM4">
