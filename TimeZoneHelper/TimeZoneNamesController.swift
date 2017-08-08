@@ -16,4 +16,8 @@ class TimeZoneNamesController: UITableViewController {
         cell.textLabel?.text = "\(allTimeZoneNames[indexPath.row].0) (\(allTimeZoneNames[indexPath.row].1))"
         return cell
     }
+    
+    @IBAction func cancel() {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

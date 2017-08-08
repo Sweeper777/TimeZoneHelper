@@ -221,7 +221,14 @@
                             <outlet property="delegate" destination="bMK-Gf-PuZ" id="Nm9-MR-qhO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Time Zones" id="VQj-rf-Fvm"/>
+                    <navigationItem key="navigationItem" title="Time Zones" id="VQj-rf-Fvm">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="aXj-ck-1ol">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancel" destination="bMK-Gf-PuZ" id="x5R-1w-0s4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jIw-Lg-9FS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
