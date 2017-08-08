@@ -136,13 +136,14 @@ class TimeZoneSelectorController: FormViewController, TimeZoneNamesControllerDel
         self.dismiss(animated: true, completion: nil)
     }
     
-    func didSelectTimeZone(timeZone: TimeZone) {
+    func didSelectTimeZone(timeZone: TimeZone, customLabelText: String) {
         self.selectedTimeZone = timeZone
+        self.customLabelText = customLabelText
         self.form.sectionBy(tag: tagSelectedTimeZoneSection)?.hidden = false
         self.form.sectionBy(tag: tagSelectedTimeZoneSection)?.evaluateHidden()
         self.form.sectionBy(tag: tagMethodSelectionSection)?.hidden = true
         self.form.sectionBy(tag: tagMethodSelectionSection)?.evaluateHidden()
-        (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).title = "\(timeZone.abbreviation()!) (\(timeZone.identifier))"
+        (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).title = customLabelText
         (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).updateCell()
     }
     

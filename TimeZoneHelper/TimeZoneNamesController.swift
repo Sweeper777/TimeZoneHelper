@@ -24,7 +24,9 @@ class TimeZoneNamesController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.didSelectTimeZone(timeZone: TimeZone(abbreviation: allTimeZoneNames[indexPath.row].0)!)
+        let tuple = allTimeZoneNames[indexPath.row]
+        let timeZone = TimeZone(abbreviation: tuple.0)!
+        delegate?.didSelectTimeZone(timeZone: timeZone, customLabelText: "\(tuple.0) (\(tuple.1))")
         dismiss(animated: true, completion: nil)
     }
 }
