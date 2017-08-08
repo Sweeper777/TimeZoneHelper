@@ -1,5 +1,5 @@
 import Foundation
 
-protocol TimeZoneNamesControllerDelegate {
+protocol TimeZoneNamesControllerDelegate : class {
     func didSelectTimeZone(timeZone: TimeZone)
 }
