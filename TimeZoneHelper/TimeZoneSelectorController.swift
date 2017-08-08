@@ -4,7 +4,7 @@ import CoreLocation
 import EZLoadingActivity
 import LatLongToTimezone
 
-class TimeZoneSelectorController: FormViewController {
+class TimeZoneSelectorController: FormViewController, TimeZoneNamesControllerDelegate {
     var selectedTimeZone: TimeZone?
     var customLabelText: String?
     
@@ -134,5 +134,21 @@ class TimeZoneSelectorController: FormViewController {
 
     @IBAction func cancel() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func didSelectTimeZone(timeZone: TimeZone) {
+        self.selectedTimeZone = timeZone
+        self.form.sectionBy(tag: tagSelectedTimeZoneSection)?.hidden = false
+        self.form.sectionBy(tag: tagSelectedTimeZoneSection)?.evaluateHidden()
+        self.form.sectionBy(tag: tagMethodSelectionSection)?.hidden = true
+        self.form.sectionBy(tag: tagMethodSelectionSection)?.evaluateHidden()
+        (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).title = "\(timeZone.abbreviation()!) (\(timeZone.identifier))"
+        (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).updateCell()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = (segue.destination as? UINavigationController)?.topViewController as? TimeZoneNamesController {
+            vc.delegate = self
+        }
     }
 }
