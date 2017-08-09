@@ -23,7 +23,7 @@ class TimeZoneNamesController: UITableViewController, UISearchResultsUpdating {
     
     func filterTimeZoneNames(with searchText: String) {
         filteredTimeZoneNames = allTimeZoneNames.filter {
-            $0.0.contains(searchText) || $0.1.contains(searchText)
+            $0.0.lowercased().contains(searchText.lowercased()) || $0.1.lowercased().contains(searchText.lowercased())
         }
     }
     
