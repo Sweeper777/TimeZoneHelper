@@ -35,12 +35,19 @@ class TimeZoneNamesController: UITableViewController, UISearchResultsUpdating {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isSearching {
+            return filteredTimeZoneNames.count
+        }
         return allTimeZoneNames.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "\(allTimeZoneNames[indexPath.row].0) (\(allTimeZoneNames[indexPath.row].1))"
+        if isSearching {
+            cell.textLabel?.text = "\(filteredTimeZoneNames[indexPath.row].0) (\(filteredTimeZoneNames[indexPath.row].1))"
+        } else {
+            cell.textLabel?.text = "\(allTimeZoneNames[indexPath.row].0) (\(allTimeZoneNames[indexPath.row].1))"
+        }
         return cell
     }
     
@@ -49,7 +56,7 @@ class TimeZoneNamesController: UITableViewController, UISearchResultsUpdating {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let tuple = allTimeZoneNames[indexPath.row]
+        let tuple = isSearching ? filteredTimeZoneNames[indexPath.row] : allTimeZoneNames[indexPath.row]
         let timeZone = TimeZone(abbreviation: tuple.0)!
         delegate?.didSelectTimeZone(timeZone: timeZone, customLabelText: "\(tuple.0) (\(tuple.1))")
         dismiss(animated: true, completion: nil)
