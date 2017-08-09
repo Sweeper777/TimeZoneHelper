@@ -2,6 +2,13 @@ import UIKit
 
 class TimeZoneNamesController: UITableViewController {
     let allTimeZoneNames = TimeZone.abbreviationDictionary.map { ($0.key, $0.value.replacingOccurrences(of: "_", with: " ")) }
+    var filteredTimeZoneNames = [(String, String)]()
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    var isSearching: Bool {
+        return searchController.searchBar.text != ""
+    }
     
     weak var delegate: TimeZoneNamesControllerDelegate?
     
