@@ -1,6 +1,6 @@
 import UIKit
 
-class TimeZoneNamesController: UITableViewController {
+class TimeZoneNamesController: UITableViewController, UISearchResultsUpdating {
     let allTimeZoneNames = TimeZone.abbreviationDictionary.map { ($0.key, $0.value.replacingOccurrences(of: "_", with: " ")) }
     var filteredTimeZoneNames = [(String, String)]()
     
@@ -11,6 +11,17 @@ class TimeZoneNamesController: UITableViewController {
     }
     
     weak var delegate: TimeZoneNamesControllerDelegate?
+    
+    func filterTimeZoneNames(with searchText: String) {
+        filteredTimeZoneNames = allTimeZoneNames.filter {
+            $0.0.contains(searchText) || $0.1.contains(searchText)
+        }
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterTimeZoneNames(with: searchController.searchBar.text!)
+        tableView.reloadData()
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
