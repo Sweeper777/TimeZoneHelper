@@ -59,6 +59,9 @@ class TimeZoneNamesController: UITableViewController, UISearchResultsUpdating {
         let tuple = isSearching ? filteredTimeZoneNames[indexPath.row] : allTimeZoneNames[indexPath.row]
         let timeZone = TimeZone(abbreviation: tuple.0)!
         delegate?.didSelectTimeZone(timeZone: timeZone, customLabelText: "\(tuple.0) (\(tuple.1))")
+        if isSearching {
+            dismiss(animated: false, completion: nil)
+        }
         dismiss(animated: true, completion: nil)
     }
 }
