@@ -12,6 +12,13 @@ class TimeZoneNamesController: UITableViewController, UISearchResultsUpdating {
     
     weak var delegate: TimeZoneNamesControllerDelegate?
     
+    override func viewDidLoad() {
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+    }
+    
     func filterTimeZoneNames(with searchText: String) {
         filteredTimeZoneNames = allTimeZoneNames.filter {
             $0.0.contains(searchText) || $0.1.contains(searchText)
