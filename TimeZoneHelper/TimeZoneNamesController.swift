@@ -17,6 +17,8 @@ class TimeZoneNamesController: UITableViewController, UISearchResultsUpdating {
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.barTintColor = UIColor(hex: "5abb5a")
+        searchController.searchBar.tintColor = .white
     }
     
     func filterTimeZoneNames(with searchText: String) {
