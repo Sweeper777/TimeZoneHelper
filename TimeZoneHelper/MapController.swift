@@ -10,7 +10,11 @@ class MapController: UIViewController, GMSMapViewDelegate {
     @IBOutlet var crosshair: UIImageView!
     @IBOutlet var timeZoneDisplay: TimeZoneDisplay!
     
+    @IBOutlet var doneButtton: UIBarButtonItem?
+    
     let disposeBag = DisposeBag()
+    
+    weak var delegate: MapControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

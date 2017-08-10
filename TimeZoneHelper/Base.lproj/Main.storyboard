@@ -365,6 +365,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="crosshair" destination="qgz-Lx-4f1" id="Yfi-tg-emD"/>
+                        <outlet property="doneButtton" destination="btc-i9-xUa" id="5AP-QT-ADP"/>
                         <outlet property="map" destination="DZR-kj-YFn" id="Ynk-Kf-Dwq"/>
                         <outlet property="timeZoneDisplay" destination="lTz-xX-f1t" id="8ai-Do-Ugk"/>
                     </connections>
