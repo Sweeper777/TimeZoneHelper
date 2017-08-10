@@ -1,6 +1,7 @@
 import UIKit
 import CoreLocation
 import LatLongToTimezone
+import RxSwift
 
 @IBDesignable
 class TimeZoneDisplay: UIView {
@@ -9,6 +10,8 @@ class TimeZoneDisplay: UIView {
     @IBOutlet var descriptionDisplay: UILabel!
     @IBOutlet var loadingIndicator: UIActivityIndicatorView!
     
+    let loading = Variable<Bool>(false)
+    
     let geocoder = CLGeocoder()
     
     var location: CLLocation!
@@ -16,12 +19,14 @@ class TimeZoneDisplay: UIView {
         didSet {
             loadingIndicator.isHidden = false
             loadingIndicator.startAnimating()
+            loading.value = true
             geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
                 self.descriptionDisplay.text = stringFromPlacemark(placemarks?.first)
                 self.timeZone = TimezoneMapper.latLngToTimezone(self.location.coordinate)
                 self.updateDisplays()
                 self.loadingIndicator.isHidden = true
                 self.loadingIndicator.stopAnimating()
+                self.loading.value = false
             }
         }
     }
