@@ -210,11 +210,32 @@
                     </navigationItem>
                     <connections>
                         <segue destination="4rI-wi-Iya" kind="presentation" identifier="showTimeZoneNames" modalPresentationStyle="formSheet" id="VmG-2r-7Rk"/>
+                        <segue destination="9e5-R2-lcE" kind="presentation" id="2Pe-M3-kI3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OLP-dZ-fhe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3744" y="143"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tKN-Oq-ZIh">
+            <objects>
+                <navigationController id="9e5-R2-lcE" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8rQ-Or-iK1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.35294117650000001" green="0.73333333329999995" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="hqi-D3-zcQ" kind="relationship" relationship="rootViewController" id="Wy0-fb-oR0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QMA-p3-eg3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4515" y="143"/>
         </scene>
         <!--Time Zones-->
         <scene sceneID="uJd-iO-srm">
@@ -282,6 +303,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KtA-lI-SRw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1253" y="143"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="DX3-f9-HbR">
+            <objects>
+                <viewController id="hqi-D3-zcQ" customClass="MapController" customModule="TimeZoneHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="41Z-NP-NZL"/>
+                        <viewControllerLayoutGuide type="bottom" id="Z8M-r0-K4U"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="P6p-gF-ef9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZR-kj-YFn" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lTz-xX-f1t" customClass="TimeZoneDisplay" customModule="TimeZoneHelper" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="GKG-bz-YXq"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crosshair" translatesAutoresizingMaskIntoConstraints="NO" id="qgz-Lx-4f1">
+                                        <rect key="frame" x="148" y="247" width="25" height="25"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="lTz-xX-f1t" firstAttribute="top" secondItem="DZR-kj-YFn" secondAttribute="top" constant="28" id="OpG-Lc-sza"/>
+                                    <constraint firstItem="qgz-Lx-4f1" firstAttribute="centerX" secondItem="DZR-kj-YFn" secondAttribute="centerX" id="VlL-IT-mzK"/>
+                                    <constraint firstItem="lTz-xX-f1t" firstAttribute="leading" secondItem="DZR-kj-YFn" secondAttribute="leading" id="Vn1-yd-15B"/>
+                                    <constraint firstItem="qgz-Lx-4f1" firstAttribute="centerY" secondItem="DZR-kj-YFn" secondAttribute="centerY" id="X84-rs-bio"/>
+                                    <constraint firstAttribute="trailing" secondItem="lTz-xX-f1t" secondAttribute="trailing" id="xeI-ws-Euh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DZR-kj-YFn" secondAttribute="trailing" id="R4e-yS-2EK"/>
+                            <constraint firstItem="Z8M-r0-K4U" firstAttribute="top" secondItem="DZR-kj-YFn" secondAttribute="bottom" id="bCC-fU-blT"/>
+                            <constraint firstItem="DZR-kj-YFn" firstAttribute="leading" secondItem="P6p-gF-ef9" secondAttribute="leading" id="oGQ-6r-h8v"/>
+                            <constraint firstItem="DZR-kj-YFn" firstAttribute="top" secondItem="41Z-NP-NZL" secondAttribute="bottom" id="pPi-vC-sRG"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" id="X7X-Wg-ikI"/>
+                    <navigationItem key="navigationItem" id="6ZE-lD-wF8"/>
+                    <connections>
+                        <outlet property="crosshair" destination="qgz-Lx-4f1" id="Yfi-tg-emD"/>
+                        <outlet property="map" destination="DZR-kj-YFn" id="Ynk-Kf-Dwq"/>
+                        <outlet property="timeZoneDisplay" destination="lTz-xX-f1t" id="8ai-Do-Ugk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OWc-Y3-FlE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5358.75" y="142.6056338028169"/>
         </scene>
     </scenes>
     <resources>
