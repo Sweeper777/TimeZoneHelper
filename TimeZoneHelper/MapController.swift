@@ -29,6 +29,13 @@ class MapController: UIViewController, GMSMapViewDelegate {
             .asObservable()
             .subscribe(onNext: { self.timeZoneDisplay.location = $0 })
             .disposed(by: disposeBag)
+        
+        if let done = doneButtton {
+            timeZoneDisplay.loading.asObservable()
+                .map{ !$0 }
+                .bind(to: done.rx.isEnabled)
+                .disposed(by: disposeBag)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
