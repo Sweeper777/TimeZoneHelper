@@ -349,7 +349,20 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" id="X7X-Wg-ikI"/>
-                    <navigationItem key="navigationItem" id="6ZE-lD-wF8"/>
+                    <navigationItem key="navigationItem" id="6ZE-lD-wF8">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3pY-oD-vot">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancel" destination="hqi-D3-zcQ" id="3GK-Wa-lFc"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="btc-i9-xUa">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="done" destination="hqi-D3-zcQ" id="TuN-0d-Zhh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="crosshair" destination="qgz-Lx-4f1" id="Yfi-tg-emD"/>
                         <outlet property="map" destination="DZR-kj-YFn" id="Ynk-Kf-Dwq"/>

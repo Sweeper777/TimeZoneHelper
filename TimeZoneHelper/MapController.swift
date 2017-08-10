@@ -39,5 +39,13 @@ class MapController: UIViewController, GMSMapViewDelegate {
         super.viewDidDisappear(animated)
         (UIApplication.shared.delegate as! AppDelegate).clock.onTimerChange = nil
     }
+    
+    @IBAction func cancel() {
+    
+    }
+    
+    @IBAction func done() {
+        
+    }
 }
 
