@@ -52,11 +52,12 @@ class MapController: UIViewController, GMSMapViewDelegate {
     }
     
     @IBAction func cancel() {
-    
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func done() {
-        
+        delegate?.didSelectTimeZone(timeZone: timeZoneDisplay.timeZone, customLabelText: timeZoneDisplay.descriptionDisplay.text!)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
