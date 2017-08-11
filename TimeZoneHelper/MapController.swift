@@ -56,7 +56,11 @@ class MapController: UIViewController, GMSMapViewDelegate {
     }
     
     @IBAction func done() {
-        delegate?.didSelectTimeZone(timeZone: timeZoneDisplay.timeZone, customLabelText: timeZoneDisplay.descriptionDisplay.text!)
+        if timeZoneDisplay.descriptionDisplay.text! == NSLocalizedString("Unknown Location", comment: "") {
+            delegate?.didSelectTimeZone(timeZone: timeZoneDisplay.timeZone, customLabelText: "\(timeZoneDisplay.descriptionDisplay.text!) (\(timeZoneDisplay.timeZone.identifier))")
+        } else {
+            delegate?.didSelectTimeZone(timeZone: timeZoneDisplay.timeZone, customLabelText: timeZoneDisplay.descriptionDisplay.text!)
+        }
         self.dismiss(animated: true, completion: nil)
     }
 }
