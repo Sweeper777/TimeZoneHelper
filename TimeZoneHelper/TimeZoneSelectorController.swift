@@ -4,7 +4,7 @@ import CoreLocation
 import EZLoadingActivity
 import LatLongToTimezone
 
-class TimeZoneSelectorController: FormViewController, TimeZoneNamesControllerDelegate {
+class TimeZoneSelectorController: FormViewController, TimeZoneNamesControllerDelegate, MapControllerDelegate {
     var selectedTimeZone: TimeZone?
     var customLabelText: String?
     
@@ -152,6 +152,8 @@ class TimeZoneSelectorController: FormViewController, TimeZoneNamesControllerDel
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = (segue.destination as? UINavigationController)?.topViewController as? TimeZoneNamesController {
+            vc.delegate = self
+        } else if let vc = (segue.destination as? UINavigationController)?.topViewController as? MapController {
             vc.delegate = self
         }
     }
