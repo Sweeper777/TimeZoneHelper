@@ -23,7 +23,10 @@ class TimeZoneSelectorController: FormViewController, TimeZoneNamesControllerDel
             row in
             row.title = NSLocalizedString("Map", comment: "")
             row.cell.tintColor = UIColor(hex: "3b7b3b")
-        }
+            }.onCellSelection {
+                cell, row in
+                self.performSegue(withIdentifier: "showMap", sender: nil)
+            }
         
         <<< ButtonRow(tagLocation) {
             row in

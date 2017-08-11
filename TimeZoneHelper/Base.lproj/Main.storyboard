@@ -210,7 +210,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="4rI-wi-Iya" kind="presentation" identifier="showTimeZoneNames" modalPresentationStyle="formSheet" id="VmG-2r-7Rk"/>
-                        <segue destination="9e5-R2-lcE" kind="presentation" id="2Pe-M3-kI3"/>
+                        <segue destination="9e5-R2-lcE" kind="presentation" identifier="showMap" modalPresentationStyle="formSheet" id="2Pe-M3-kI3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OLP-dZ-fhe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -327,7 +327,7 @@
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crosshair" translatesAutoresizingMaskIntoConstraints="NO" id="qgz-Lx-4f1">
-                                        <rect key="frame" x="148" y="247" width="25" height="25"/>
+                                        <rect key="frame" x="148" y="239.5" width="25" height="25"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
