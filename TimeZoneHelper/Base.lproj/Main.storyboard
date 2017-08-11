@@ -80,6 +80,7 @@
                     <connections>
                         <segue destination="swa-55-l4N" kind="relationship" relationship="viewControllers" id="Oy3-Qe-WjT"/>
                         <segue destination="SvB-AQ-jbd" kind="relationship" relationship="viewControllers" id="WVV-gV-Yun"/>
+                        <segue destination="sWx-Vv-Tak" kind="relationship" relationship="viewControllers" id="VFZ-5b-AtE"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvg-02-6MJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -166,6 +167,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yo1-4I-Zj3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2154.375" y="142.6056338028169"/>
+        </scene>
+        <!--Time Zone Info-->
+        <scene sceneID="bpA-ka-djg">
+            <objects>
+                <navigationController id="sWx-Vv-Tak" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Time Zone Info" image="info" id="AkO-z6-RIk"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3vM-Dl-BTq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.35294117650000001" green="0.73333333329999995" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="XJz-P7-BZ7" kind="relationship" relationship="rootViewController" id="Fqn-Wn-wKe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fUQ-nP-knQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1253" y="886"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="grR-YD-0Am">
+            <objects>
+                <viewController id="XJz-P7-BZ7" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1wq-om-xcL"/>
+                        <viewControllerLayoutGuide type="bottom" id="hj4-G5-hSY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="92P-CB-8Cs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="SfJ-vl-Trj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G5t-qo-fxt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2154" y="885"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KhC-Bx-HM4">
@@ -377,6 +418,7 @@
     </scenes>
     <resources>
         <image name="crosshair" width="25" height="25"/>
+        <image name="info" width="25" height="25"/>
         <image name="list" width="25" height="25"/>
         <image name="map" width="25" height="25"/>
     </resources>
