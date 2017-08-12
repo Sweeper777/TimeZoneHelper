@@ -231,7 +231,7 @@
         <!--Time Zone Selector Controller-->
         <scene sceneID="Bnt-bT-jpQ">
             <objects>
-                <viewController id="rkf-lx-tXS" customClass="TimeZoneSelectorController" customModule="TimeZoneHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimeZoneSelector" id="rkf-lx-tXS" customClass="TimeZoneSelectorController" customModule="TimeZoneHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kAR-r3-58E"/>
                         <viewControllerLayoutGuide type="bottom" id="Joe-sL-i1f"/>

@@ -4,11 +4,15 @@ import CoreLocation
 import EZLoadingActivity
 import LatLongToTimezone
 
-class TimeZoneSelectorController: FormViewController, TimeZoneNamesControllerDelegate, MapControllerDelegate {
+class TimeZoneSelectorController: FormViewController, TimeZoneNamesControllerDelegate, MapControllerDelegate, TypedRowControllerType {
     var selectedTimeZone: TimeZone?
     var customLabelText: String?
     
     weak var delegate: TimeZoneSelectorControllerDelegate?
+
+    public var onDismissCallback: ((UIViewController) -> ())?
+    var row: RowOf<TimeZone>!
+    var completionCallback: ((UIViewController) -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
