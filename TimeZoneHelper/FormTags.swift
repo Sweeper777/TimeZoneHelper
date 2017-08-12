@@ -9,3 +9,5 @@ let tagSelectedTimeZoneSection = "selectedTimeZoneSection"
 let tagSelectedTimeZone = "selectedTimeZone"
 let tagReselect = "reselect"
 let tagOK = "ok"
+
+let tagTimeZone = "timeZone"
