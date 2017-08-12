@@ -5,7 +5,11 @@ import EZLoadingActivity
 import LatLongToTimezone
 
 class TimeZoneSelectorController: FormViewController, TimeZoneNamesControllerDelegate, MapControllerDelegate, TypedRowControllerType {
-    var selectedTimeZone: TimeZone?
+    var selectedTimeZone: TimeZone? {
+        willSet {
+            row?.value = newValue
+        }
+    }
     var customLabelText: String?
     
     weak var delegate: TimeZoneSelectorControllerDelegate?
@@ -128,14 +132,26 @@ class TimeZoneSelectorController: FormViewController, TimeZoneNamesControllerDel
             self.form.sectionBy(tag: tagMethodSelectionSection)?.evaluateHidden()
         }
         
-        <<< ButtonRow(tagOK) {
-            row in
-            row.title = NSLocalizedString("OK", comment: "")
-            row.cell.tintColor = UIColor(hex: "3b7b3b")
+        if row == nil {
+            form.allSections.last! <<< ButtonRow(tagOK) {
+                row in
+                row.title = NSLocalizedString("OK", comment: "")
+                row.cell.tintColor = UIColor(hex: "3b7b3b")
             }.onCellSelection {
                 cell, row in
                 self.delegate?.didSelectTimeZone(timeZone: self.selectedTimeZone!, labelText: self.customLabelText)
                 self.dismiss(animated: true, completion: nil)
+            }
+        }
+        
+        if let rowValue = row?.value {
+            self.selectedTimeZone = rowValue
+            self.form.sectionBy(tag: tagSelectedTimeZoneSection)?.hidden = false
+            self.form.sectionBy(tag: tagSelectedTimeZoneSection)?.evaluateHidden()
+            self.form.sectionBy(tag: tagMethodSelectionSection)?.hidden = true
+            self.form.sectionBy(tag: tagMethodSelectionSection)?.evaluateHidden()
+            (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).title = rowValue.identifier
+            (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).updateCell()
         }
     }
 
