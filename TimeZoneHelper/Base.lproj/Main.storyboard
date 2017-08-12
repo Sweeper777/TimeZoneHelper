@@ -100,7 +100,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="77"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Gy-bU-geS" id="bkS-8z-gnX">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="76.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQ4-XN-Yfs">
@@ -189,10 +189,10 @@
             </objects>
             <point key="canvasLocation" x="1253" y="886"/>
         </scene>
-        <!--View Controller-->
+        <!--Time Zone Info-->
         <scene sceneID="grR-YD-0Am">
             <objects>
-                <viewController id="XJz-P7-BZ7" sceneMemberID="viewController">
+                <viewController id="XJz-P7-BZ7" customClass="TimeZoneInfoController" customModule="TimeZoneHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1wq-om-xcL"/>
                         <viewControllerLayoutGuide type="bottom" id="hj4-G5-hSY"/>
@@ -202,7 +202,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="SfJ-vl-Trj"/>
+                    <navigationItem key="navigationItem" title="Time Zone Info" id="SfJ-vl-Trj"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G5t-qo-fxt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -368,7 +368,7 @@
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crosshair" translatesAutoresizingMaskIntoConstraints="NO" id="qgz-Lx-4f1">
-                                        <rect key="frame" x="148" y="239.5" width="25" height="25"/>
+                                        <rect key="frame" x="148" y="240" width="25" height="25"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
