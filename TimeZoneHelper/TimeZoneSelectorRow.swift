@@ -8,7 +8,7 @@ class TimeZoneSelectorRow: SelectorRow<PushSelectorCell<TimeZone>, TimeZoneSelec
             _ in
         })
         displayValueFor = {
-            $0.identifier
+            $0?.identifier ?? ""
         }
     }
     
