@@ -20,13 +20,16 @@ class TimeZoneDisplay: UIView {
             loadingIndicator.isHidden = false
             loadingIndicator.startAnimating()
             loading.value = true
-            geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
-                self.descriptionDisplay.text = stringFromPlacemark(placemarks?.first)
-                self.timeZone = TimezoneMapper.latLngToTimezone(self.location.coordinate)
-                self.updateDisplays()
-                self.loadingIndicator.isHidden = true
-                self.loadingIndicator.stopAnimating()
-                self.loading.value = false
+            geocoder.reverseGeocodeLocation(location) {
+                [weak self]
+                (placemarks, error) in
+                guard let s = self else { return }
+                s.descriptionDisplay.text = stringFromPlacemark(placemarks?.first)
+                s.timeZone = TimezoneMapper.latLngToTimezone(s.location.coordinate)
+                s.updateDisplays()
+                s.loadingIndicator.isHidden = true
+                s.loadingIndicator.stopAnimating()
+                s.loading.value = false
             }
         }
     }

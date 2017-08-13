@@ -32,8 +32,9 @@ class TimeZoneSelectorController: FormViewController, TimeZoneNamesControllerDel
             row.title = NSLocalizedString("Map", comment: "")
             row.cell.tintColor = UIColor(hex: "3b7b3b")
             }.onCellSelection {
+                [weak self]
                 cell, row in
-                self.performSegue(withIdentifier: "showMap", sender: nil)
+                self?.performSegue(withIdentifier: "showMap", sender: nil)
             }
         
         <<< ButtonRow(tagLocation) {
@@ -41,29 +42,34 @@ class TimeZoneSelectorController: FormViewController, TimeZoneNamesControllerDel
             row.title = NSLocalizedString("Location", comment: "")
             row.cell.tintColor = UIColor(hex: "3b7b3b")
             }.onCellSelection {
+                [weak self]
                 cell, row in
                 let alert = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
                 let textField = alert.addTextField()
                 textField.placeholder = NSLocalizedString("Name of city or area", comment: "")
                 alert.addButton(NSLocalizedString("OK", comment: "")) {
+                    [weak self] in
                     let geocoder = CLGeocoder()
                     EZLoadingActivity.show(NSLocalizedString("Looking for the requested location...", comment: ""), disableUI: true)
-                    geocoder.geocodeAddressString(textField.text!, completionHandler: { (placemarks, error) in
+                    geocoder.geocodeAddressString(textField.text!, completionHandler: {
+                        [weak self]
+                        (placemarks, error) in
                         EZLoadingActivity.hide()
                         if error != nil || placemarks?.first == nil {
                             let alert = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false, showCircularIcon: false))
                             alert.addButton(NSLocalizedString("OK", comment: ""), action: {})
                             _ = alert.showCustom(NSLocalizedString("Error", comment: ""), subTitle: NSLocalizedString("Unable to find the requested location", comment: ""), color: .red, icon: UIImage())
                         } else {
-                            self.selectedTimeZone = TimezoneMapper.latLngToTimezone(placemarks!.first!.location!.coordinate)
-                            self.form.sectionBy(tag: tagSelectedTimeZoneSection)?.hidden = false
-                            self.form.sectionBy(tag: tagSelectedTimeZoneSection)?.evaluateHidden()
-                            self.form.sectionBy(tag: tagMethodSelectionSection)?.hidden = true
-                            self.form.sectionBy(tag: tagMethodSelectionSection)?.evaluateHidden()
-                            (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).cell.textLabel?.text = textField.text!
-                            (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).cell.detailTextLabel?.text = self.selectedTimeZone!.identifier
+                            self?.selectedTimeZone = TimezoneMapper.latLngToTimezone(placemarks!.first!.location!.coordinate)
+                            self?.form.sectionBy(tag: tagSelectedTimeZoneSection)?.hidden = false
+                            self?.form.sectionBy(tag: tagSelectedTimeZoneSection)?.evaluateHidden()
+                            self?.form.sectionBy(tag: tagMethodSelectionSection)?.hidden = true
+                            self?.form.sectionBy(tag: tagMethodSelectionSection)?.evaluateHidden()
+                            guard let s = self else { return }
+                            (s.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).cell.textLabel?.text = textField.text!
+                            (s.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).cell.detailTextLabel?.text = s.selectedTimeZone!.identifier
 //                            (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).updateCell()
-                            self.customLabelText = textField.text
+                            s.customLabelText = textField.text
                         }
                     })
                 }
@@ -76,19 +82,22 @@ class TimeZoneSelectorController: FormViewController, TimeZoneNamesControllerDel
             row.title = NSLocalizedString("Offset from GMT", comment: "")
             row.cell.tintColor = UIColor(hex: "3b7b3b")
         }.onCellSelection {
+            [weak self]
             cell, row in
             let alert = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
             let textField = alert.addTextField()
             textField.placeholder = "-5, +7 etc."
             alert.addButton(NSLocalizedString("OK", comment: "")) {
+                [weak self] in
+                guard let s = self else { return }
                 if let offset = Double(textField.text ?? ""), let timeZone = TimeZone(secondsFromGMT: Int(offset * 60 * 60)) {
-                    self.selectedTimeZone = timeZone
-                    self.form.sectionBy(tag: tagSelectedTimeZoneSection)?.hidden = false
-                    self.form.sectionBy(tag: tagSelectedTimeZoneSection)?.evaluateHidden()
-                    self.form.sectionBy(tag: tagMethodSelectionSection)?.hidden = true
-                    self.form.sectionBy(tag: tagMethodSelectionSection)?.evaluateHidden()
-                    (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).title = timeZone.identifier
-                    (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).updateCell()
+                    s.selectedTimeZone = timeZone
+                    s.form.sectionBy(tag: tagSelectedTimeZoneSection)?.hidden = false
+                    s.form.sectionBy(tag: tagSelectedTimeZoneSection)?.evaluateHidden()
+                    s.form.sectionBy(tag: tagMethodSelectionSection)?.hidden = true
+                    s.form.sectionBy(tag: tagMethodSelectionSection)?.evaluateHidden()
+                    (s.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).title = timeZone.identifier
+                    (s.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).updateCell()
                 } else {
                     let alert = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false, showCircularIcon: false))
                     alert.addButton(NSLocalizedString("OK", comment: ""), action: {})
@@ -104,8 +113,9 @@ class TimeZoneSelectorController: FormViewController, TimeZoneNamesControllerDel
             row.title = NSLocalizedString("Abbreviation/Name", comment: "")
             row.cell.tintColor = UIColor(hex: "3b7b3b")
         }.onCellSelection {
+            [weak self]
             cell, row in
-            self.performSegue(withIdentifier: "showTimeZoneNames", sender: nil)
+            self?.performSegue(withIdentifier: "showTimeZoneNames", sender: nil)
         }
         
         form +++ Section(NSLocalizedString("selected time zone", comment: "")) {
@@ -124,12 +134,13 @@ class TimeZoneSelectorController: FormViewController, TimeZoneNamesControllerDel
             row.title = NSLocalizedString("Reselect", comment: "")
             row.cell.tintColor = .red
         }.onCellSelection {
+            [weak self]
             cell, row in
             row.section?.hidden = true
             row.section?.evaluateHidden()
-            self.selectedTimeZone = nil
-            self.form.sectionBy(tag: tagMethodSelectionSection)?.hidden = false
-            self.form.sectionBy(tag: tagMethodSelectionSection)?.evaluateHidden()
+            self?.selectedTimeZone = nil
+            self?.form.sectionBy(tag: tagMethodSelectionSection)?.hidden = false
+            self?.form.sectionBy(tag: tagMethodSelectionSection)?.evaluateHidden()
         }
         
         if row == nil {
@@ -138,9 +149,11 @@ class TimeZoneSelectorController: FormViewController, TimeZoneNamesControllerDel
                 row.title = NSLocalizedString("OK", comment: "")
                 row.cell.tintColor = UIColor(hex: "3b7b3b")
             }.onCellSelection {
+                [weak self]
                 cell, row in
-                self.delegate?.didSelectTimeZone(timeZone: self.selectedTimeZone!, labelText: self.customLabelText)
-                self.dismiss(animated: true, completion: nil)
+                guard let s = self else { return }
+                s.delegate?.didSelectTimeZone(timeZone: s.selectedTimeZone!, labelText: s.customLabelText)
+                s.dismiss(animated: true, completion: nil)
             }
         }
         

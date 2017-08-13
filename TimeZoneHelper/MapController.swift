@@ -27,7 +27,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
         map.rx.idleAtPosition.debounce(0.5, scheduler: MainScheduler.instance)
             .map ({ CLLocation(latitude: $0.target.latitude, longitude: $0.target.longitude) })
             .asObservable()
-            .subscribe(onNext: { self.timeZoneDisplay.location = $0 })
+            .subscribe(onNext: { [weak self] loc in self?.timeZoneDisplay.location = loc })
             .disposed(by: disposeBag)
         
         if let done = doneButtton {
@@ -42,7 +42,8 @@ class MapController: UIViewController, GMSMapViewDelegate {
         super.viewDidAppear(animated)
         self.timeZoneDisplay.updateDisplays()
         (UIApplication.shared.delegate as! AppDelegate).clock.onTimerChange = {
-            self.timeZoneDisplay.updateDisplays()
+            [weak self] in
+            self?.timeZoneDisplay.updateDisplays()
         }
     }
     

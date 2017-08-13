@@ -103,7 +103,8 @@ class TimeZonesController: UITableViewController, TimeZoneSelectorControllerDele
         super.viewDidAppear(animated)
         self.tableView.reloadData()
         (UIApplication.shared.delegate as! AppDelegate).clock.onTimerChange = {
-            self.tableView.reloadData()
+            [weak self] in
+            self?.tableView.reloadData()
         }
     }
     
