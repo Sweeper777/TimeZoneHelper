@@ -168,6 +168,7 @@ class TimeZoneSelectorController: FormViewController, TimeZoneNamesControllerDel
             (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).title = rowValue.identifier
             (self.form.rowBy(tag: tagSelectedTimeZone) as! LabelRow).updateCell()
         }
+        self.navigationController?.navigationBar.tintColor = UIColor.white
     }
 
     @IBAction func cancel() {
