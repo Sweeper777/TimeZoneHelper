@@ -155,6 +155,8 @@ class TimeZoneSelectorController: FormViewController, TimeZoneNamesControllerDel
                 s.delegate?.didSelectTimeZone(timeZone: s.selectedTimeZone!, labelText: s.customLabelText)
                 s.dismiss(animated: true, completion: nil)
             }
+        } else {
+            self.navigationItem.leftBarButtonItem = nil
         }
         
         if let rowValue = row?.value {
