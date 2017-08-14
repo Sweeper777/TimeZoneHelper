@@ -34,5 +34,12 @@ class TimeZoneInfoController: FormViewController {
             row.title = NSLocalizedString("Offset from GMT", comment: "")
         }
         
+        form +++ Section(NSLocalizedString("daylight saving time (dst) info", comment: "")) {
+            section in
+            section.tag = tagDSTInfoSection
+            section.hidden = Condition.function([tagTimeZone]) {
+                $0.rowBy(tag: tagTimeZone)?.baseValue == nil
+            }
+        }
     }
 }
