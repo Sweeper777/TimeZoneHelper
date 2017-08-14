@@ -41,5 +41,11 @@ class TimeZoneInfoController: FormViewController {
                 $0.rowBy(tag: tagTimeZone)?.baseValue == nil
             }
         }
+        
+        <<< LabelRow(tagIsDST) {
+            row in
+            row.cellStyle = .value1
+            row.title = NSLocalizedString("Is DST", comment: "")
+        }
     }
 }
