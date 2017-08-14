@@ -12,3 +12,8 @@ let tagOK = "ok"
 
 let tagTimeZone = "timeZone"
 let tagInfoSection = "infoSection"
+let tagName = "name"
+let tagDSTInfoSection = "dstInfoSection"
+let tagIsDST = "isDST"
+let tagDSTOffset = "dstOffset"
+let tagNextDSTTransition = "nextDSTTransition"
