@@ -7,5 +7,13 @@ class TimeZoneInfoController: FormViewController {
             row in
             row.title = NSLocalizedString("Time Zone", comment: "")
         }
+        
+        form +++ Section() {
+            section in
+            section.tag = tagInfoSection
+            section.hidden = Condition.function([tagTimeZone]) {
+                $0.rowBy(tag: tagTimeZone)?.baseValue == nil
+            }
+        }
     }
 }

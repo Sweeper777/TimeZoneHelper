@@ -11,3 +11,4 @@ let tagReselect = "reselect"
 let tagOK = "ok"
 
 let tagTimeZone = "timeZone"
+let tagInfoSection = "infoSection"
