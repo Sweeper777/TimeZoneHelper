@@ -28,5 +28,11 @@ class TimeZoneInfoController: FormViewController {
             row.title = NSLocalizedString("Abbreviation", comment: "")
         }
         
+        <<< LabelRow(tagOffsetFromGMT) {
+            row in
+            row.cellStyle = .value1
+            row.title = NSLocalizedString("Offset from GMT", comment: "")
+        }
+        
     }
 }
