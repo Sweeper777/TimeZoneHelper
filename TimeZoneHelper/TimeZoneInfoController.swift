@@ -15,5 +15,12 @@ class TimeZoneInfoController: FormViewController {
                 $0.rowBy(tag: tagTimeZone)?.baseValue == nil
             }
         }
+        
+        <<< LabelRow(tagName) {
+            row in
+            row.cellStyle = .value1
+            row.title = NSLocalizedString("Name", comment: "")
+        }
+        
     }
 }
