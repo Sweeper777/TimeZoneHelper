@@ -22,5 +22,11 @@ class TimeZoneInfoController: FormViewController {
             row.title = NSLocalizedString("Name", comment: "")
         }
         
+        <<< LabelRow(tagAbbreviation) {
+            row in
+            row.cellStyle = .value1
+            row.title = NSLocalizedString("Abbreviation", comment: "")
+        }
+        
     }
 }
