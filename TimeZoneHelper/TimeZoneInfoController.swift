@@ -45,7 +45,7 @@ class TimeZoneInfoController: FormViewController {
         <<< LabelRow(tagIsDST) {
             row in
             row.cellStyle = .value1
-            row.title = NSLocalizedString("Is DST", comment: "")
+            row.title = NSLocalizedString("Current DST Status", comment: "")
         }
     }
 }
