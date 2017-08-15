@@ -3,6 +3,15 @@ import Eureka
 class TimeZoneInfoController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        func addInfoRow(tag: String, title: String) {
+            form.allSections.last! <<< LabelRow(tag) {
+                row in
+                row.cellStyle = .value1
+                row.title = NSLocalizedString(title, comment: "")
+            }
+        }
+        
         form +++ TimeZoneSelectorRow(tag: tagTimeZone) {
             row in
             row.title = NSLocalizedString("Time Zone", comment: "")
@@ -16,23 +25,9 @@ class TimeZoneInfoController: FormViewController {
             }
         }
         
-        <<< LabelRow(tagName) {
-            row in
-            row.cellStyle = .value1
-            row.title = NSLocalizedString("Name", comment: "")
-        }
-        
-        <<< LabelRow(tagAbbreviation) {
-            row in
-            row.cellStyle = .value1
-            row.title = NSLocalizedString("Abbreviation", comment: "")
-        }
-        
-        <<< LabelRow(tagOffsetFromGMT) {
-            row in
-            row.cellStyle = .value1
-            row.title = NSLocalizedString("Offset from GMT", comment: "")
-        }
+        addInfoRow(tag: tagName, title: "Name")
+        addInfoRow(tag: tagAbbreviation, title: "Abbreviation")
+        addInfoRow(tag: tagOffsetFromGMT, title: "Offset from GMT")
         
         form +++ Section(NSLocalizedString("daylight saving time (dst) info", comment: "")) {
             section in
@@ -42,22 +37,8 @@ class TimeZoneInfoController: FormViewController {
             }
         }
         
-        <<< LabelRow(tagIsDST) {
-            row in
-            row.cellStyle = .value1
-            row.title = NSLocalizedString("Current DST Status", comment: "")
-        }
-        
-        <<< LabelRow(tagDSTOffset) {
-            row in
-            row.cellStyle = .value1
-            row.title = NSLocalizedString("Current DST Offset", comment: "")
-        }
-        
-        <<< LabelRow(tagNextDSTTransition) {
-            row in
-            row.cellStyle = .value1
-            row.title = NSLocalizedString("Next DST Transition", comment: "")
-        }
+        addInfoRow(tag: tagIsDST, title: "Is Currently Daylight Saving")
+        addInfoRow(tag: tagDSTOffset, title: "Current DST Offset")
+        addInfoRow(tag: tagNextDSTTransition, title: "Next DST Transition")
     }
 }
