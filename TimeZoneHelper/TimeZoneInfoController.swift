@@ -54,5 +54,10 @@ class TimeZoneInfoController: FormViewController {
             row.title = NSLocalizedString("Current DST Offset", comment: "")
         }
         
+        <<< LabelRow(tagNextDSTTransition) {
+            row in
+            row.cellStyle = .value1
+            row.title = NSLocalizedString("Next DST Transition", comment: "")
+        }
     }
 }
