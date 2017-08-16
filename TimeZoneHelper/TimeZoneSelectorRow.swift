@@ -8,7 +8,7 @@ final class TimeZoneSelectorRow: SelectorRow<PushSelectorCell<TimeZone>, TimeZon
             _ in
         })
         displayValueFor = {
-            $0?.identifier ?? ""
+            $0?.identifier ?? NSLocalizedString("Please Select", comment: "")
         }
     }
     
