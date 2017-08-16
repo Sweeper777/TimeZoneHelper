@@ -12,9 +12,13 @@ class TimeZoneInfoController: FormViewController {
             }
         }
         
-        form +++ TimeZoneSelectorRow(tag: tagTimeZone) {
+        form +++ TimeZoneSelectorRow(tagTimeZone) {
             row in
             row.title = NSLocalizedString("Time Zone", comment: "")
+        }.onChange {
+            [weak self]
+            row in
+            self?.updateInfoRows()
         }
         
         form +++ Section() {
