@@ -1,6 +1,6 @@
 import Eureka
 
-class TimeZoneSelectorRow: SelectorRow<PushSelectorCell<TimeZone>, TimeZoneSelectorController> {
+final class TimeZoneSelectorRow: SelectorRow<PushSelectorCell<TimeZone>, TimeZoneSelectorController>, RowType {
     required init(tag: String?, _ initializer: ((TimeZoneSelectorRow) -> ())) {
         super.init(tag: tag)
         initializer(self)
@@ -13,6 +13,7 @@ class TimeZoneSelectorRow: SelectorRow<PushSelectorCell<TimeZone>, TimeZoneSelec
     }
     
     required convenience init(tag: String?) {
-        self.init(tag: tag)
+        self.init(tag: tag, {_ in})
     }
+    
 }
