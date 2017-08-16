@@ -44,6 +44,12 @@ class TimeZoneInfoController: FormViewController {
         addInfoRow(tag: tagIsDST, title: "Is Currently Daylight Saving")
         addInfoRow(tag: tagDSTOffset, title: "Current DST Offset")
         addInfoRow(tag: tagNextDSTTransition, title: "Next DST Transition")
+        
+        form +++ ButtonRow(tagRefreshInfo) {
+            row in
+            row.title = NSLocalizedString("Refresh Info", comment: "")
+            row.cell.tintColor = UIColor(hex: "3b7b3b")
+        }
     }
     
     func updateInfoRows() {
