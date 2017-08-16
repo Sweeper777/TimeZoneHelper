@@ -49,6 +49,10 @@ class TimeZoneInfoController: FormViewController {
             row in
             row.title = NSLocalizedString("Refresh Info", comment: "")
             row.cell.tintColor = UIColor(hex: "3b7b3b")
+        }.onChange {
+            [weak self]
+            row in
+            self?.updateInfoRows()
         }
     }
     
