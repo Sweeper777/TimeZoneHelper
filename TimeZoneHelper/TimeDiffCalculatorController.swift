@@ -12,5 +12,11 @@ class TimeDiffCalculatorController: FormViewController {
             row.title = NSLocalizedString("Date & Time", comment: "")
             row.value = now
         }
+        
+        <<< TimeZoneSelectorRow(tagStartTimeZone) {
+            row in
+            row.title = NSLocalizedString("Time Zone", comment: "")
+            row.value = TimeZone.current
+        }
     }
 }
