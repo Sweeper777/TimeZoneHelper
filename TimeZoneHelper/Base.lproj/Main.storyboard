@@ -81,11 +81,12 @@
                         <segue destination="swa-55-l4N" kind="relationship" relationship="viewControllers" id="Oy3-Qe-WjT"/>
                         <segue destination="SvB-AQ-jbd" kind="relationship" relationship="viewControllers" id="WVV-gV-Yun"/>
                         <segue destination="sWx-Vv-Tak" kind="relationship" relationship="viewControllers" id="VFZ-5b-AtE"/>
+                        <segue destination="c4F-uw-N7b" kind="relationship" relationship="viewControllers" id="FEA-6N-3cc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvg-02-6MJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="296" y="143"/>
+            <point key="canvasLocation" x="204" y="551"/>
         </scene>
         <!--Time Zones-->
         <scene sceneID="Jic-9Y-jAN">
@@ -187,7 +188,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fUQ-nP-knQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1253" y="886"/>
+            <point key="canvasLocation" x="1253" y="819"/>
         </scene>
         <!--Time Zone Info-->
         <scene sceneID="grR-YD-0Am">
@@ -208,7 +209,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G5t-qo-fxt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2154" y="885"/>
+            <point key="canvasLocation" x="2154" y="819"/>
+        </scene>
+        <!--Time Difference-->
+        <scene sceneID="9GL-Yh-3LH">
+            <objects>
+                <navigationController id="c4F-uw-N7b" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Time Difference" image="timediff" selectedImage="timediff_filled" id="ivp-DS-dth"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nda-go-U0g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.35294117650000001" green="0.73333333329999995" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="frw-4d-hzK" kind="relationship" relationship="rootViewController" id="3S5-tM-shJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GF4-W0-Wqk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1253" y="1794"/>
+        </scene>
+        <!--Time Difference Calculator-->
+        <scene sceneID="tj7-TX-5Df">
+            <objects>
+                <viewController id="frw-4d-hzK" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MS2-EI-Hd8"/>
+                        <viewControllerLayoutGuide type="bottom" id="6RS-bO-qHC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="x38-zn-7Dw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Time Difference Calculator" id="kpH-fK-hyy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yiE-pf-3CZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2154" y="1794"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KhC-Bx-HM4">
@@ -304,7 +345,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jIw-Lg-9FS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4515" y="851"/>
+            <point key="canvasLocation" x="4515" y="819"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="04l-pB-guU">
@@ -324,7 +365,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cYL-qL-Zgh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3743" y="852"/>
+            <point key="canvasLocation" x="3743" y="819"/>
         </scene>
         <!--Time Zones-->
         <scene sceneID="Hj0-GU-H12">
@@ -423,5 +464,7 @@
         <image name="info" width="25" height="25"/>
         <image name="list" width="25" height="25"/>
         <image name="map" width="25" height="25"/>
+        <image name="timediff" width="25" height="25"/>
+        <image name="timediff_filled" width="25" height="25"/>
     </resources>
 </document>
