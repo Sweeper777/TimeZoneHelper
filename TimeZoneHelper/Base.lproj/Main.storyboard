@@ -235,7 +235,7 @@
         <!--Time Difference Calculator-->
         <scene sceneID="tj7-TX-5Df">
             <objects>
-                <viewController id="frw-4d-hzK" sceneMemberID="viewController">
+                <viewController id="frw-4d-hzK" customClass="TimeDiffCalculatorController" customModule="TimeZoneHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MS2-EI-Hd8"/>
                         <viewControllerLayoutGuide type="bottom" id="6RS-bO-qHC"/>
