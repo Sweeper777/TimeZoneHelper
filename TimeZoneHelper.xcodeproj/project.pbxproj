@@ -18,6 +18,7 @@
 		5A257B9D1F1D84C00012EE85 /* TimeZoneDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A257B9C1F1D84C00012EE85 /* TimeZoneDisplay.swift */; };
 		5A26E6B71F3DBB7400068BB1 /* TimeZoneInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A26E6B61F3DBB7400068BB1 /* TimeZoneInfoController.swift */; };
 		5A26E6B91F3DBBD300068BB1 /* TimeZoneSelectorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A26E6B81F3DBBD300068BB1 /* TimeZoneSelectorRow.swift */; };
+		5A2950781F4573B5002663C1 /* TimeDiffCalculatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2950771F4573B5002663C1 /* TimeDiffCalculatorController.swift */; };
 		5A29A15A1F3841A400E8DC61 /* TimeZoneNamesControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A29A1591F3841A400E8DC61 /* TimeZoneNamesControllerDelegate.swift */; };
 		5A29A15C1F38422F00E8DC61 /* TimeZoneNamesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A29A15B1F38422F00E8DC61 /* TimeZoneNamesController.swift */; };
 		5A29BDFB1F3C32FD002912AF /* MapControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A29BDFA1F3C32FD002912AF /* MapControllerDelegate.swift */; };
@@ -45,6 +46,7 @@
 		5A257B9C1F1D84C00012EE85 /* TimeZoneDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneDisplay.swift; sourceTree = "<group>"; };
 		5A26E6B61F3DBB7400068BB1 /* TimeZoneInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneInfoController.swift; sourceTree = "<group>"; };
 		5A26E6B81F3DBBD300068BB1 /* TimeZoneSelectorRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneSelectorRow.swift; sourceTree = "<group>"; };
+		5A2950771F4573B5002663C1 /* TimeDiffCalculatorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeDiffCalculatorController.swift; sourceTree = "<group>"; };
 		5A29A1591F3841A400E8DC61 /* TimeZoneNamesControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneNamesControllerDelegate.swift; sourceTree = "<group>"; };
 		5A29A15B1F38422F00E8DC61 /* TimeZoneNamesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneNamesController.swift; sourceTree = "<group>"; };
 		5A29BDFA1F3C32FD002912AF /* MapControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapControllerDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				5A3586E21F2C0F4800F1BBBA /* TimeZoneSelectorController.swift */,
 				5A29A15B1F38422F00E8DC61 /* TimeZoneNamesController.swift */,
 				5A26E6B61F3DBB7400068BB1 /* TimeZoneInfoController.swift */,
+				5A2950771F4573B5002663C1 /* TimeDiffCalculatorController.swift */,
 				5A257B9C1F1D84C00012EE85 /* TimeZoneDisplay.swift */,
 				5A26E6B81F3DBBD300068BB1 /* TimeZoneSelectorRow.swift */,
 				5A2B69CC1F2975EB0068E3A3 /* UserTimeZone.swift */,
@@ -269,6 +272,7 @@
 				5A26E6B91F3DBBD300068BB1 /* TimeZoneSelectorRow.swift in Sources */,
 				5A3CF2D91F2D65FB00D8AF83 /* TimeZoneSelectorControllerDelegate.swift in Sources */,
 				5A2B69CD1F2975EB0068E3A3 /* UserTimeZone.swift in Sources */,
+				5A2950781F4573B5002663C1 /* TimeDiffCalculatorController.swift in Sources */,
 				5A1F56261F1B269F0087F5DD /* SecretStuff.swift in Sources */,
 				5A356E5D1F21A69B00738177 /* RxGoogleMapsBridge.swift in Sources */,
 				5A3586E31F2C0F4800F1BBBA /* TimeZoneSelectorController.swift in Sources */,
