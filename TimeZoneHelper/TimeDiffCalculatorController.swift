@@ -46,5 +46,12 @@ class TimeDiffCalculatorController: FormViewController {
             row.title = NSLocalizedString("Hour(s)", comment: "")
         }
         
+        <<< LabelRow(tagMinutesDiff) {
+            row in
+            row.cellStyle = .value1
+            row.title = NSLocalizedString("Minute(s)", comment: "")
+        }
+        
+        
     }
 }
