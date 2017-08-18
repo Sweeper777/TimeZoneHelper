@@ -51,7 +51,12 @@ class TimeDiffCalculatorController: FormViewController {
             row.cellStyle = .value1
             row.title = NSLocalizedString("Minute(s)", comment: "")
         }
-        
-        
+    }
+    
+    func combine(_ date: Date, with timeZone: TimeZone) -> Date? {
+        var cal = Calendar.current
+        let comp = cal.dateComponents([.era, .year, .month, .day, .hour, .minute, .second], from: date)
+        cal.timeZone = timeZone
+        return cal.date(from: comp)
     }
 }
