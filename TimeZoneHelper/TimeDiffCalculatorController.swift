@@ -31,5 +31,14 @@ class TimeDiffCalculatorController: FormViewController {
             row.title = NSLocalizedString("Time Zone", comment: "")
             row.value = TimeZone.current
         }
+        
+        form +++ Section(NSLocalizedString("time difference", comment: ""))
+        
+        <<< LabelRow(tagDaysDiff) {
+            row in
+            row.cellStyle = .value1
+            row.title = NSLocalizedString("Day(s)", comment: "")
+        }
+        
     }
 }
