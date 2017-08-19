@@ -71,6 +71,7 @@ class TimeDiffCalculatorController: FormViewController {
             row.cellStyle = .value1
             row.title = NSLocalizedString("Minute(s)", comment: "")
         }
+        updateLabelRows()
     }
     
     func combine(_ date: Date, with timeZone: TimeZone) -> Date? {
