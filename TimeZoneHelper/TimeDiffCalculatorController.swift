@@ -11,12 +11,20 @@ class TimeDiffCalculatorController: FormViewController {
             row in
             row.title = NSLocalizedString("Date & Time", comment: "")
             row.value = now
+        }.onChange {
+            [weak self]
+            row in
+            self?.updateLabelRows()
         }
         
         <<< TimeZoneSelectorRow(tagStartTimeZone) {
             row in
             row.title = NSLocalizedString("Time Zone", comment: "")
             row.value = TimeZone.current
+        }.onChange {
+            [weak self]
+            row in
+            self?.updateLabelRows()
         }
         
         form +++ Section(NSLocalizedString("end date", comment: ""))
@@ -25,11 +33,19 @@ class TimeDiffCalculatorController: FormViewController {
             row in
             row.title = NSLocalizedString("Date & Time", comment: "")
             row.value = now.addingTimeInterval(3600)
+        }.onChange {
+            [weak self]
+            row in
+            self?.updateLabelRows()
         }
         <<< TimeZoneSelectorRow(tagEndTimeZone) {
             row in
             row.title = NSLocalizedString("Time Zone", comment: "")
             row.value = TimeZone.current
+        }.onChange {
+            [weak self]
+            row in
+            self?.updateLabelRows()
         }
         
         form +++ Section(NSLocalizedString("time difference", comment: ""))
