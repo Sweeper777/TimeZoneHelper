@@ -66,4 +66,21 @@ class TimeDiffCalculatorController: FormViewController {
         return zonedEndDate.timeIntervalSince(zonedStartDate)
     }
     
+    func updateLabelRows() {
+        let values = form.values()
+        let timeDiff = difference(
+            between: values[tagStartDateTime] as! Date,
+            in: values[tagStartTimeZone] as! TimeZone,
+            and: values[tagEndDateTime] as! Date,
+            in: values[tagEndTimeZone] as! TimeZone)
+        let minutes = round(timeDiff / 60)
+        let hours = floor(minutes / 60)
+        let displayMinutes = Int(minutes) % 60
+        let days = Int(floor(hours / 24))
+        let displayHours = Int(hours) % 24
+        (form.rowBy(tag: tagMinutesDiff) as! LabelRow).value = "\(displayMinutes)"
+        (form.rowBy(tag: tagHoursDiff) as! LabelRow).value = "\(displayHours)"
+        (form.rowBy(tag: tagDaysDiff) as! LabelRow).value = "\(days)"
+        form.allSections.last?.forEach { $0.updateCell() }
+    }
 }
