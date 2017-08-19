@@ -24,7 +24,9 @@ class TimeDiffCalculatorController: FormViewController {
         }.onChange {
             [weak self]
             row in
-            self?.updateLabelRows()
+            if row.value != nil {
+                self?.updateLabelRows()
+            }
         }
         
         form +++ Section(NSLocalizedString("end date", comment: ""))
@@ -45,7 +47,9 @@ class TimeDiffCalculatorController: FormViewController {
         }.onChange {
             [weak self]
             row in
-            self?.updateLabelRows()
+            if row.value != nil {
+                self?.updateLabelRows()
+            }
         }
         
         form +++ Section(NSLocalizedString("time difference", comment: ""))
