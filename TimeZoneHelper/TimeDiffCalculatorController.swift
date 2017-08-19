@@ -76,19 +76,24 @@ class TimeDiffCalculatorController: FormViewController {
         return cal.date(from: comp)
     }
     
-    func difference(between startDate: Date, in startTimeZone: TimeZone, and endDate: Date, in endTimeZone: TimeZone) -> TimeInterval {
-        let zonedStartDate = combine(startDate, with: startTimeZone)!
-        let zonedEndDate = combine(endDate, with: endTimeZone)!
+    func difference(between startDate: Date, in startTimeZone: TimeZone, and endDate: Date, in endTimeZone: TimeZone) -> TimeInterval! {
+        guard let zonedStartDate = combine(startDate, with: startTimeZone), let zonedEndDate = combine(endDate, with: endTimeZone) else { return nil }
         return zonedEndDate.timeIntervalSince(zonedStartDate)
     }
     
     func updateLabelRows() {
         let values = form.values()
-        let timeDiff = difference(
+        guard let timeDiff = difference(
             between: values[tagStartDateTime] as! Date,
             in: values[tagStartTimeZone] as! TimeZone,
             and: values[tagEndDateTime] as! Date,
-            in: values[tagEndTimeZone] as! TimeZone)
+            in: values[tagEndTimeZone] as! TimeZone) else {
+                (form.rowBy(tag: tagMinutesDiff) as! LabelRow).value = NSLocalizedString("Invalid Date!", comment: "")
+                (form.rowBy(tag: tagHoursDiff) as! LabelRow).value = NSLocalizedString("Invalid Date!", comment: "")
+                (form.rowBy(tag: tagDaysDiff) as! LabelRow).value = NSLocalizedString("Invalid Date!", comment: "")
+                form.allSections.last?.forEach { $0.updateCell() }
+                return
+        }
         let minutes = round(timeDiff / 60)
         let hours = floor(minutes / 60)
         let displayMinutes = Int(minutes) % 60
