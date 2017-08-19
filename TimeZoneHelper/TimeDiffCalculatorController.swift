@@ -82,7 +82,7 @@ class TimeDiffCalculatorController: FormViewController {
     
     func difference(between startDate: Date, in startTimeZone: TimeZone, and endDate: Date, in endTimeZone: TimeZone) -> TimeInterval! {
         guard let zonedStartDate = combine(startDate, with: startTimeZone), let zonedEndDate = combine(endDate, with: endTimeZone) else { return nil }
-        return zonedEndDate.timeIntervalSince(zonedStartDate)
+        return abs(zonedEndDate.timeIntervalSince(zonedStartDate))
     }
     
     func updateLabelRows() {
