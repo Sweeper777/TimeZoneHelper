@@ -86,7 +86,7 @@ class TimeZoneSelectorController: FormViewController, TimeZoneNamesControllerDel
             cell, row in
             let alert = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
             let textField = alert.addTextField()
-            textField.placeholder = "-5, +7 etc."
+            textField.placeholder = NSLocalizedString("-5, +7 etc.", comment: "")
             alert.addButton(NSLocalizedString("OK", comment: "")) {
                 [weak self] in
                 guard let s = self else { return }
