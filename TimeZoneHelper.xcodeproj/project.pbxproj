@@ -46,6 +46,12 @@
 		5A257B9C1F1D84C00012EE85 /* TimeZoneDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneDisplay.swift; sourceTree = "<group>"; };
 		5A26E6B61F3DBB7400068BB1 /* TimeZoneInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneInfoController.swift; sourceTree = "<group>"; };
 		5A26E6B81F3DBBD300068BB1 /* TimeZoneSelectorRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneSelectorRow.swift; sourceTree = "<group>"; };
+		5A2894511F497B2800A0A151 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		5A2894521F497B2800A0A151 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		5A2894531F497B2D00A0A151 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		5A2894541F497B2D00A0A151 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		5A2894551F497B3400A0A151 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		5A2894561F497B3400A0A151 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5A2950771F4573B5002663C1 /* TimeDiffCalculatorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeDiffCalculatorController.swift; sourceTree = "<group>"; };
 		5A29A1591F3841A400E8DC61 /* TimeZoneNamesControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneNamesControllerDelegate.swift; sourceTree = "<group>"; };
 		5A29A15B1F38422F00E8DC61 /* TimeZoneNamesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneNamesController.swift; sourceTree = "<group>"; };
@@ -288,6 +294,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				5A24B9B91F18A80D0049459A /* Base */,
+				5A2894511F497B2800A0A151 /* zh-Hans */,
+				5A2894531F497B2D00A0A151 /* zh-Hant */,
+				5A2894551F497B3400A0A151 /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -296,6 +305,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				5A24B9BE1F18A80D0049459A /* Base */,
+				5A2894521F497B2800A0A151 /* zh-Hans */,
+				5A2894541F497B2D00A0A151 /* zh-Hant */,
+				5A2894561F497B3400A0A151 /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -307,6 +319,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -358,6 +371,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

@@ -1,0 +1,39 @@
+
+/* Class = "UITabBarItem"; title = "Time Zones"; ObjectID = "4q8-md-OcJ"; */
+"4q8-md-OcJ.title" = "Time Zones";
+
+/* Class = "UITabBarItem"; title = "Time Zone Info"; ObjectID = "AkO-z6-RIk"; */
+"AkO-z6-RIk.title" = "Time Zone Info";
+
+/* Class = "UILabel"; text = "Today"; ObjectID = "BQ4-XN-Yfs"; */
+"BQ4-XN-Yfs.text" = "Today";
+
+/* Class = "UINavigationItem"; title = "Time Zone Info"; ObjectID = "SfJ-vl-Trj"; */
+"SfJ-vl-Trj.title" = "Time Zone Info";
+
+/* Class = "UINavigationItem"; title = "Time Zones"; ObjectID = "VQj-rf-Fvm"; */
+"VQj-rf-Fvm.title" = "Time Zones";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "X19-A4-FcO"; */
+"X19-A4-FcO.title" = " ";
+
+/* Class = "UITabBarItem"; title = "Map"; ObjectID = "X7X-Wg-ikI"; */
+"X7X-Wg-ikI.title" = "Map";
+
+/* Class = "UINavigationItem"; title = "Time Zones"; ObjectID = "Z6v-f3-AKc"; */
+"Z6v-f3-AKc.title" = "Time Zones";
+
+/* Class = "UITabBarItem"; title = "Map"; ObjectID = "Zne-zv-eyW"; */
+"Zne-zv-eyW.title" = "Map";
+
+/* Class = "UILabel"; text = "09:49"; ObjectID = "dTW-S5-zU2"; */
+"dTW-S5-zU2.text" = "09:49";
+
+/* Class = "UILabel"; text = "Hong Kong"; ObjectID = "g4S-q7-etC"; */
+"g4S-q7-etC.text" = "Hong Kong";
+
+/* Class = "UITabBarItem"; title = "Time Difference"; ObjectID = "ivp-DS-dth"; */
+"ivp-DS-dth.title" = "Time Difference";
+
+/* Class = "UINavigationItem"; title = "Time Difference Calculator"; ObjectID = "kpH-fK-hyy"; */
+"kpH-fK-hyy.title" = "Time Difference Calculator";
