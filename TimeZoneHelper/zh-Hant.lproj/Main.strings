@@ -1,30 +1,30 @@
 
 /* Class = "UITabBarItem"; title = "Time Zones"; ObjectID = "4q8-md-OcJ"; */
-"4q8-md-OcJ.title" = "Time Zones";
+"4q8-md-OcJ.title" = "時區";
 
 /* Class = "UITabBarItem"; title = "Time Zone Info"; ObjectID = "AkO-z6-RIk"; */
-"AkO-z6-RIk.title" = "Time Zone Info";
+"AkO-z6-RIk.title" = "時區信息";
 
 /* Class = "UILabel"; text = "Today"; ObjectID = "BQ4-XN-Yfs"; */
-"BQ4-XN-Yfs.text" = "Today";
+"BQ4-XN-Yfs.text" = "今天";
 
 /* Class = "UINavigationItem"; title = "Time Zone Info"; ObjectID = "SfJ-vl-Trj"; */
-"SfJ-vl-Trj.title" = "Time Zone Info";
+"SfJ-vl-Trj.title" = "時區信息";
 
 /* Class = "UINavigationItem"; title = "Time Zones"; ObjectID = "VQj-rf-Fvm"; */
-"VQj-rf-Fvm.title" = "Time Zones";
+"VQj-rf-Fvm.title" = "時區";
 
 /* Class = "UIBarButtonItem"; title = " "; ObjectID = "X19-A4-FcO"; */
 "X19-A4-FcO.title" = " ";
 
 /* Class = "UITabBarItem"; title = "Map"; ObjectID = "X7X-Wg-ikI"; */
-"X7X-Wg-ikI.title" = "Map";
+"X7X-Wg-ikI.title" = "地圖";
 
 /* Class = "UINavigationItem"; title = "Time Zones"; ObjectID = "Z6v-f3-AKc"; */
-"Z6v-f3-AKc.title" = "Time Zones";
+"Z6v-f3-AKc.title" = "時區";
 
 /* Class = "UITabBarItem"; title = "Map"; ObjectID = "Zne-zv-eyW"; */
-"Zne-zv-eyW.title" = "Map";
+"Zne-zv-eyW.title" = "地圖";
 
 /* Class = "UILabel"; text = "09:49"; ObjectID = "dTW-S5-zU2"; */
 "dTW-S5-zU2.text" = "09:49";
@@ -33,7 +33,7 @@
 "g4S-q7-etC.text" = "Hong Kong";
 
 /* Class = "UITabBarItem"; title = "Time Difference"; ObjectID = "ivp-DS-dth"; */
-"ivp-DS-dth.title" = "Time Difference";
+"ivp-DS-dth.title" = "時間差";
 
 /* Class = "UINavigationItem"; title = "Time Difference Calculator"; ObjectID = "kpH-fK-hyy"; */
-"kpH-fK-hyy.title" = "Time Difference Calculator";
+"kpH-fK-hyy.title" = "時間差計算器";
