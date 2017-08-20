@@ -72,6 +72,10 @@ class TimeDiffCalculatorController: FormViewController {
             row.title = NSLocalizedString("Minute(s)", comment: "")
         }
         updateLabelRows()
+        
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationItem.backBarButtonItem = backButton
     }
     
     func combine(_ date: Date, with timeZone: TimeZone) -> Date? {
