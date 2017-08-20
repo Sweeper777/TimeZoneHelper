@@ -1,7 +1,15 @@
 import UIKit
 
 class TimeZoneNamesController: UITableViewController, UISearchResultsUpdating {
-    let allTimeZoneNames = TimeZone.abbreviationDictionary.map { ($0.key, $0.value.replacingOccurrences(of: "_", with: " ")) }
+    let allTimeZoneNames = { () -> [(String, String)] in 
+        var tzs = TimeZone.abbreviationDictionary.map { ($0.key, $0.value) }
+        let names = tzs.map { $0.1 }
+        var allIdentifiers = TimeZone.knownTimeZoneIdentifiers
+        for identifier in allIdentifiers where !names.contains(identifier) {
+            tzs.append(("", identifier))
+        }
+        return tzs.map { ($0.0, $0.1.replacingOccurrences(of: "_", with: " ")) }
+    }()
     var filteredTimeZoneNames = [(String, String)]()
     
     let searchController = UISearchController(searchResultsController: nil)
