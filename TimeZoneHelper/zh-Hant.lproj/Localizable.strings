@@ -1,0 +1,48 @@
+"Unknown Location" = "Unknown Location";
+
+"Select a Time Zone" = "Select a Time Zone";
+"select from..." = "select from...";
+"Map" = "Map";
+"Location" = "Location";
+"Name of city or area" = "Name of city or area";
+"Looking for the requested location..." = "Looking for the requested location...";
+"OK" = "OK";
+"Error" = "Error";
+"Unable to find the requested location" = "Unable to find the requested location";
+"Cancel" = "Cancel";
+"Please enter a location" = "Please enter a location";
+"Offset from GMT" = "Offset from GMT";
+"-5, +7 etc." = "-5, +7 etc.";
+"The offset entered is invalid." = "The offset entered is invalid.";
+"GMT offset" = "GMT offset";
+"Please enter the offset from GMT, in hours" = "Please enter the offset from GMT, in hours";
+"Abbreviation/Name" = "Abbreviation/Name";
+"selected time zone" = "selected time zone";
+"Reselect" = "Reselect";
+
+"Time Zone" = "Time Zone";
+"Name" = "Name";
+"Abbreviation" = "Abbreviation";
+"daylight saving time (dst) info" = "daylight saving time (dst) info";
+"Is Currently Daylight Saving" = "Is Currently Daylight Saving";
+"Current DST Offset" = "Current DST Offset";
+"Next DST Transition" = "Next DST Transition";
+"Refresh Info" = "Refresh Info";
+"Yes" = "Yes";
+"No" = "No";
+"Hour(s)" = "Hour(s)";
+"N/A" = "N/A";
+
+"start date" = "start date";
+"Date & Time" = "Date & Time";
+"end date" = "end date";
+"time difference" = "time difference";
+"Day(s)" = "Day(s)";
+"Minute(s)" = "Minute(s)";
+"Invalid Date!" = "Invalid Date!";
+
+"Tomorrow" = "Tomorrow";
+"Today" = "Today";
+"Yesterday" = "Yesterday";
+
+"Please Select" = "Please Select";
