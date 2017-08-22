@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey(gmsAPIKey)
         
         clock = Clock()
+        
+        lastUsedBuild = Int(Bundle.main.appBuild) ?? 0
         return true
     }
 
@@ -44,3 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+var lastUsedBuild: Int {
+    get { return UserDefaults.standard.integer(forKey: "lastUsedBuild") }
+    set { UserDefaults.standard.set(newValue, forKey: "lastUsedBuild") }
+}
