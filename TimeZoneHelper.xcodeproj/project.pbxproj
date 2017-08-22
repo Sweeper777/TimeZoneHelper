@@ -18,6 +18,7 @@
 		5A257B9D1F1D84C00012EE85 /* TimeZoneDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A257B9C1F1D84C00012EE85 /* TimeZoneDisplay.swift */; };
 		5A26E6B71F3DBB7400068BB1 /* TimeZoneInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A26E6B61F3DBB7400068BB1 /* TimeZoneInfoController.swift */; };
 		5A26E6B91F3DBBD300068BB1 /* TimeZoneSelectorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A26E6B81F3DBBD300068BB1 /* TimeZoneSelectorRow.swift */; };
+		5A2716BB1F4C12D800712262 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A2716BD1F4C12D800712262 /* InfoPlist.strings */; };
 		5A290D711F4AC04E0018A88B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A290D731F4AC04E0018A88B /* Localizable.strings */; };
 		5A2950781F4573B5002663C1 /* TimeDiffCalculatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2950771F4573B5002663C1 /* TimeDiffCalculatorController.swift */; };
 		5A29A15A1F3841A400E8DC61 /* TimeZoneNamesControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A29A1591F3841A400E8DC61 /* TimeZoneNamesControllerDelegate.swift */; };
@@ -47,6 +48,9 @@
 		5A257B9C1F1D84C00012EE85 /* TimeZoneDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneDisplay.swift; sourceTree = "<group>"; };
 		5A26E6B61F3DBB7400068BB1 /* TimeZoneInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneInfoController.swift; sourceTree = "<group>"; };
 		5A26E6B81F3DBBD300068BB1 /* TimeZoneSelectorRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneSelectorRow.swift; sourceTree = "<group>"; };
+		5A2716BC1F4C12D800712262 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		5A2716BE1F4C12D900712262 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5A2716BF1F4C12DB00712262 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5A2894511F497B2800A0A151 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		5A2894521F497B2800A0A151 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		5A2894531F497B2D00A0A151 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 				5A24B9BD1F18A80D0049459A /* LaunchScreen.storyboard */,
 				5A24B9C01F18A80D0049459A /* Info.plist */,
 				5A290D731F4AC04E0018A88B /* Localizable.strings */,
+				5A2716BD1F4C12D800712262 /* InfoPlist.strings */,
 			);
 			path = TimeZoneHelper;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 				Base,
 				"zh-Hant",
 				ja,
+				"zh-Hans",
 			);
 			mainGroup = 5A24B9A81F18A80D0049459A;
 			productRefGroup = 5A24B9B21F18A80D0049459A /* Products */;
@@ -213,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A290D711F4AC04E0018A88B /* Localizable.strings in Resources */,
+				5A2716BB1F4C12D800712262 /* InfoPlist.strings in Resources */,
 				5A24B9BF1F18A80D0049459A /* LaunchScreen.storyboard in Resources */,
 				5A257B9B1F1D81C10012EE85 /* TimeZoneDisplay.xib in Resources */,
 				5A24B9BC1F18A80D0049459A /* Assets.xcassets in Resources */,
@@ -318,6 +325,16 @@
 				5A2894561F497B3400A0A151 /* ja */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		5A2716BD1F4C12D800712262 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A2716BC1F4C12D800712262 /* zh-Hant */,
+				5A2716BE1F4C12D900712262 /* ja */,
+				5A2716BF1F4C12DB00712262 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		5A290D731F4AC04E0018A88B /* Localizable.strings */ = {
