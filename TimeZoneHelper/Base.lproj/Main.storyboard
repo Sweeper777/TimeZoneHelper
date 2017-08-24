@@ -24,13 +24,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEP-U2-mBN" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crosshair" translatesAutoresizingMaskIntoConstraints="NO" id="vAj-f1-Le8">
-                                        <rect key="frame" x="148" y="247" width="25" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="7LY-HQ-EW9"/>
-                                            <constraint firstAttribute="width" constant="25" id="x4I-7j-gTT"/>
-                                        </constraints>
-                                    </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Co-Zj-e10" customClass="TimeZoneDisplay" customModule="TimeZoneHelper" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="30" width="320" height="128"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -38,12 +31,20 @@
                                             <constraint firstAttribute="height" constant="128" id="kaT-TD-ztA"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ed-9y-ojT" customClass="CrossHair" customModule="TimeZoneHelper" customModuleProvider="target">
+                                        <rect key="frame" x="148" y="247" width="25" height="25"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="2vw-Na-zZr"/>
+                                            <constraint firstAttribute="width" constant="35" id="68g-6g-Tf6"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="5Co-Zj-e10" firstAttribute="leading" secondItem="aEP-U2-mBN" secondAttribute="leading" id="7hg-zc-bUb"/>
-                                    <constraint firstItem="vAj-f1-Le8" firstAttribute="centerY" secondItem="aEP-U2-mBN" secondAttribute="centerY" id="ac8-Gh-Gi3"/>
-                                    <constraint firstItem="vAj-f1-Le8" firstAttribute="centerX" secondItem="aEP-U2-mBN" secondAttribute="centerX" id="eIZ-tO-RLy"/>
+                                    <constraint firstItem="1ed-9y-ojT" firstAttribute="centerY" secondItem="aEP-U2-mBN" secondAttribute="centerY" id="QKO-M1-4ul"/>
+                                    <constraint firstItem="1ed-9y-ojT" firstAttribute="centerX" secondItem="aEP-U2-mBN" secondAttribute="centerX" id="mB5-nu-FiN"/>
                                     <constraint firstAttribute="trailing" secondItem="5Co-Zj-e10" secondAttribute="trailing" id="viF-b1-Pw2"/>
                                     <constraint firstItem="5Co-Zj-e10" firstAttribute="top" secondItem="aEP-U2-mBN" secondAttribute="top" constant="30" id="zal-BC-26g"/>
                                 </constraints>
@@ -59,7 +60,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" id="Zne-zv-eyW"/>
                     <connections>
-                        <outlet property="crosshair" destination="vAj-f1-Le8" id="w1v-qL-DqQ"/>
+                        <outlet property="crosshair" destination="1ed-9y-ojT" id="oPa-7v-Ohu"/>
                         <outlet property="map" destination="aEP-U2-mBN" id="EG0-ij-K2P"/>
                         <outlet property="timeZoneDisplay" destination="5Co-Zj-e10" id="XZf-Xu-RqD"/>
                     </connections>
