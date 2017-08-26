@@ -87,4 +87,18 @@ class TimeZoneInfoController: FormViewController {
         dateFormatter.timeZone = timeZone
         setInfoRow(withTag: tagCurrentTime, value: dateFormatter.string(from: Date()))
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.reloadData()
+        (UIApplication.shared.delegate as! AppDelegate).clock.onTimerChange = {
+            [weak self] in
+            self?.updateInfoRows()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        (UIApplication.shared.delegate as! AppDelegate).clock.onTimerChange = nil
+    }
 }
