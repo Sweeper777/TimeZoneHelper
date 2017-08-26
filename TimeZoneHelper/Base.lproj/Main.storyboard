@@ -411,16 +411,21 @@
                                             <constraint firstAttribute="height" constant="128" id="GKG-bz-YXq"/>
                                         </constraints>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crosshair" translatesAutoresizingMaskIntoConstraints="NO" id="qgz-Lx-4f1">
-                                        <rect key="frame" x="148" y="240" width="25" height="25"/>
-                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEG-8Y-joi" customClass="CrossHair" customModule="TimeZoneHelper" customModuleProvider="target">
+                                        <rect key="frame" x="143" y="235" width="35" height="35"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="Jdf-SS-Sbw"/>
+                                            <constraint firstAttribute="height" constant="35" id="ZOc-Hz-5aB"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="eEG-8Y-joi" firstAttribute="centerY" secondItem="DZR-kj-YFn" secondAttribute="centerY" id="CHW-WI-ee9"/>
+                                    <constraint firstItem="eEG-8Y-joi" firstAttribute="centerX" secondItem="DZR-kj-YFn" secondAttribute="centerX" id="JIE-Hc-j7B"/>
                                     <constraint firstItem="lTz-xX-f1t" firstAttribute="top" secondItem="DZR-kj-YFn" secondAttribute="top" constant="28" id="OpG-Lc-sza"/>
-                                    <constraint firstItem="qgz-Lx-4f1" firstAttribute="centerX" secondItem="DZR-kj-YFn" secondAttribute="centerX" id="VlL-IT-mzK"/>
                                     <constraint firstItem="lTz-xX-f1t" firstAttribute="leading" secondItem="DZR-kj-YFn" secondAttribute="leading" id="Vn1-yd-15B"/>
-                                    <constraint firstItem="qgz-Lx-4f1" firstAttribute="centerY" secondItem="DZR-kj-YFn" secondAttribute="centerY" id="X84-rs-bio"/>
                                     <constraint firstAttribute="trailing" secondItem="lTz-xX-f1t" secondAttribute="trailing" id="xeI-ws-Euh"/>
                                 </constraints>
                             </view>
@@ -449,7 +454,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="crosshair" destination="qgz-Lx-4f1" id="Yfi-tg-emD"/>
+                        <outlet property="crosshair" destination="eEG-8Y-joi" id="ZYy-31-1LU"/>
                         <outlet property="doneButtton" destination="btc-i9-xUa" id="5AP-QT-ADP"/>
                         <outlet property="map" destination="DZR-kj-YFn" id="Ynk-Kf-Dwq"/>
                         <outlet property="timeZoneDisplay" destination="lTz-xX-f1t" id="8ai-Do-Ugk"/>
@@ -461,7 +466,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="crosshair" width="25" height="25"/>
         <image name="info" width="25" height="25"/>
         <image name="list" width="25" height="25"/>
         <image name="map" width="25" height="25"/>
