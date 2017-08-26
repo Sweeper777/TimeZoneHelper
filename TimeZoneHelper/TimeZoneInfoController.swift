@@ -83,7 +83,7 @@ class TimeZoneInfoController: FormViewController {
         } else {
             setInfoRow(withTag: tagNextDSTTransition, value: NSLocalizedString("N/A", comment: ""))
         }
-        dateFormatter.dateFormat = "HH:ss"
+        dateFormatter.dateFormat = "HH:mm"
         dateFormatter.timeZone = timeZone
         setInfoRow(withTag: tagCurrentTime, value: dateFormatter.string(from: Date()))
     }
