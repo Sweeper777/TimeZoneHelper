@@ -413,7 +413,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEG-8Y-joi" customClass="CrossHair" customModule="TimeZoneHelper" customModuleProvider="target">
                                         <rect key="frame" x="143" y="235" width="35" height="35"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="Jdf-SS-Sbw"/>
                                             <constraint firstAttribute="height" constant="35" id="ZOc-Hz-5aB"/>
