@@ -32,6 +32,7 @@ class TimeZoneInfoController: FormViewController {
         addInfoRow(tag: tagName, title: "Name")
         addInfoRow(tag: tagAbbreviation, title: "Abbreviation")
         addInfoRow(tag: tagOffsetFromGMT, title: "Offset from GMT")
+        addInfoRow(tag: tagCurrentTime, title: "Current Time")
         
         form +++ Section(NSLocalizedString("daylight saving time (dst) info", comment: "")) {
             section in
@@ -82,5 +83,8 @@ class TimeZoneInfoController: FormViewController {
         } else {
             setInfoRow(withTag: tagNextDSTTransition, value: NSLocalizedString("N/A", comment: ""))
         }
+        dateFormatter.dateFormat = "HH:ss"
+        dateFormatter.timeZone = timeZone
+        setInfoRow(withTag: tagCurrentTime, value: dateFormatter.string(from: Date()))
     }
 }

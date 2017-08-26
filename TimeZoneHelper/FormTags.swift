@@ -26,3 +26,5 @@ let tagEndTimeZone = "endTimeZone"
 let tagDaysDiff = "daysDiff"
 let tagHoursDiff = "hoursDiff"
 let tagMinutesDiff = "minutesDiff"
+
+let tagCurrentTime = "currentTime"
