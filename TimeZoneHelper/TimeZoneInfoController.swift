@@ -1,6 +1,8 @@
 import Eureka
 
 class TimeZoneInfoController: FormViewController {
+    let idToAbbrDict = TimeZone.abbreviationDictionary.map { ($1, $0) }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,7 +68,7 @@ class TimeZoneInfoController: FormViewController {
             infoRow.updateCell()
         }
         setInfoRow(withTag: tagName, value: timeZone.identifier)
-        setInfoRow(withTag: tagAbbreviation, value: timeZone.abbreviation() ?? NSLocalizedString("N/A", comment: ""))
+        setInfoRow(withTag: tagAbbreviation, value: idToAbbrDict[timeZone.identifier] ?? timeZone.abbreviation() ?? NSLocalizedString("N/A", comment: ""))
         let numberFormatter = NumberFormatter()
         numberFormatter.maximumFractionDigits = 2
         let gmtOffset = Double(timeZone.secondsFromGMT()) / 60.0 / 60.0
