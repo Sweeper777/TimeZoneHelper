@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0830"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A2A88DB13CD3562B6EDBAF18B930A2CD"
+               BlueprintIdentifier = "A3A4C447536C095BF9517BAF7E6B6D59"
                BuildableName = "Pods_TimeZoneHelper.framework"
                BlueprintName = "Pods-TimeZoneHelper"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A2A88DB13CD3562B6EDBAF18B930A2CD"
+            BlueprintIdentifier = "A3A4C447536C095BF9517BAF7E6B6D59"
             BuildableName = "Pods_TimeZoneHelper.framework"
             BlueprintName = "Pods-TimeZoneHelper"
             ReferencedContainer = "container:Pods.xcodeproj">

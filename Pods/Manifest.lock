@@ -1,13 +1,38 @@
 PODS:
   - Eureka (3.1.0)
   - EZLoadingActivity (1.01)
+  - Firebase/AdMob (4.1.0):
+    - Firebase/Core
+    - Google-Mobile-Ads-SDK (= 7.22.0)
+  - Firebase/Core (4.1.0):
+    - FirebaseAnalytics (= 4.0.3)
+    - FirebaseCore (= 4.0.5)
+  - FirebaseAnalytics (4.0.3):
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - nanopb (~> 0.3)
+  - FirebaseCore (4.0.5):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - nanopb (~> 0.3)
+  - FirebaseInstanceID (2.0.1):
+    - FirebaseCore (~> 4.0)
   - FittableFontLabel (1.4.0)
+  - Google-Mobile-Ads-SDK (7.22.0)
   - GoogleMaps (2.4.0):
     - GoogleMaps/Maps (= 2.4.0)
   - GoogleMaps/Base (2.4.0)
   - GoogleMaps/Maps (2.4.0):
     - GoogleMaps/Base
+  - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/NSData+zlib (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
   - LatLongToTimezone (1.1.2)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
   - Realm (2.10.0):
     - Realm/Headers (= 2.10.0)
   - Realm/Headers (2.10.0)
@@ -26,6 +51,8 @@ PODS:
 DEPENDENCIES:
   - Eureka
   - EZLoadingActivity
+  - Firebase/AdMob
+  - Firebase/Core
   - FittableFontLabel
   - GoogleMaps
   - LatLongToTimezone
@@ -38,9 +65,16 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Eureka: d6725c38d0dcdceaa331d1468f75e76315715ae0
   EZLoadingActivity: edd7e387e5197b116ce2cccb3fd747ababc2a510
+  Firebase: ebebf41db7f10e0c7668b6eaaa857fbe599aa478
+  FirebaseAnalytics: 76f754d37ca5b04f36856729b6af3ca0152d1069
+  FirebaseCore: 7d876ea97a830cbe62ba7fbbe7670c833a324ba0
+  FirebaseInstanceID: 0500e3cb54a1a4e01a8cffcc09323b8bb8fc7e1e
   FittableFontLabel: 20502441e83bb41eb8b41611cca91af85c4e21e3
+  Google-Mobile-Ads-SDK: 1bdf1a4244d0553b1840239874c209c01aef055f
   GoogleMaps: 8436ab5d1c25e36915b2f7416d0c8e3fa2e76c61
+  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   LatLongToTimezone: efd39e80e92c4cd3aefb597a2fd16f177a4742b5
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Realm: 98b3a25643cf6b3e07d2b99fb43fe0eb9c801dec
   RealmSwift: 34073ad3a31232bbaf7c0db898c037940284cba2
   RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
@@ -50,6 +84,6 @@ SPEC CHECKSUMS:
   SwiftDate: 029be76691ee89176da3a46c7df3415b6734bc5b
   SwiftyUtils: f48a22d2fa8eece42a11d8bbb4d01a9758dd0602
 
-PODFILE CHECKSUM: e297eb3cfe13840f9dea1ca2c43827d93d0a8cf2
+PODFILE CHECKSUM: e2bc2ce37243feaebac4ba7ed368803ac33f0b82
 
 COCOAPODS: 1.1.0.beta.1

@@ -15,4 +15,6 @@ target 'TimeZoneHelper' do
   pod 'SCLAlertView'
   pod 'EZLoadingActivity'
   pod 'FittableFontLabel'
+  pod 'Firebase/Core'
+  pod 'Firebase/AdMob'
 end
