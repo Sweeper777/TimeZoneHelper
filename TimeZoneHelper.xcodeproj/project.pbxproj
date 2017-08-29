@@ -16,6 +16,7 @@
 		5A24B9BF1F18A80D0049459A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A24B9BD1F18A80D0049459A /* LaunchScreen.storyboard */; };
 		5A257B9B1F1D81C10012EE85 /* TimeZoneDisplay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A257B9A1F1D81C10012EE85 /* TimeZoneDisplay.xib */; };
 		5A257B9D1F1D84C00012EE85 /* TimeZoneDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A257B9C1F1D84C00012EE85 /* TimeZoneDisplay.swift */; };
+		5A259D5A1F5546EF00F58926 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A259D591F5546EF00F58926 /* GoogleService-Info.plist */; };
 		5A26E6B71F3DBB7400068BB1 /* TimeZoneInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A26E6B61F3DBB7400068BB1 /* TimeZoneInfoController.swift */; };
 		5A26E6B91F3DBBD300068BB1 /* TimeZoneSelectorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A26E6B81F3DBBD300068BB1 /* TimeZoneSelectorRow.swift */; };
 		5A2716BB1F4C12D800712262 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A2716BD1F4C12D800712262 /* InfoPlist.strings */; };
@@ -47,6 +48,7 @@
 		5A24B9C01F18A80D0049459A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A257B9A1F1D81C10012EE85 /* TimeZoneDisplay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeZoneDisplay.xib; sourceTree = "<group>"; };
 		5A257B9C1F1D84C00012EE85 /* TimeZoneDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneDisplay.swift; sourceTree = "<group>"; };
+		5A259D591F5546EF00F58926 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5A26E6B61F3DBB7400068BB1 /* TimeZoneInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneInfoController.swift; sourceTree = "<group>"; };
 		5A26E6B81F3DBBD300068BB1 /* TimeZoneSelectorRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneSelectorRow.swift; sourceTree = "<group>"; };
 		5A2716BC1F4C12D800712262 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		5A24B9B31F18A80D0049459A /* TimeZoneHelper */ = {
 			isa = PBXGroup;
 			children = (
+				5A259D591F5546EF00F58926 /* GoogleService-Info.plist */,
 				5A24B9B41F18A80D0049459A /* AppDelegate.swift */,
 				5A24B9B61F18A80D0049459A /* MapController.swift */,
 				5A21D6AF1F237C660023C146 /*  TimeZonesController.swift */,
@@ -227,6 +230,7 @@
 				5A257B9B1F1D81C10012EE85 /* TimeZoneDisplay.xib in Resources */,
 				5A24B9BC1F18A80D0049459A /* Assets.xcassets in Resources */,
 				5A24B9BA1F18A80D0049459A /* Main.storyboard in Resources */,
+				5A259D5A1F5546EF00F58926 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
