@@ -21,6 +21,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2g8-tC-BVn" customClass="GADBannerView">
+                                <rect key="frame" x="4" y="445" width="312" height="74"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="dGG-Y1-FJn"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEP-U2-mBN" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <subviews>
@@ -52,14 +59,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="2g8-tC-BVn" secondAttribute="trailing" constant="4" id="4E9-jR-pqD"/>
                             <constraint firstItem="aEP-U2-mBN" firstAttribute="top" secondItem="AXM-fP-ZEH" secondAttribute="top" id="NKH-sH-T0c"/>
                             <constraint firstAttribute="trailing" secondItem="aEP-U2-mBN" secondAttribute="trailing" id="S5n-32-Om1"/>
                             <constraint firstItem="aEP-U2-mBN" firstAttribute="bottom" secondItem="xDH-az-Vy8" secondAttribute="top" id="Vg5-Zf-EIS"/>
+                            <constraint firstItem="2g8-tC-BVn" firstAttribute="leading" secondItem="AXM-fP-ZEH" secondAttribute="leading" constant="4" id="kJc-Im-TQ1"/>
+                            <constraint firstItem="xDH-az-Vy8" firstAttribute="top" secondItem="2g8-tC-BVn" secondAttribute="bottom" id="vHP-HW-3ql"/>
                             <constraint firstItem="aEP-U2-mBN" firstAttribute="leading" secondItem="AXM-fP-ZEH" secondAttribute="leading" id="wdA-67-Fic"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" id="Zne-zv-eyW"/>
                     <connections>
+                        <outlet property="ad" destination="2g8-tC-BVn" id="AiN-gy-Sz7"/>
                         <outlet property="crosshair" destination="1ed-9y-ojT" id="oPa-7v-Ohu"/>
                         <outlet property="map" destination="aEP-U2-mBN" id="EG0-ij-K2P"/>
                         <outlet property="timeZoneDisplay" destination="5Co-Zj-e10" id="XZf-Xu-RqD"/>
