@@ -3,12 +3,14 @@ import GoogleMaps
 import RxGoogleMaps
 import RxSwift
 import RxCocoa
+import GoogleMobileAds
 
 class MapController: UIViewController, GMSMapViewDelegate {
 
     @IBOutlet var map: GMSMapView!
     @IBOutlet var crosshair: CrossHair!
     @IBOutlet var timeZoneDisplay: TimeZoneDisplay!
+    @IBOutlet var ad: GADBannerView?
     
     @IBOutlet var doneButtton: UIBarButtonItem?
     
