@@ -2,6 +2,7 @@ import UIKit
 import RxGoogleMaps
 import GoogleMaps
 import SwiftyUtils
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window?.tintColor = UIColor(hex: "3b7b3b")
+        FirebaseApp.configure()
         GMSServices.provideAPIKey(gmsAPIKey)
         
         clock = Clock()
