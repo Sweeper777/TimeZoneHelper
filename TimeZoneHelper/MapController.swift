@@ -25,6 +25,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
         map.settings.tiltGestures = false
         crosshair.layer.zPosition = 1
         timeZoneDisplay.layer.zPosition = 1
+        ad?.layer.zPosition = 1
         
         map.rx.idleAtPosition.debounce(0.5, scheduler: MainScheduler.instance)
             .map ({ CLLocation(latitude: $0.target.latitude, longitude: $0.target.longitude) })
@@ -38,6 +39,11 @@ class MapController: UIViewController, GMSMapViewDelegate {
                 .bind(to: done.rx.isEnabled)
                 .disposed(by: disposeBag)
         }
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
+        ad?.adUnitID = ad1ID
+        ad?.rootViewController = self
+        ad?.load(request)
     }
     
     override func viewDidAppear(_ animated: Bool) {
