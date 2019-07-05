@@ -24,7 +24,7 @@
 
 import Foundation
 
-open class RowOf<T: Equatable>: BaseRow {
+open class RowOf<T>: BaseRow where T: Equatable{
 
     private var _value: T? {
         didSet {
@@ -63,15 +63,15 @@ open class RowOf<T: Equatable>: BaseRow {
             return _value
         }
     }
+    
+    /// The reset value of this row. Sets the value property to the value of this row on the resetValue method call.
+    open var resetValue: T?
 
     /// The untyped value of this row.
     public override var baseValue: Any? {
         get { return value }
         set { value = newValue as? T }
     }
-
-    /// Variable used in rows with options that serves to generate the options for that row.
-    public var dataProvider: DataProvider<T>?
 
     /// Block variable used to get the String that should be displayed for the value of this row.
     public var displayValueFor: ((T?) -> String?)? = {
@@ -86,8 +86,17 @@ open class RowOf<T: Equatable>: BaseRow {
 
     @discardableResult
     public override func validate() -> [ValidationError] {
+        #if swift(>=4.1)
+        validationErrors = rules.compactMap { $0.validateFn(value) }
+        #else
         validationErrors = rules.flatMap { $0.validateFn(value) }
+        #endif
         return validationErrors
+    }
+    
+    /// Resets the value of the row. Setting it's value to it's reset value.
+    public func resetRowValue() {
+        value = resetValue
     }
 
     /// Add a Validation rule for the Row

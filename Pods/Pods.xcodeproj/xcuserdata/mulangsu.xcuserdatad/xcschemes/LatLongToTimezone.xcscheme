@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '991C97BA8CF3EC8857908BFF843409DD'
-               BlueprintName = 'LatLongToTimezone'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'LatLongToTimezone.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "163889B2D6883DE9015D6B652955D50C"
+               BlueprintName = "LatLongToTimezone"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "LatLongToTimezone.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

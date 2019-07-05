@@ -10,7 +10,7 @@
 
 #import <CoreLocation/CoreLocation.h>
 
-NS_ASSUME_NONNULL_BEGIN;
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  * GMSPath encapsulates an immutable array of CLLocationCooordinate2D. All the coordinates of a
@@ -58,10 +58,13 @@ NS_ASSUME_NONNULL_BEGIN;
 extern const double kGMSEquatorProjectedMeter;
 
 /**
+ * \defgroup LengthKind GMSLengthKind
+ * @{
+ */
+
+/**
  * GMSLengthKind indicates the type of a length value, which can be geodesic (in meters), rhumb
  * length (in meters) and projected length (in GMSMapPoint units).
- *
- * @related GMSPath
  */
 typedef NS_ENUM(NSUInteger, GMSLengthKind) {
   /*
@@ -89,6 +92,8 @@ typedef NS_ENUM(NSUInteger, GMSLengthKind) {
   kGMSLengthProjected
 };
 
+/**@}*/
+
 @interface GMSPath (GMSPathLength)
 
 /**
@@ -104,4 +109,4 @@ typedef NS_ENUM(NSUInteger, GMSLengthKind) {
 
 @end
 
-NS_ASSUME_NONNULL_END;
+NS_ASSUME_NONNULL_END

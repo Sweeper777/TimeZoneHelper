@@ -14,12 +14,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FirebaseCore.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FirebaseInstanceID.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FittableFontLabel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>GoogleToolboxForMac.xcscheme</key>
+		<key>GoogleUtilities.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -54,6 +64,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RxRelay.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>RxSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -81,82 +96,6 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>05B116017B75EC9ABE7C72CE37FE4B98</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>081BFCD23CB1DB0B11BD82A59EA80FB3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>0F8EB38DE443EB3773FB26F60EF0E0D6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>367775726ABA7003552CA455107C1627</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>505C9587EFAE93ED823A6E1737BF1778</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8EFB44D2DE7C5EB00C3EC386780F54FB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>903A108934E1A089B76F443DC34C8E54</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>92BB131FA876445E027D20AE23EA7B5F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>93651D14B2D3C839FB8B5EECE045A104</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>991C97BA8CF3EC8857908BFF843409DD</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A3A4C447536C095BF9517BAF7E6B6D59</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AEDD4E1DF951193C8A8D34907AA3F8CD</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E35383F3A3A4A8BF3463D70F2FA40702</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F43971DB1C2FBDD1C2E2C64C30546E14</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FBEF36F2D9465BB0D33BCAD23E375381</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

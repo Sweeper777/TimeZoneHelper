@@ -1,5 +1,6 @@
 # RxGoogleMaps
-![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)
+[![CircleCI](https://img.shields.io/circleci/project/github/RxSwiftCommunity/RxGoogleMaps/master.svg)](https://circleci.com/gh/RxSwiftCommunity/RxGoogleMaps/tree/master)
+![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)
 [![Version](https://img.shields.io/cocoapods/v/RxGoogleMaps.svg?style=flat)](http://cocoapods.org/pods/RxGoogleMaps)
 [![License](https://img.shields.io/cocoapods/l/RxGoogleMaps.svg?style=flat)](http://cocoapods.org/pods/RxGoogleMaps)
 [![Platform](https://img.shields.io/cocoapods/p/RxGoogleMaps.svg?style=flat)](http://cocoapods.org/pods/RxGoogleMaps)
@@ -31,28 +32,28 @@ self.view.addSubview(mapView)
 ```swift
 // Camera position
 
-mapView.rx.didChangePosition.asDriver()
-    .drive(onNext: { print("Did change camera position: \($0)") })
-    .addDisposableTo(disposeBag)
+mapView.rx.didChange.asDriver()
+    .drive(onNext: { print("Did change position: \($0)") })
+    .disposed(by: disposeBag)
 
 // Marker tapped
 
-mapView.rx.didTapMarker.asDriver()
-    .drive(onNext: { print("Did tap marker: \($0)") })
-    .addDisposableTo(disposeBag)
+mapView.rx.didTapAt.asDriver()
+    .drive(onNext: { print("Did tap at coordinate: \($0)") })
+    .disposed(by: disposeBag)
 
-// Update marker icon without storing selection status
+// Location update
 
-let s0 = mapView.rx.selectedMarker.asObservable()
-let s1 = s0.skip(1)
-
-Observable.zip(s0, s1) { $0 }
-    .subscribe(onNext: { (prev, cur) in
-        if let marker = prev { marker.icon = #imageLiteral(resourceName: "marker_normal") }
-        if let marker = cur { marker.icon = #imageLiteral(resourceName: "marker_selected") }
+mapView.rx.myLocation
+    .subscribe(onNext: { location in
+        if let l = location {
+            print("My location: (\(l.coordinate.latitude), \(l.coordinate.longitude))")
+        } else {
+            print("My location: nil")
+        }
     })
-    .addDisposableTo(disposeBag)
-                
+    .disposed(by: disposeBag)
+
 ```
 
 ### Binding properties
@@ -61,40 +62,40 @@ Observable.zip(s0, s1) { $0 }
 
 button.rx.tap
     .map { false }
-    .bindTo(mapView.rx.trafficEnabled.asObserver())
-    .addDisposableTo(disposeBag)
+    .bind(to: mapView.rx.trafficEnabled.asObserver())
+    .disposed(by: disposeBag)
 
 // Camera animations
 
 button.rx.tap
     .map { 14 }
-    .bindTo(mapView.rx.zoomToAnimate)
-    .addDisposableTo(disposeBag)
-            
+    .bind(to: mapView.rx.zoomToAnimate)
+    .disposed(by: disposeBag)
+
 button.rx.tap
     .map { GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 8, bearing: 10, viewingAngle: 30) }
-    .bindTo(mapView.rx.cameraToAnimate)
-    .addDisposableTo(disposeBag)
-    
+    .bind(to: mapView.rx.cameraToAnimate)
+    .disposed(by: disposeBag)
+
 // Selected marker
 
 button.rx.tap
     .map { myMarker }
-    .bindTo(mapView.rx.selectedMarker.asObserver())
-    .addDisposableTo(disposeBag)
-    
+    .bind(to: mapView.rx.selectedMarker.asObserver())
+    .disposed(by: disposeBag)
+
 // GMSMarker or GMSOverlay properties
 
 button.rx.tap
     .map{ 180.0 }
-    .bindTo(marker.rx.rotation.asObserver())
-    .addDisposableTo(disposeBag)
+    .bind(to: marker.rx.rotation.asObserver())
+    .disposed(by: disposeBag)
 
 button.rx.tap
     .map{ UIColor.red }
-    .bindTo(circle.rx.fillColor.asObserver())
-    .addDisposableTo(disposeBag)
-    
+    .bind(to: circle.rx.fillColor.asObserver())
+    .disposed(by: disposeBag)
+
 ```
 
 ### Delegates which have a return value
@@ -117,26 +118,33 @@ mapView.rx.handleMarkerInfoWindow { marker in
 
 ```
 
-## Installation
+*Note:* More examples can be found at the example project from this repo!.
 
-Because GoogleMaps SDK include static binaries, it's hard to find a nice solution to make a *straight-forward* Cocoapods framework if it uses GoogleMaps SDK. So I decided ``RxGoogleMaps`` not to use ``GoogleMaps`` directly and to provide a *bridging* swift file which connects ``GoogleMaps`` and ``RxGoogleMaps`` instead.
+## Installation
 
 ### CocoaPods
 
-1. Add to `Podfile`:
+  *Note:* Due to the fact Google Maps is delivered as a static library, you must have CocoaPods 1.4.0 installed to install this library.
 
-    ```ruby
-    pod 'GoogleMaps'
-    pod 'RxGoogleMaps'
-    ```
-    
-2. Add **``Pods/RxGoogleMaps/RxGoogleMapsBridge.swift`` file to your app target** in your Xcode project manually. (Once at first installation)
+
+- Add to your `Podfile`:
+
+```ruby
+pod 'RxGoogleMaps'
+```
+
+Than run `pod install`, and you should be good to go!
+
+## Example Project
+
+1. Get your own API Key a key at https://developers.google.com/maps/documentation/ios-sdk/
+2. Open the example project and set your API Key in AppDelegate
 
 ## Requirements
 
-- Swift 3.0
-- [RxSwift](https://github.com/ReactiveX/RxSwift) 3.0.0-rc.1
-- [RxCocoa](https://github.com/ReactiveX/RxSwift) 3.0.0-rc.1
+- Swift 4.2
+- [RxSwift](https://github.com/ReactiveX/RxSwift) >= 4.3
+- [RxCocoa](https://github.com/ReactiveX/RxSwift) >= 4.3
 
 ## License
 

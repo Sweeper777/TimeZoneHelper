@@ -9,7 +9,7 @@ target 'TimeZoneHelper' do
   pod 'GoogleMaps'
   pod 'RxGoogleMaps'
   pod 'Eureka'
-  pod 'SwiftDate'
+  pod 'SwiftDate', '5.1.0'
   pod 'LatLongToTimezone'
   pod 'RealmSwift'
   pod 'SCLAlertView'
