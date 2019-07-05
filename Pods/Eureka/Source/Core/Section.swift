@@ -23,7 +23,6 @@
 // THE SOFTWARE.
 
 import Foundation
-import UIKit
 
 /// The delegate of the Eureka sections.
 public protocol SectionDelegate: class {
@@ -44,8 +43,8 @@ extension Section : Hidable, SectionDelegate {}
 
 extension Section {
 
-    public func reload(with rowAnimation: UITableView.RowAnimation = .none) {
-        guard let tableView = (form?.delegate as? FormViewController)?.tableView, let index = index, index < tableView.numberOfSections else { return }
+    public func reload(with rowAnimation: UITableViewRowAnimation = .none) {
+        guard let tableView = (form?.delegate as? FormViewController)?.tableView, let index = index else { return }
         tableView.reloadSections(IndexSet(integer: index), with: rowAnimation)
     }
 }
@@ -54,7 +53,7 @@ extension Section {
 
     internal class KVOWrapper: NSObject {
 
-        @objc dynamic private var _rows = NSMutableArray()
+        dynamic private var _rows = NSMutableArray()
         var rows: NSMutableArray {
             return mutableArrayValue(forKey: "_rows")
         }
@@ -65,7 +64,7 @@ extension Section {
         init(section: Section) {
             self.section = section
             super.init()
-            addObserver(self, forKeyPath: "_rows", options: [.new, .old], context:nil)
+            addObserver(self, forKeyPath: "_rows", options: NSKeyValueObservingOptions.new.union(.old), context:nil)
         }
 
         deinit {
@@ -150,27 +149,16 @@ open class Section {
         didSet { addToRowObservers() }
     }
 
-    /// Returns if the section is currently hidden or not.
+    /// Returns if the section is currently hidden or not
     public var isHidden: Bool { return hiddenCache }
-
-    /// Returns all the rows in this section, including hidden rows.
-    public var allRows: [BaseRow] {
-        return kvoWrapper._allRows
-    }
 
     public required init() {}
 
-    #if swift(>=4.1)
-    public required init<S>(_ elements: S) where S: Sequence, S.Element == BaseRow {
-        self.append(contentsOf: elements)
-    }
-    #endif
-
-    public init(_ initializer: @escaping (Section) -> Void) {
+    public init(_ initializer: (Section) -> Void) {
         initializer(self)
     }
 
-    public init(_ header: String, _ initializer: @escaping (Section) -> Void = { _ in }) {
+    public init(_ header: String, _ initializer: (Section) -> Void = { _ in }) {
         self.header = HeaderFooterView(stringLiteral: header)
         initializer(self)
     }
@@ -205,13 +193,13 @@ open class Section {
 
     // MARK: Private
     lazy var kvoWrapper: KVOWrapper = { [unowned self] in return KVOWrapper(section: self) }()
-
+    
     var headerView: UIView?
     var footerView: UIView?
     var hiddenCache = false
 }
 
-extension Section: MutableCollection, BidirectionalCollection {
+extension Section : MutableCollection, BidirectionalCollection {
 
     // MARK: MutableCollectionType
 
@@ -244,17 +232,19 @@ extension Section: MutableCollection, BidirectionalCollection {
         }
     }
 
-    public subscript (range: Range<Int>) -> ArraySlice<BaseRow> {
-        get { return kvoWrapper.rows.map { $0 as! BaseRow }[range] }
-        set { replaceSubrange(range, with: newValue) }
+    public subscript (range: Range<Int>) -> [BaseRow] {
+        get { return kvoWrapper.rows.objects(at: IndexSet(integersIn: range)) as! [BaseRow] }
+        set {
+            replaceSubrange(range, with: newValue)
+        }
     }
 
-    public func index(after i: Int) -> Int { return i + 1 }
-    public func index(before i: Int) -> Int { return i - 1 }
+    public func index(after i: Int) -> Int {return i + 1}
+    public func index(before i: Int) -> Int {return i - 1}
 
 }
 
-extension Section: RangeReplaceableCollection {
+extension Section : RangeReplaceableCollection {
 
     // MARK: RangeReplaceableCollectionType
 
@@ -272,18 +262,18 @@ extension Section: RangeReplaceableCollection {
         }
     }
 
-    public func replaceSubrange<C>(_ subrange: Range<Int>, with newElements: C) where C : Collection, C.Element == BaseRow {
-        for i in subrange.lowerBound..<subrange.upperBound {
+    public func replaceSubrange<C: Collection>(_ subRange: Range<Int>, with newElements: C) where C.Iterator.Element == BaseRow {
+        for i in subRange.lowerBound..<subRange.upperBound {
             if let row = kvoWrapper.rows.object(at: i) as? BaseRow {
                 row.willBeRemovedFromSection()
                 kvoWrapper._allRows.remove(at: kvoWrapper._allRows.index(of: row)!)
             }
         }
 
-        kvoWrapper.rows.replaceObjects(in: NSRange(location: subrange.lowerBound, length: subrange.upperBound - subrange.lowerBound),
+        kvoWrapper.rows.replaceObjects(in: NSRange(location: subRange.lowerBound, length: subRange.upperBound - subRange.lowerBound),
                                        withObjectsFrom: newElements.map { $0 })
 
-        kvoWrapper._allRows.insert(contentsOf: newElements, at: indexForInsertion(at: subrange.lowerBound))
+        kvoWrapper._allRows.insert(contentsOf: newElements, at: indexForInsertion(at: subRange.lowerBound))
         for row in newElements {
             row.wasAddedTo(section: self)
         }
@@ -319,10 +309,9 @@ extension Section: RangeReplaceableCollection {
         }
         return kvoWrapper._allRows.count
     }
-
 }
 
-extension Section /* Condition */ {
+extension Section /* Condition */{
 
     // MARK: Hidden/Disable Engine
 
@@ -413,24 +402,6 @@ extension Section /* Condition */ {
     }
 }
 
-extension Section /* Helpers */ {
-
-    /**
-     *  This method inserts a row after another row.
-     *  It is useful if you want to insert a row after a row that is currently hidden. Otherwise use `insert(at: Int)`.
-     *  It throws an error if the old row is not in this section.
-     */
-    public func insert(row newRow: BaseRow, after previousRow: BaseRow) throws {
-        guard let rowIndex = (kvoWrapper._allRows as [BaseRow]).index(of: previousRow) else {
-            throw EurekaError.rowNotInSection(row: previousRow)
-        }
-        kvoWrapper._allRows.insert(newRow, at: index(after: rowIndex))
-        show(row: newRow)
-        newRow.wasAddedTo(section: self)
-    }
-
-}
-
 /**
  *  Navigation options for a form view controller.
  */
@@ -481,38 +452,22 @@ open class MultivaluedSection: Section {
         self.multivaluedOptions = multivaluedOptions
         super.init(header: header, footer: footer, {section in initializer(section as! MultivaluedSection) })
         guard multivaluedOptions.contains(.Insert) else { return }
-        initialize()
-    }
-
-    public required init() {
-        self.multivaluedOptions = MultivaluedOptions.Insert.union(.Delete)
-        super.init()
-        initialize()
-    }
-
-    #if swift(>=4.1)
-    public required init<S>(_ elements: S) where S : Sequence, S.Element == BaseRow {
-        self.multivaluedOptions = MultivaluedOptions.Insert.union(.Delete)
-        super.init(elements)
-        initialize()
-    }
-    #endif
-
-    func initialize() {
         let addRow = addButtonProvider(self)
         addRow.onCellSelection { cell, row in
-            guard !row.isDisabled else { return }
             guard let tableView = cell.formViewController()?.tableView, let indexPath = row.indexPath else { return }
             cell.formViewController()?.tableView(tableView, commit: .insert, forRowAt: indexPath)
         }
         self <<< addRow
     }
-    /**
-     Method used to get all the values of the section.
 
-     - returns: An Array mapping the row values. [value]
-     */
-    public func values() -> [Any?] {
-        return kvoWrapper._allRows.filter({ $0.baseValue != nil }).map({ $0.baseValue })
+    public required init() {
+        self.multivaluedOptions = MultivaluedOptions.Insert.union(.Delete)
+        super.init()
+        let addRow = addButtonProvider(self)
+        addRow.onCellSelection { cell, row in
+            guard let tableView = cell.formViewController()?.tableView, let indexPath = row.indexPath else { return }
+            cell.formViewController()?.tableView(tableView, commit: .insert, forRowAt: indexPath)
+        }
+        self <<< addRow
     }
 }

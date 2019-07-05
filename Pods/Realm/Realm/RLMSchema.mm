@@ -27,7 +27,6 @@
 #import "RLMSwiftSupport.h"
 #import "RLMUtil.hpp"
 
-#import "object_schema.hpp"
 #import "object_store.hpp"
 #import "schema.hpp"
 
@@ -107,7 +106,7 @@ static void RLMRegisterClassLocalNames(Class *classes, NSUInteger count) {
         }
 
         NSString *className = NSStringFromClass(cls);
-        if ([className hasPrefix:@"RLM:"] || [className hasPrefix:@"NSKVONotifying"]) {
+        if ([className hasPrefix:@"RLM:"]) {
             continue;
         }
 
@@ -198,7 +197,7 @@ static void RLMRegisterClassLocalNames(Class *classes, NSUInteger count) {
     // Verify that all of the targets of links are included in the class list
     [schema->_objectSchemaByName enumerateKeysAndObjectsUsingBlock:^(id, RLMObjectSchema *objectSchema, BOOL *) {
         for (RLMProperty *prop in objectSchema.properties) {
-            if (prop.type != RLMPropertyTypeObject) {
+            if (prop.type != RLMPropertyTypeObject && prop.type != RLMPropertyTypeArray) {
                 continue;
             }
             if (!schema->_objectSchemaByName[prop.objectClassName]) {
@@ -352,21 +351,8 @@ static void RLMRegisterClassLocalNames(Class *classes, NSUInteger count) {
         std::vector<realm::ObjectSchema> schema;
         schema.reserve(_objectSchemaByName.count);
         [_objectSchemaByName enumerateKeysAndObjectsUsingBlock:[&](NSString *, RLMObjectSchema *objectSchema, BOOL *) {
-            schema.push_back([objectSchema objectStoreCopy:self]);
+            schema.push_back(objectSchema.objectStoreCopy);
         }];
-
-        // Having both obj-c and Swift classes for the same tables results in
-        // duplicate ObjectSchemas that we need to filter out
-        std::sort(begin(schema), end(schema), [](auto&& a, auto&& b) { return a.name < b.name; });
-        schema.erase(std::unique(begin(schema), end(schema), [](auto&& a, auto&& b) {
-            if (a.name == b.name) {
-                // If we make _realmObjectName public this needs to be turned into an exception
-                REALM_ASSERT_DEBUG(a.persisted_properties == b.persisted_properties);
-                return true;
-            }
-            return false;
-        }), end(schema));
-
         _objectStoreSchema = std::move(schema);
     }
     return _objectStoreSchema;

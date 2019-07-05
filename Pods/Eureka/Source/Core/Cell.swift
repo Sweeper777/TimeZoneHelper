@@ -23,7 +23,6 @@
 // THE SOFTWARE.
 
 import Foundation
-import UIKit
 
 /// Base class for the Eureka cells
 open class BaseCell: UITableViewCell, BaseCellType {
@@ -38,7 +37,7 @@ open class BaseCell: UITableViewCell, BaseCellType {
         super.init(coder: aDecoder)
     }
 
-    public required override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    public required override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
 
@@ -86,14 +85,12 @@ open class BaseCell: UITableViewCell, BaseCellType {
 }
 
 /// Generic class that represents the Eureka cells.
-open class Cell<T>: BaseCell, TypedCellType where T: Equatable {
+open class Cell<T: Equatable> : BaseCell, TypedCellType {
 
     public typealias Value = T
 
     /// The row associated to this cell
     public weak var row: RowOf<T>!
-
-    private var updatingCellForTintColorDidChange = false
 
     /// Returns the navigationAccessoryView if it is defined or calls super if not.
     override open var inputAccessoryView: UIView? {
@@ -107,7 +104,7 @@ open class Cell<T>: BaseCell, TypedCellType where T: Equatable {
         super.init(coder: aDecoder)
     }
 
-    required public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
 
@@ -151,17 +148,6 @@ open class Cell<T>: BaseCell, TypedCellType where T: Equatable {
             formViewController()?.endEditing(of: self)
         }
         return result
-    }
-
-    open override func tintColorDidChange() {
-        super.tintColorDidChange()
-
-        /* Protection from infinite recursion in case an update method changes the tintColor */
-        if !updatingCellForTintColorDidChange && row != nil {
-            updatingCellForTintColorDidChange = true
-            row.updateCell()
-            updatingCellForTintColorDidChange = false
-        }
     }
 
     /// The untyped row associated to this cell.

@@ -17,7 +17,6 @@ extension UIDevice {
         return UIDevice.current.systemName
     }
 
-    @objc
     public class func systemVersion() -> String {
         return UIDevice.current.systemVersion
     }
@@ -30,11 +29,11 @@ extension UIDevice {
         return Bundle.main.preferredLocalizations[0]
     }
 
-    @objc public class var isPhone: Bool {
+    public class var isPhone: Bool {
         return UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone
     }
 
-    @objc public class var isPad: Bool {
+    public class var isPad: Bool {
         return UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad
     }
 

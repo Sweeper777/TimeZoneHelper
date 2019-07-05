@@ -53,9 +53,10 @@ public extension UILabel {
         let minFontScale = minFontScale.isNaN ? 0.1 : minFontScale
         let minimumFontSize = maxFontSize * minFontScale
         let rectSize = rectSize ?? bounds.size
-        guard !string.isEmpty else {
+        guard string.characters.count != 0 else {
             return self.font.pointSize
         }
+
 
         let constraintSize = numberOfLines == 1 ?
             CGSize(width: CGFloat.greatestFiniteMagnitude, height: rectSize.height) :
@@ -67,11 +68,11 @@ public extension UILabel {
 
 // MARK: - Helpers
 
-extension UILabel {
+private extension UILabel {
 
-    private func currentAttributedStringAttributes() -> [NSAttributedString.Key: Any] {
-        var newAttributes = [NSAttributedString.Key: Any]()
-        attributedText?.enumerateAttributes(in: NSRange(0..<(text?.count ?? 0)), options: .longestEffectiveRangeNotRequired, using: { attributes, _, _ in
+    func currentAttributedStringAttributes() -> [String : Any] {
+        var newAttributes = [String: Any]()
+        attributedText?.enumerateAttributes(in: NSRange(0..<(text?.characters.count ?? 0)), options: .longestEffectiveRangeNotRequired, using: { attributes, range, stop in
             newAttributes = attributes
         })
         return newAttributes
@@ -81,16 +82,16 @@ extension UILabel {
 
 // MARK: - Search
 
-extension UILabel {
+private extension UILabel {
 
-    private enum FontSizeState {
-        case fit, tooBig, tooSmall
+    enum FontSizeState {
+        case Fit, TooBig, TooSmall
     }
 
-    private func binarySearch(string: String, minSize: CGFloat, maxSize: CGFloat, size: CGSize, constraintSize: CGSize) -> CGFloat {
+    func binarySearch(string: String, minSize: CGFloat, maxSize: CGFloat, size: CGSize, constraintSize: CGSize) -> CGFloat {
         let fontSize = (minSize + maxSize) / 2
         var attributes = currentAttributedStringAttributes()
-        attributes[NSAttributedString.Key.font] = font.withSize(fontSize)
+        attributes[NSFontAttributeName] = font.withSize(fontSize)
 
         let rect = string.boundingRect(with: constraintSize, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
         let state = numberOfLines == 1 ? singleLineSizeState(rect: rect, size: size) : multiLineSizeState(rect: rect, size: size)
@@ -100,7 +101,7 @@ extension UILabel {
         let diff = maxSize - minSize
         guard diff > 0.1 else {
             switch state {
-            case .tooSmall:
+            case .TooSmall:
                 return maxSize
             default:
                 return minSize
@@ -108,33 +109,33 @@ extension UILabel {
         }
 
         switch state {
-        case .fit: return fontSize
-        case .tooBig: return binarySearch(string: string, minSize: minSize, maxSize: fontSize, size: size, constraintSize: constraintSize)
-        case .tooSmall: return binarySearch(string: string, minSize: fontSize, maxSize: maxSize, size: size, constraintSize: constraintSize)
+        case .Fit: return fontSize
+        case .TooBig: return binarySearch(string: string, minSize: minSize, maxSize: fontSize, size: size, constraintSize: constraintSize)
+        case .TooSmall: return binarySearch(string: string, minSize: fontSize, maxSize: maxSize, size: size, constraintSize: constraintSize)
         }
     }
 
-    private func singleLineSizeState(rect: CGRect, size: CGSize) -> FontSizeState {
+    func singleLineSizeState(rect: CGRect, size: CGSize) -> FontSizeState {
         if rect.width >= size.width + 10 && rect.width <= size.width {
-            return .fit
+            return .Fit
         } else if rect.width > size.width {
-            return .tooBig
+            return .TooBig
         } else {
-            return .tooSmall
+            return .TooSmall
         }
     }
 
-    private func multiLineSizeState(rect: CGRect, size: CGSize) -> FontSizeState {
+    func multiLineSizeState(rect: CGRect, size: CGSize) -> FontSizeState {
         // if rect within 10 of size
         if rect.height < size.height + 10 &&
            rect.height > size.height - 10 &&
            rect.width > size.width + 10 &&
            rect.width < size.width - 10 {
-            return .fit
+            return .Fit
         } else if rect.height > size.height || rect.width > size.width {
-            return .tooBig
+            return .TooBig
         } else {
-            return .tooSmall
+            return .TooSmall
         }
     }
 

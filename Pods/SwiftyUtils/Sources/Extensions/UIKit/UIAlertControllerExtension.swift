@@ -9,11 +9,10 @@ import UIKit
 
 extension UIAlertController {
 
-    @objc
     public convenience init(title: String,
                             message: String? = nil,
                             defaultActionButtonTitle: String = "OK",
-                            defaultActionButtonStyle: UIAlertAction.Style = .default,
+                            defaultActionButtonStyle: UIAlertActionStyle = .default,
                             tintColor: UIColor? = nil) {
         self.init(title: title, message: message, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: defaultActionButtonTitle, style: defaultActionButtonStyle, handler: nil)
@@ -29,7 +28,6 @@ extension UIAlertController {
 
 extension UIAlertController {
 
-    @objc
     public func show(animated: Bool = true, completion: (() -> Void)? = nil) {
         UIApplication.shared.topViewController()?.present(self, animated: animated, completion: completion)
     }
@@ -42,7 +40,7 @@ extension UIAlertController {
 
     @discardableResult
     func addAction(title: String,
-                   style: UIAlertAction.Style = .default,
+                   style: UIAlertActionStyle = .default,
                    isEnabled: Bool = true,
                    handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertAction {
         let action = UIAlertAction(title: title, style: style, handler: handler)

@@ -23,11 +23,10 @@
 // THE SOFTWARE.
 
 import Foundation
-import UIKit
 
 // MARK: PickerInputCell
 
-open class _PickerInputCell<T> : Cell<T>, CellType, UIPickerViewDataSource, UIPickerViewDelegate where T: Equatable {
+open class PickerInputCell<T: Equatable> : Cell<T>, CellType, UIPickerViewDataSource, UIPickerViewDelegate where T: Equatable, T: InputTypeInitiable {
 
     lazy public var picker: UIPickerView = {
         let picker = UIPickerView()
@@ -35,9 +34,9 @@ open class _PickerInputCell<T> : Cell<T>, CellType, UIPickerViewDataSource, UIPi
         return picker
     }()
 
-    fileprivate var pickerInputRow: _PickerInputRow<T>? { return row as? _PickerInputRow<T> }
+    private var pickerInputRow: _PickerInputRow<T>? { return row as? _PickerInputRow<T> }
 
-    public required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    public required init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
 
@@ -75,6 +74,10 @@ open class _PickerInputCell<T> : Cell<T>, CellType, UIPickerViewDataSource, UIPi
         }
 
         picker.reloadAllComponents()
+        if let selectedValue = pickerInputRow?.value, let index = pickerInputRow?.options.index(of: selectedValue) {
+            picker.selectRow(index, inComponent: 0, animated: true)
+        }
+
     }
 
     open override func didSelect() {
@@ -114,28 +117,9 @@ open class _PickerInputCell<T> : Cell<T>, CellType, UIPickerViewDataSource, UIPi
     }
 }
 
-open class PickerInputCell<T>: _PickerInputCell<T> where T: Equatable {
-
-    public required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
-
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    open override func update() {
-        super.update()
-        if let selectedValue = pickerInputRow?.value, let index = pickerInputRow?.options.index(of: selectedValue) {
-            picker.selectRow(index, inComponent: 0, animated: true)
-        }
-    }
-
-}
-
 // MARK: PickerInputRow
 
-open class _PickerInputRow<T> : Row<PickerInputCell<T>>, NoValueDisplayTextConformance where T: Equatable {
+open class _PickerInputRow<T> : Row<PickerInputCell<T>>, NoValueDisplayTextConformance where T: Equatable, T: InputTypeInitiable {
     open var noValueDisplayText: String? = nil
 
     open var options = [T]()

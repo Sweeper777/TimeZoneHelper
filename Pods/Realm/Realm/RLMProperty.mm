@@ -21,13 +21,11 @@
 #import "RLMArray_Private.hpp"
 #import "RLMListBase.h"
 #import "RLMObject.h"
-#import "RLMObjectSchema_Private.hpp"
 #import "RLMObject_Private.h"
+#import "RLMOptionalBase.h"
 #import "RLMSchema_Private.h"
 #import "RLMSwiftSupport.h"
 #import "RLMUtil.hpp"
-
-#import "property.hpp"
 
 static_assert((int)RLMPropertyTypeInt    == (int)realm::PropertyType::Int, "");
 static_assert((int)RLMPropertyTypeBool   == (int)realm::PropertyType::Bool, "");
@@ -76,27 +74,30 @@ void RLMValidateSwiftPropertyName(NSString *name) {
     }
 }
 
-static bool rawTypeShouldBeTreatedAsComputedProperty(NSString *rawType) {
+static bool rawTypeIsComputedProperty(NSString *rawType) {
     return [rawType isEqualToString:@"@\"RLMLinkingObjects\""] || [rawType hasPrefix:@"@\"RLMLinkingObjects<"];
 }
 
 @implementation RLMProperty
 
 + (instancetype)propertyForObjectStoreProperty:(const realm::Property &)prop {
-    auto ret = [[RLMProperty alloc] initWithName:@(prop.name.c_str())
-                                            type:static_cast<RLMPropertyType>(prop.type & ~realm::PropertyType::Flags)
-                                 objectClassName:prop.object_type.length() ? @(prop.object_type.c_str()) : nil
-                          linkOriginPropertyName:prop.link_origin_property_name.length() ? @(prop.link_origin_property_name.c_str()) : nil
-                                         indexed:prop.is_indexed
-                                        optional:is_nullable(prop.type)];
+    bool optional = false;
+    RLMPropertyType type;
     if (is_array(prop.type)) {
-        ret->_array = true;
+        REALM_ASSERT(prop.type == realm::PropertyType::Object);
+        type = RLMPropertyTypeArray;
     }
-    if (!prop.public_name.empty()) {
-        ret->_columnName = ret->_name;
-        ret->_name = @(prop.public_name.c_str());
+    else {
+        optional = is_nullable(prop.type);
+        type = static_cast<RLMPropertyType>(prop.type & ~realm::PropertyType::Flags);
     }
-    return ret;
+
+    return [[RLMProperty alloc] initWithName:@(prop.name.c_str())
+                                        type:type
+                             objectClassName:prop.object_type.length() ? @(prop.object_type.c_str()) : nil
+                      linkOriginPropertyName:prop.link_origin_property_name.length() ? @(prop.link_origin_property_name.c_str()) : nil
+                                     indexed:prop.is_indexed
+                                    optional:optional];
 }
 
 - (instancetype)initWithName:(NSString *)name
@@ -217,12 +218,6 @@ static realm::util::Optional<RLMPropertyType> typeFromProtocolString(const char 
         _type = RLMPropertyTypeData;
     }
     else if (strncmp(code, arrayPrefix, arrayPrefixLen) == 0) {
-        _array = true;
-        if (auto type = typeFromProtocolString(code + arrayPrefixLen)) {
-            _type = *type;
-            return YES;
-        }
-
         // get object class from type string - @"RLMArray<objectClassName>"
         _objectClassName = [[NSString alloc] initWithBytes:code + arrayPrefixLen
                                                     length:strlen(code + arrayPrefixLen) - 2 // drop trailing >"
@@ -230,7 +225,7 @@ static realm::util::Optional<RLMPropertyType> typeFromProtocolString(const char 
 
         if ([RLMSchema classForString:_objectClassName]) {
             _optional = false;
-            _type = RLMPropertyTypeObject;
+            _type = RLMPropertyTypeArray;
             return YES;
         }
         @throw RLMException(@"Property '%@' is of type 'RLMArray<%@>' which is not a supported RLMArray object type. "
@@ -244,14 +239,13 @@ static realm::util::Optional<RLMPropertyType> typeFromProtocolString(const char 
             return YES;
         }
         @throw RLMException(@"Property '%@' is of type %s which is not a supported NSNumber object type. "
-                            @"NSNumbers can only be RLMInt, RLMFloat, RLMDouble, and RLMBool at the moment. "
+                            @"NSNumbers can only be RLMInt, RLMFloat, RLMDouble, and RLMBool. "
                             @"See https://realm.io/docs/objc/latest for more information.", _name, code + 1);
     }
     else if (strncmp(code, linkingObjectsPrefix, linkingObjectsPrefixLen) == 0 &&
              (code[linkingObjectsPrefixLen] == '"' || code[linkingObjectsPrefixLen] == '<')) {
         _type = RLMPropertyTypeLinkingObjects;
         _optional = false;
-        _array = true;
 
         if (!_objectClassName || !_linkOriginPropertyName) {
             @throw RLMException(@"Property '%@' is of type RLMLinkingObjects but +linkingObjectsProperties did not specify the class "
@@ -302,14 +296,10 @@ static realm::util::Optional<RLMPropertyType> typeFromProtocolString(const char 
     return YES;
 }
 
-- (void)parseObjcProperty:(objc_property_t)property
-                 readOnly:(bool *)readOnly
-                 computed:(bool *)computed
-                  rawType:(NSString **)rawType {
+- (void)parseObjcProperty:(objc_property_t)property readOnly:(bool *)readOnly rawType:(NSString **)rawType {
     unsigned int count;
     objc_property_attribute_t *attrs = property_copyAttributeList(property, &count);
 
-    *computed = true;
     for (size_t i = 0; i < count; ++i) {
         switch (*attrs[i].name) {
             case 'T':
@@ -318,33 +308,17 @@ static realm::util::Optional<RLMPropertyType> typeFromProtocolString(const char 
             case 'R':
                 *readOnly = true;
                 break;
+            case 'N':
+                // nonatomic
+                break;
+            case 'D':
+                // dynamic
+                break;
             case 'G':
                 _getterName = @(attrs[i].value);
                 break;
             case 'S':
                 _setterName = @(attrs[i].value);
-                break;
-            case 'V': // backing ivar name
-                *computed = false;
-                break;
-
-            case '&':
-                // retain/assign
-                break;
-            case 'C':
-                // copy
-                break;
-            case 'D':
-                // dynamic
-                break;
-            case 'N':
-                // nonatomic
-                break;
-            case 'P':
-                // GC'able
-                break;
-            case 'W':
-                // weak
                 break;
             default:
                 break;
@@ -375,31 +349,8 @@ static realm::util::Optional<RLMPropertyType> typeFromProtocolString(const char 
 
     NSString *rawType;
     bool readOnly = false;
-    bool isComputed = false;
-    [self parseObjcProperty:property readOnly:&readOnly computed:&isComputed rawType:&rawType];
-
-    // Swift sometimes doesn't explicitly set the ivar name in the metadata, so check if
-    // there's an ivar with the same name as the property.
-    if (!readOnly && isComputed && class_getInstanceVariable([obj class], name.UTF8String)) {
-        isComputed = false;
-    }
-
-    // Check if there's a storage ivar for a lazy property in this name. We don't honor
-    // @lazy in managed objects, but allow it for unmanaged objects which are
-    // subclasses of RLMObject (but not RealmSwift.Object). It's unclear if there's a
-    // good reason for this difference.
-    if (!readOnly && isComputed) {
-        // Xcode 10 and earlier
-        NSString *backingPropertyName = [NSString stringWithFormat:@"%@.storage", name];
-        isComputed = !class_getInstanceVariable([obj class], backingPropertyName.UTF8String);
-    }
-    if (!readOnly && isComputed) {
-        // Xcode 11
-        NSString *backingPropertyName = [NSString stringWithFormat:@"$__lazy_storage_$_%@", name];
-        isComputed = !class_getInstanceVariable([obj class], backingPropertyName.UTF8String);
-    }
-
-    if (readOnly || isComputed) {
+    [self parseObjcProperty:property readOnly:&readOnly rawType:&rawType];
+    if (readOnly) {
         return nil;
     }
 
@@ -423,11 +374,9 @@ static realm::util::Optional<RLMPropertyType> typeFromProtocolString(const char 
     // convert array types to objc variant
     if ([rawType isEqualToString:@"@\"RLMArray\""]) {
         RLMArray *value = propertyValue;
-        _type = value.type;
-        _optional = value.optional;
-        _array = true;
+        _type = RLMPropertyTypeArray;
         _objectClassName = value.objectClassName;
-        if (_type == RLMPropertyTypeObject && ![RLMSchema classForString:_objectClassName]) {
+        if (![RLMSchema classForString:_objectClassName]) {
             @throw RLMException(@"Property '%@' is of type 'RLMArray<%@>' which is not a supported RLMArray object type. "
                                 @"RLMArrays can only contain instances of RLMObject subclasses. "
                                 @"See https://realm.io/docs/objc/latest/#to-many for more information.", _name, _objectClassName);
@@ -496,10 +445,9 @@ static realm::util::Optional<RLMPropertyType> typeFromProtocolString(const char 
 
     NSString *rawType;
     bool isReadOnly = false;
-    bool isComputed = false;
-    [self parseObjcProperty:property readOnly:&isReadOnly computed:&isComputed rawType:&rawType];
-    bool shouldBeTreatedAsComputedProperty = rawTypeShouldBeTreatedAsComputedProperty(rawType);
-    if ((isReadOnly || isComputed) && !shouldBeTreatedAsComputedProperty) {
+    [self parseObjcProperty:property readOnly:&isReadOnly rawType:&rawType];
+    bool isComputedProperty = rawTypeIsComputedProperty(rawType);
+    if (isReadOnly && !isComputedProperty) {
         return nil;
     }
 
@@ -508,7 +456,7 @@ static realm::util::Optional<RLMPropertyType> typeFromProtocolString(const char 
                              "Add to ignoredPropertyNames: method to ignore.", self.name);
     }
 
-    if (!isReadOnly && shouldBeTreatedAsComputedProperty) {
+    if (!isReadOnly && isComputedProperty) {
         @throw RLMException(@"Property '%@' must be declared as readonly as %@ properties cannot be written to.",
                             self.name, RLMTypeToString(_type));
     }
@@ -526,12 +474,10 @@ static realm::util::Optional<RLMPropertyType> typeFromProtocolString(const char 
         return nil;
     }
     _name = name;
-    _array = true;
+    _type = RLMPropertyTypeArray;
     _swiftIvar = class_getInstanceVariable([object class], name.UTF8String);
 
     RLMArray *array = [object_getIvar(object, _swiftIvar) _rlmArray];
-    _type = array.type;
-    _optional = array.optional;
     _objectClassName = array.objectClassName;
 
     // no obj-c property for generic lists, and thus no getter/setter names
@@ -570,7 +516,6 @@ static realm::util::Optional<RLMPropertyType> typeFromProtocolString(const char 
 
     _name = name;
     _type = RLMPropertyTypeLinkingObjects;
-    _array = true;
     _objectClassName = objectClassName;
     _linkOriginPropertyName = linkOriginPropertyName;
     _swiftIvar = ivar;
@@ -583,10 +528,8 @@ static realm::util::Optional<RLMPropertyType> typeFromProtocolString(const char 
 - (id)copyWithZone:(NSZone *)zone {
     RLMProperty *prop = [[RLMProperty allocWithZone:zone] init];
     prop->_name = _name;
-    prop->_columnName = _columnName;
     prop->_type = _type;
     prop->_objectClassName = _objectClassName;
-    prop->_array = _array;
     prop->_indexed = _indexed;
     prop->_getterName = _getterName;
     prop->_setterName = _setterName;
@@ -626,45 +569,26 @@ static realm::util::Optional<RLMPropertyType> typeFromProtocolString(const char 
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:
-            @"%@ {\n"
-             "\ttype = %@;\n"
-             "\tobjectClassName = %@;\n"
-             "\tlinkOriginPropertyName = %@;\n"
-             "\tindexed = %@;\n"
-             "\tisPrimary = %@;\n"
-             "\tarray = %@;\n"
-             "\toptional = %@;\n"
-             "}",
-            self.name, RLMTypeToString(self.type), self.objectClassName,
-            self.linkOriginPropertyName,
-            self.indexed ? @"YES" : @"NO",
-            self.isPrimary ? @"YES" : @"NO",
-            self.array ? @"YES" : @"NO",
-            self.optional ? @"YES" : @"NO"];
+    return [NSString stringWithFormat:@"%@ {\n\ttype = %@;\n\tobjectClassName = %@;\n\tlinkOriginPropertyName = %@;\n\tindexed = %@;\n\tisPrimary = %@;\n\toptional = %@;\n}", self.name, RLMTypeToString(self.type), self.objectClassName, self.linkOriginPropertyName, self.indexed ? @"YES" : @"NO", self.isPrimary ? @"YES" : @"NO", self.optional ? @"YES" : @"NO"];
 }
 
-- (NSString *)columnName {
-    return _columnName ?: _name;
-}
-
-- (realm::Property)objectStoreCopy:(RLMSchema *)schema {
+- (realm::Property)objectStoreCopy {
     realm::Property p;
-    p.name = self.columnName.UTF8String;
-    if (_objectClassName) {
-        RLMObjectSchema *targetSchema = schema[_objectClassName];
-        p.object_type = (targetSchema.objectName ?: _objectClassName).UTF8String;
-        if (_linkOriginPropertyName) {
-            p.link_origin_property_name = (targetSchema[_linkOriginPropertyName].columnName ?: _linkOriginPropertyName).UTF8String;
+    p.name = _name.UTF8String;
+    p.object_type = _objectClassName ? _objectClassName.UTF8String : "";
+    p.is_indexed = (bool)_indexed;
+    p.link_origin_property_name = _linkOriginPropertyName ? _linkOriginPropertyName.UTF8String : "";
+    if (_type == RLMPropertyTypeArray) {
+        p.type = realm::PropertyType::Object | realm::PropertyType::Array;
+    }
+    else if (_type == RLMPropertyTypeLinkingObjects) {
+        p.type = realm::PropertyType::LinkingObjects | realm::PropertyType::Array;
+    }
+    else {
+        p.type = static_cast<realm::PropertyType>(_type);
+        if (_optional) {
+            p.type |= realm::PropertyType::Nullable;
         }
-    }
-    p.is_indexed = static_cast<bool>(_indexed);
-    p.type = static_cast<realm::PropertyType>(_type);
-    if (_array) {
-        p.type |= realm::PropertyType::Array;
-    }
-    if (_optional) {
-        p.type |= realm::PropertyType::Nullable;
     }
     return p;
 }

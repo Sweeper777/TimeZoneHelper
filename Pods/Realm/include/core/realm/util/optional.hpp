@@ -21,7 +21,6 @@
 #define REALM_UTIL_OPTIONAL_HPP
 
 #include <realm/util/features.h>
-#include <realm/util/backtrace.hpp>
 
 #include <stdexcept>  // std::logic_error
 #include <functional> // std::less
@@ -53,8 +52,15 @@ struct InPlace {
 static constexpr InPlace in_place;
 
 // Note: Should conform with the future std::bad_optional_access.
-struct BadOptionalAccess : ExceptionWithBacktrace<std::logic_error> {
-    using ExceptionWithBacktrace<std::logic_error>::ExceptionWithBacktrace;
+struct BadOptionalAccess : std::logic_error {
+    explicit BadOptionalAccess(const std::string& what_arg)
+        : std::logic_error(what_arg)
+    {
+    }
+    explicit BadOptionalAccess(const char* what_arg)
+        : std::logic_error(what_arg)
+    {
+    }
 };
 
 } // namespace util
@@ -134,7 +140,6 @@ private:
     }
     void clear();
 };
-
 
 /// An Optional<void> is functionally equivalent to a bool.
 /// Note: C++17 does not (yet) specify this specialization, but it is convenient
@@ -719,24 +724,5 @@ struct OptionalStorage<T, false> {
 using util::none;
 
 } // namespace realm
-
-
-// for convienence, inject a default hash implementation into the std namespace
-namespace std
-{
-    template<typename T>
-    struct hash<realm::util::Optional<T>>
-    {
-        std::size_t operator()(realm::util::Optional<T> const& o) const noexcept
-        {
-            if (bool(o) == false) {
-                return 0; // any choice will collide with some std::hash
-            } else {
-                return std::hash<T>{}(*o);
-            }
-        }
-    };
-}
-
 
 #endif // REALM_UTIL_OPTIONAL_HPP

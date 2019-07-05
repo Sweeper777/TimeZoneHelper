@@ -19,7 +19,6 @@
 #import <Realm/RLMSyncManager.h>
 
 #import "RLMSyncUtil_Private.h"
-#import "RLMNetworkClient.h"
 
 @class RLMSyncUser, RLMSyncConfiguration;
 
@@ -31,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RLMSyncManager ()
 
 @property (nullable, nonatomic, copy) RLMSyncBasicErrorReportingBlock sessionCompletionNotifier;
+
+- (nullable NSNumber *)globalSSLValidationDisabled;
 
 - (void)_fireError:(NSError *)error;
 
@@ -44,8 +45,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSArray<RLMSyncUser *> *)_allUsers;
 
 + (void)resetForTesting;
-
-- (RLMNetworkRequestOptions *)networkRequestOptions;
 
 NS_ASSUME_NONNULL_END
 

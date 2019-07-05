@@ -31,16 +31,15 @@ public struct RuleMinLength: RuleType {
     public var id: String?
     public var validationError: ValidationError
 
-    public init(minLength: UInt, msg: String? = nil, id: String? = nil) {
+    public init(minLength: UInt, msg: String? = nil) {
         let ruleMsg = msg ?? "Field value must have at least \(minLength) characters"
         min = minLength
         validationError = ValidationError(msg: ruleMsg)
-        self.id = id
     }
 
     public func isValid(value: String?) -> ValidationError? {
         guard let value = value else { return nil }
-        return value.count < Int(min) ? validationError : nil
+        return value.characters.count < Int(min) ? validationError : nil
     }
 }
 
@@ -51,16 +50,15 @@ public struct RuleMaxLength: RuleType {
     public var id: String?
     public var validationError: ValidationError
 
-    public init(maxLength: UInt, msg: String? = nil, id: String? = nil) {
+    public init(maxLength: UInt, msg: String? = nil) {
         let ruleMsg = msg ?? "Field value must have less than \(maxLength) characters"
         max = maxLength
         validationError = ValidationError(msg: ruleMsg)
-        self.id = id
     }
 
     public func isValid(value: String?) -> ValidationError? {
         guard let value = value else { return nil }
-        return value.count > Int(max) ? validationError : nil
+        return value.characters.count > Int(max) ? validationError : nil
     }
 }
 
@@ -70,15 +68,14 @@ public struct RuleExactLength: RuleType {
     public var id: String?
     public var validationError: ValidationError
     
-    public init(exactLength: UInt, msg: String? = nil, id: String? = nil) {
+    public init(exactLength: UInt, msg: String? = nil) {
         let ruleMsg = msg ?? "Field value must have exactly \(exactLength) characters"
         length = exactLength
         validationError = ValidationError(msg: ruleMsg)
-        self.id = id
     }
     
     public func isValid(value: String?) -> ValidationError? {
         guard let value = value else { return nil }
-        return value.count != Int(length) ? validationError : nil
+        return value.characters.count != Int(length) ? validationError : nil
     }
 }

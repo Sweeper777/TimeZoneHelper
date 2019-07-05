@@ -23,13 +23,12 @@
 // THE SOFTWARE.
 
 import Foundation
-import UIKit
 
 open class DatePickerCell: Cell<Date>, CellType {
 
     @IBOutlet weak public var datePicker: UIDatePicker!
 
-    public required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    public required init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         let datePicker = UIDatePicker()
         self.datePicker = datePicker
         self.datePicker.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +49,7 @@ open class DatePickerCell: Cell<Date>, CellType {
         selectionStyle = .none
         accessoryType = .none
         editingAccessoryType =  .none
-        height = { UITableView.automaticDimension }
+        height = { UITableViewAutomaticDimension }
         datePicker.datePickerMode = datePickerMode()
         datePicker.addTarget(self, action: #selector(DatePickerCell.datePickerValueChanged(_:)), for: .valueChanged)
     }
@@ -73,18 +72,11 @@ open class DatePickerCell: Cell<Date>, CellType {
         }
     }
 
-    @objc func datePickerValueChanged(_ sender: UIDatePicker) {
+    func datePickerValueChanged(_ sender: UIDatePicker) {
         row?.value = sender.date
-        
-        // workaround for UIDatePicker bug when it doesn't trigger "value changed" event after trying to pick 00:00 value
-        // for details see this comment: https://stackoverflow.com/questions/20181980/uidatepicker-bug-uicontroleventvaluechanged-after-hitting-minimum-internal#comment56681891_20204225
-        if sender.datePickerMode == .countDownTimer && sender.countDownDuration == TimeInterval(sender.minuteInterval * 60) {
-            datePicker.countDownDuration = sender.countDownDuration
-        }
-        
     }
 
-    private func datePickerMode() -> UIDatePicker.Mode {
+    private func datePickerMode() -> UIDatePickerMode {
         switch row {
         case is DatePickerRow:
             return .date

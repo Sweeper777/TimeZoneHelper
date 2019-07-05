@@ -23,13 +23,12 @@
 // THE SOFTWARE.
 
 import Foundation
-import UIKit
 
 // MARK: CheckCell
 
 public final class CheckCell: Cell<Bool>, CellType {
 
-    required public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
 
@@ -37,26 +36,28 @@ public final class CheckCell: Cell<Bool>, CellType {
         super.init(coder: aDecoder)
     }
 
-    public override func update() {
+    open override func update() {
         super.update()
         accessoryType = row.value == true ? .checkmark : .none
         editingAccessoryType = accessoryType
         selectionStyle = .default
+        var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
+        tintColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         if row.isDisabled {
-            tintAdjustmentMode = .dimmed
+            tintColor = UIColor(red: red, green: green, blue: blue, alpha: 0.3)
             selectionStyle = .none
         } else {
-            tintAdjustmentMode = .automatic
+            tintColor = UIColor(red: red, green: green, blue: blue, alpha: 1)
         }
     }
 
-    public override func setup() {
+    open override func setup() {
         super.setup()
         accessoryType = .checkmark
         editingAccessoryType = accessoryType
     }
 
-    public override func didSelect() {
+    open override func didSelect() {
         row.value = row.value ?? false ? false : true
         row.deselect()
         row.updateCell()

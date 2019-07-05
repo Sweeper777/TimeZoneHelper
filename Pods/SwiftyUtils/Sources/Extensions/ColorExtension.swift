@@ -13,13 +13,12 @@
 
 extension SwiftyColor {
 
-    @objc
     public convenience init(hex: String) {
         let hex = hex.trimmingCharacters(in: NSCharacterSet.alphanumerics.inverted)
         var int = UInt32()
         Scanner(string: hex).scanHexInt32(&int)
         let a, r, g, b: UInt32
-        switch hex.count {
+        switch hex.characters.count {
         case 3:
             (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
         case 6:

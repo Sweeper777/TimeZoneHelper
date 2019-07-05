@@ -133,14 +133,6 @@ private:
     Row m_row;
 };
 
-class SyncClientMetadata {
-public:
-    struct Schema {
-        // A UUID that identifies this client.
-        size_t idx_uuid;
-    };
-};
-
 template<class T>
 class SyncMetadataResults {
 public:
@@ -185,22 +177,24 @@ public:
     // Return a Results object containing all pending actions.
     SyncFileActionMetadataResults all_pending_actions() const;
 
+    // Delete an existing metadata action given the original name of the Realm it involves.
+    // Returns true iff there was an existing metadata action and it was deleted.
+    bool delete_metadata_action(const std::string&) const;
+
     // Retrieve or create user metadata.
     // Note: if `make_is_absent` is true and the user has been marked for deletion, it will be unmarked.
     util::Optional<SyncUserMetadata> get_or_make_user_metadata(const std::string& identity, const std::string& url,
                                                                bool make_if_absent=true) const;
 
     // Retrieve file action metadata.
-    util::Optional<SyncFileActionMetadata> get_file_action_metadata(StringData path) const;
+    util::Optional<SyncFileActionMetadata> get_file_action_metadata(const std::string& path) const;
 
     // Create file action metadata.
-    void make_file_action_metadata(StringData original_name, StringData url,
-                                   StringData local_uuid,
-                                   SyncFileActionMetadata::Action action,
-                                   StringData new_name = {}) const;
-
-    // Get the unique identifier of this client.
-    const std::string& client_uuid() const { return m_client_uuid; }
+    SyncFileActionMetadata make_file_action_metadata(const std::string& original_name,
+                                                     const std::string& url,
+                                                     const std::string& local_uuid,
+                                                     SyncFileActionMetadata::Action action,
+                                                     util::Optional<std::string> new_name=none) const;
 
     /// Construct the metadata manager.
     ///
@@ -216,10 +210,6 @@ private:
     Realm::Config m_metadata_config;
     SyncUserMetadata::Schema m_user_schema;
     SyncFileActionMetadata::Schema m_file_action_schema;
-    SyncClientMetadata::Schema m_client_schema;
-    std::string m_client_uuid;
-
-    std::shared_ptr<Realm> get_realm() const;
 };
 
 }

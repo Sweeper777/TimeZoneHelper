@@ -72,29 +72,25 @@
 #pragma mark - Class-based Object Creation
 
 + (instancetype)createInDefaultRealmWithValue:(id)value {
-    return (RLMObject *)RLMCreateObjectInRealmWithValue([RLMRealm defaultRealm], [self className], value, RLMUpdatePolicyError);
+    return (RLMObject *)RLMCreateObjectInRealmWithValue([RLMRealm defaultRealm], [self className], value, false);
 }
 
 + (instancetype)createInRealm:(RLMRealm *)realm withValue:(id)value {
-    return (RLMObject *)RLMCreateObjectInRealmWithValue(realm, [self className], value, RLMUpdatePolicyError);
+    return (RLMObject *)RLMCreateObjectInRealmWithValue(realm, [self className], value, false);
 }
 
 + (instancetype)createOrUpdateInDefaultRealmWithValue:(id)value {
     return [self createOrUpdateInRealm:[RLMRealm defaultRealm] withValue:value];
 }
 
-+ (instancetype)createOrUpdateModifiedInDefaultRealmWithValue:(id)value {
-    return [self createOrUpdateModifiedInRealm:[RLMRealm defaultRealm] withValue:value];
-}
-
 + (instancetype)createOrUpdateInRealm:(RLMRealm *)realm withValue:(id)value {
-    RLMVerifyHasPrimaryKey(self);
-    return (RLMObject *)RLMCreateObjectInRealmWithValue(realm, [self className], value, RLMUpdatePolicyUpdateAll);
-}
-
-+ (instancetype)createOrUpdateModifiedInRealm:(RLMRealm *)realm withValue:(id)value {
-    RLMVerifyHasPrimaryKey(self);
-    return (RLMObject *)RLMCreateObjectInRealmWithValue(realm, [self className], value, RLMUpdatePolicyUpdateChanged);
+    // verify primary key
+    RLMObjectSchema *schema = [self sharedSchema];
+    if (!schema.primaryKeyProperty) {
+        NSString *reason = [NSString stringWithFormat:@"'%@' does not have a primary key and can not be updated", schema.className];
+        @throw [NSException exceptionWithName:@"RLMExecption" reason:reason userInfo:nil];
+    }
+    return (RLMObject *)RLMCreateObjectInRealmWithValue(realm, [self className], value, true);
 }
 
 #pragma mark - Subscripting
@@ -313,7 +309,7 @@ RLMNotificationToken *RLMObjectAddNotificationBlock(RLMObjectBase *obj, RLMObjec
     if (!obj->_realm) {
         @throw RLMException(@"Only objects which are managed by a Realm support change notifications");
     }
-    [obj->_realm verifyNotificationsAreSupported:true];
+    [obj->_realm verifyNotificationsAreSupported];
 
     struct {
         void (^block)(NSArray<NSString *> *, NSArray *, NSArray *, NSError *);

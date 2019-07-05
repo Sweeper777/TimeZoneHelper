@@ -18,7 +18,7 @@
 
 #import <Realm/RLMRealm.h>
 
-@class RLMFastEnumerator, RLMSyncSubscription;
+@class RLMFastEnumerator;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,9 +27,7 @@ FOUNDATION_EXTERN void RLMDisableSyncToDisk(void);
 
 FOUNDATION_EXTERN NSData * _Nullable RLMRealmValidatedEncryptionKey(NSData *key);
 
-FOUNDATION_EXTERN RLMSyncSubscription *RLMCastToSyncSubscription(id obj);
-
-// Translate an in-flight exception resulting from an operation on a SharedGroup to
+// Translate an in-flight exception resulting from opening a SharedGroup to
 // an NSError or NSException (if error is nil)
 void RLMRealmTranslateException(NSError **error);
 
@@ -47,7 +45,7 @@ void RLMRealmTranslateException(NSError **error);
 
 - (void)sendNotifications:(RLMNotification)notification;
 - (void)verifyThread;
-- (void)verifyNotificationsAreSupported:(bool)isCollection;
+- (void)verifyNotificationsAreSupported;
 
 @end
 

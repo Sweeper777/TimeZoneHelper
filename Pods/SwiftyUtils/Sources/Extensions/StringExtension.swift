@@ -5,7 +5,7 @@
 
 import Foundation
 
-// MARK: - Subscript
+// MARK - Subscript
 
 extension String {
 
@@ -16,14 +16,18 @@ extension String {
     public subscript(integerRange: Range<Int>) -> String {
         let start = index(startIndex, offsetBy: integerRange.lowerBound)
         let end = index(startIndex, offsetBy: integerRange.upperBound)
-        return String(self[start..<end])
+        return self[start..<end]
     }
 
 }
 
-// MARK: - Misc
+// MARK - Misc
 
 extension String {
+
+    public var length: Int {
+        return self.characters.count
+    }
 
     public func contains(_ text: String, compareOption: NSString.CompareOptions) -> Bool {
         return self.range(of: text, options: compareOption) != nil
@@ -31,7 +35,7 @@ extension String {
 
 }
 
-// MARK: - Validator
+// MARk - Validator
 
 extension String {
 
@@ -60,9 +64,8 @@ extension String {
     }
 
     public var capitalizedFirst: String {
-        let first = prefix(1).capitalized
-        let other = dropFirst()
-        return first + other
+        let result = replacingCharacters(in: Range(startIndex..<startIndex), with: String(self[startIndex]).capitalized)
+        return result
     }
 
     public mutating func trim() {
@@ -84,7 +87,7 @@ extension String {
     }
 
     public func truncated(limit: Int) -> String {
-        if self.count > limit {
+        if self.length > limit {
             var truncatedString = self[0..<limit]
             truncatedString = truncatedString.appending("...")
             return truncatedString
@@ -94,7 +97,7 @@ extension String {
 
     public func split(intoChunksOf chunkSize: Int) -> [String] {
         var output = [String]()
-        let splittedString = self
+        let splittedString = characters
             .map { $0 }
             .split(intoChunksOf: chunkSize)
         splittedString.forEach {

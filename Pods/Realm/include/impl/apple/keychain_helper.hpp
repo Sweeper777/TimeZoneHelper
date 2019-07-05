@@ -26,7 +26,7 @@
 namespace realm {
 namespace keychain {
 
-std::vector<char> metadata_realm_encryption_key(bool check_legacy_service);
+std::vector<char> metadata_realm_encryption_key();
 
 class KeychainAccessException : public std::runtime_error {
 public:

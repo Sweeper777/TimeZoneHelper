@@ -181,7 +181,7 @@ void RLMObservationInfo::recordObserver(realm::Row& objectRow, RLMClassInfo *obj
     NSUInteger sep = [keyPath rangeOfString:@"."].location;
     NSString *key = sep == NSNotFound ? keyPath : [keyPath substringToIndex:sep];
     RLMProperty *prop = objectSchema[key];
-    if (prop && prop.array) {
+    if (prop && prop.type == RLMPropertyTypeArray) {
         id value = valueForKey(key);
         RLMArray *array = [value isKindOfClass:[RLMListBase class]] ? [value _rlmArray] : value;
         array->_key = key;
@@ -189,7 +189,8 @@ void RLMObservationInfo::recordObserver(realm::Row& objectRow, RLMClassInfo *obj
     }
     else if (auto swiftIvar = prop.swiftIvar) {
         if (auto optional = RLMDynamicCast<RLMOptionalBase>(object_getIvar(object, swiftIvar))) {
-            RLMInitializeUnmanagedOptional(optional, object, prop);
+            optional.property = prop;
+            optional.object = object;
         }
     }
 }
@@ -224,7 +225,7 @@ id RLMObservationInfo::valueForKey(NSString *key) {
     // We need to return the same object each time for observing over keypaths
     // to work, so we store a cache of them here. We can't just cache them on
     // the object as that leads to retain cycles.
-    if (lastProp.array) {
+    if (lastProp.type == RLMPropertyTypeArray) {
         RLMArray *value = cachedObjects[key];
         if (!value) {
             value = getSuper();
@@ -279,7 +280,7 @@ void RLMClearTable(RLMClassInfo &objectSchema) {
     }
 
     RLMTrackDeletions(objectSchema.realm, ^{
-        Results(objectSchema.realm->_realm, *objectSchema.table()).clear();
+        objectSchema.table()->clear();
 
         for (auto info : objectSchema.observedObjects) {
             info->prepareForInvalidation();

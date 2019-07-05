@@ -9,15 +9,15 @@ import UIKit
 
 extension UIScreen {
 
-    @objc public class var size: CGSize {
+    public class var size: CGSize {
         return CGSize(width: width, height: height)
     }
 
-    @objc public class var width: CGFloat {
+    public class var width: CGFloat {
         return UIScreen.main.bounds.size.width
     }
 
-    @objc public class var height: CGFloat {
+    public class var height: CGFloat {
         return UIScreen.main.bounds.size.height
     }
 
@@ -34,7 +34,7 @@ extension UIScreen {
     }
 
     public class var heightWithoutStatusBar: CGFloat {
-        return currentOrientation.isPortrait ? height - statusBarHeight :
+        return UIInterfaceOrientationIsPortrait(currentOrientation) ? height - statusBarHeight :
             UIScreen.main.bounds.size.width - statusBarHeight
     }
 
@@ -44,7 +44,7 @@ extension UIScreen {
 
 extension UIScreen {
 
-    @objc public class var currentOrientation: UIInterfaceOrientation {
+    public class var currentOrientation: UIInterfaceOrientation {
         return UIApplication.shared.statusBarOrientation
     }
 

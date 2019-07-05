@@ -31,27 +31,27 @@ import Realm
 public final class ObjectiveCSupport {
 
     /// Convert a `Results` to a `RLMResults`.
-    public static func convert<T>(object: Results<T>) -> RLMResults<AnyObject> {
+    public static func convert<T>(object: Results<T>) -> RLMResults<RLMObject> {
         return object.rlmResults
     }
 
     /// Convert a `RLMResults` to a `Results`.
-    public static func convert(object: RLMResults<AnyObject>) -> Results<Object> {
+    public static func convert(object: RLMResults<RLMObject>) -> Results<Object> {
         return Results(object)
     }
 
     /// Convert a `List` to a `RLMArray`.
-    public static func convert<T>(object: List<T>) -> RLMArray<AnyObject> {
+    public static func convert<T>(object: List<T>) -> RLMArray<RLMObject> {
         return object._rlmArray
     }
 
     /// Convert a `RLMArray` to a `List`.
-    public static func convert(object: RLMArray<AnyObject>) -> List<Object> {
+    public static func convert(object: RLMArray<RLMObject>) -> List<Object> {
         return List(rlmArray: object)
     }
 
     /// Convert a `LinkingObjects` to a `RLMResults`.
-    public static func convert<T>(object: LinkingObjects<T>) -> RLMResults<AnyObject> {
+    public static func convert<T>(object: LinkingObjects<T>) -> RLMResults<RLMObject> {
         return object.rlmResults
     }
 
@@ -128,6 +128,16 @@ public final class ObjectiveCSupport {
     /// Convert a `RLMSortDescriptor` to a `SortDescriptor`.
     public static func convert(object: RLMSortDescriptor) -> SortDescriptor {
         return SortDescriptor(keyPath: object.keyPath, ascending: object.ascending)
+    }
+
+    /// Convert a `SyncCredentials` to a `RLMSyncCredentials`.
+    public static func convert(object: SyncCredentials) -> RLMSyncCredentials {
+        return RLMSyncCredentials(object)
+    }
+
+    /// Convert a `RLMSyncCredentials` to a `SyncCredentials`.
+    public static func convert(object: RLMSyncCredentials) -> SyncCredentials {
+        return SyncCredentials(object)
     }
 
     /// Convert a `RLMShouldCompactOnLaunchBlock` to a Realm Swift compact block.

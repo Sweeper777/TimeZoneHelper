@@ -8,29 +8,43 @@
 
 #if os(iOS)
 
-    import UIKit
-    import RxSwift
+import UIKit
 
+#if !RX_NO_MODULE
+import RxSwift
+#endif
+
+    extension UIWebView {
+
+        /// Factory method that enables subclasses to implement their own `delegate`.
+        ///
+        /// - returns: Instance of delegate proxy that wraps `delegate`.
+        public func createRxDelegateProxy() -> RxWebViewDelegateProxy {
+            return RxWebViewDelegateProxy(parentObject: self)
+        }
+
+    }
+    
     extension Reactive where Base: UIWebView {
 
         /// Reactive wrapper for `delegate`.
         /// For more information take a look at `DelegateProxyType` protocol documentation.
-        public var delegate: DelegateProxy<UIWebView, UIWebViewDelegate> {
-            return RxWebViewDelegateProxy.proxy(for: base)
+        public var delegate: DelegateProxy {
+            return RxWebViewDelegateProxy.proxyForObject(base)
         }
 
         /// Reactive wrapper for `delegate` message.
         public var didStartLoad: Observable<Void> {
             return delegate
                 .methodInvoked(#selector(UIWebViewDelegate.webViewDidStartLoad(_:)))
-                .map { _ in }
+                .map {_ in}
         }
 
         /// Reactive wrapper for `delegate` message.
         public var didFinishLoad: Observable<Void> {
             return delegate
                 .methodInvoked(#selector(UIWebViewDelegate.webViewDidFinishLoad(_:)))
-                .map { _ in }
+                .map {_ in}
         }
         
         /// Reactive wrapper for `delegate` message.

@@ -9,7 +9,10 @@
 #if os(iOS) || os(tvOS)
 
 import UIKit
+#if !RX_NO_MODULE
 import RxSwift
+#endif
+
 
 extension Reactive where Base: UISegmentedControl {
     /// Reactive wrapper for `selectedSegmentIndex` property.
@@ -19,7 +22,8 @@ extension Reactive where Base: UISegmentedControl {
     
     /// Reactive wrapper for `selectedSegmentIndex` property.
     public var value: ControlProperty<Int> {
-        return base.rx.controlPropertyWithDefaultEvents(
+        return UIControl.rx.value(
+            self.base,
             getter: { segmentedControl in
                 segmentedControl.selectedSegmentIndex
             }, setter: { segmentedControl, value in
@@ -28,27 +32,6 @@ extension Reactive where Base: UISegmentedControl {
         )
     }
     
-    /// Reactive wrapper for `setEnabled(_:forSegmentAt:)`
-    public func enabledForSegment(at index: Int) -> Binder<Bool> {
-        return Binder(self.base) { segmentedControl, segmentEnabled -> Void in
-            segmentedControl.setEnabled(segmentEnabled, forSegmentAt: index)
-        }
-    }
-    
-    /// Reactive wrapper for `setTitle(_:forSegmentAt:)`
-    public func titleForSegment(at index: Int) -> Binder<String?> {
-        return Binder(self.base) { segmentedControl, title -> Void in
-            segmentedControl.setTitle(title, forSegmentAt: index)
-        }
-    }
-    
-    /// Reactive wrapper for `setImage(_:forSegmentAt:)`
-    public func imageForSegment(at index: Int) -> Binder<UIImage?> {
-        return Binder(self.base) { segmentedControl, image -> Void in
-            segmentedControl.setImage(image, forSegmentAt: index)
-        }
-    }
-
 }
 
 #endif

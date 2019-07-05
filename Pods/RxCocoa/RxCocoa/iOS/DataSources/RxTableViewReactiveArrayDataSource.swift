@@ -9,7 +9,9 @@
 #if os(iOS) || os(tvOS)
 
 import UIKit
+#if !RX_NO_MODULE
 import RxSwift
+#endif
 
 // objc monkey business
 class _RxTableViewReactiveArrayDataSource
@@ -38,17 +40,17 @@ class _RxTableViewReactiveArrayDataSource
 }
 
 
-class RxTableViewReactiveArrayDataSourceSequenceWrapper<Sequence: Swift.Sequence>
-    : RxTableViewReactiveArrayDataSource<Sequence.Element>
+class RxTableViewReactiveArrayDataSourceSequenceWrapper<S: Sequence>
+    : RxTableViewReactiveArrayDataSource<S.Iterator.Element>
     , RxTableViewDataSourceType {
-    typealias Element = Sequence
+    typealias Element = S
 
     override init(cellFactory: @escaping CellFactory) {
         super.init(cellFactory: cellFactory)
     }
 
-    func tableView(_ tableView: UITableView, observedEvent: Event<Sequence>) {
-        Binder(self) { tableViewDataSource, sectionModels in
+    func tableView(_ tableView: UITableView, observedEvent: Event<S>) {
+        UIBindingObserver(UIElement: self) { tableViewDataSource, sectionModels in
             let sections = Array(sectionModels)
             tableViewDataSource.tableView(tableView, observedElements: sections)
         }.on(observedEvent)
@@ -61,7 +63,7 @@ class RxTableViewReactiveArrayDataSource<Element>
     , SectionedViewDataSourceType {
     typealias CellFactory = (UITableView, Int, Element) -> UITableViewCell
     
-    var itemModels: [Element]?
+    var itemModels: [Element]? = nil
     
     func modelAtIndex(_ index: Int) -> Element? {
         return itemModels?[index]
